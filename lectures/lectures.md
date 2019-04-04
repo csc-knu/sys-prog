@@ -3,7 +3,7 @@
 Усі лекції [To appear later on]
 
 1. [Мови програмування та мовні процесори](lecture-01.md)
-2. [To appear later on]
+2. [To appear later on](lecture-02.md)
 3. [To appear later on]
 4. [To appear later on]
 5. [To appear later on]
