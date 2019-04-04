@@ -74,7 +74,7 @@ $$
 _Табличне визначення_ функції $$\delta$$ &mdash; це таблиця $$М(q_i, a_j)$$, де $$aj \in \Sigma, q_i \in Q$$, тобто
 
 $$
-М(q_i,a_j) = \left\{ q_k : q_k \in \delta(q_i, a_j) \right}.
+M(q_i, a_j) = \left\{ q_k : q_k \in \delta(q_i, a_j) \right\}.
 $$
 
 _Діаграма переходів_ скінченого автомата $$М$$ &mdash; це невпорядкований граф $$G(V,
