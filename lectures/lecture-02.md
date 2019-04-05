@@ -121,7 +121,7 @@ $$
 2. $$q_0' = \{q_0\} \in 2^Q = Q'$$.
 3. $$F'$$ складається з усіх таких підмножин $$S \in 2^Q = Q'$$, 
 	що $$S \cap F \ne \varnothing$$.
-4. $$\delta'(S, a) \models \left\{ q \middle| q \in \delta(q_i, a), q_i \in S \right\}$$.
+4. $$\delta'(S, a) \models \left\{ q \mid q \in \delta(q_i, a), q_i \in S \right\}$$.
 
 Доведемо індукцією по $$i$$, що $$(S, w) \models^i (S', \varepsilon)$$, тоді і тільки тоді,
 коли $$S' = \left\{ q \middle| \exists q_i \in S: (q_i, w) \models^i (q, \varepsilon) \right\}$$.
