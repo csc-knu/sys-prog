@@ -1,0 +1,82 @@
+\documentclass[tikz,convert={outext=.png}]{standalone}
+\usepackage{amsmath}
+\begin{document}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (-5,0) -- (-3,0);
+\fill [black] (-3,0) -- (-3.75,-.5) -- (-3.75,.5);
+\draw [black] (0,0) circle (3);
+\draw (0,0) node {$q_0$};
+
+\draw [black] (2.1, 2.1) -- (7.9,7.9);
+\fill [black] (6.9,7.65) -- (7.9,7.9) -- (7.65,6.9);
+\draw (3.5,5) node [above] {{\tt1}..{\tt9}};
+\draw [black] (10,10) circle (3);
+\draw [black] (10,10) circle (2.4);
+\draw (3.5,15) node [above] {{\tt1}..{\tt9}};
+\draw [black] (7,10) arc (270:0:3);
+\fill [black] (10,13) -- (10.5,13.75) -- (9.5,13.75);
+
+\draw [black] (2.1, -2.1) -- (7.9,-7.9);
+\fill [black] (7.15,-7.9) -- (7.9,-7.9) -- (7.9,-7.15);
+\draw (4.5,-5) node [below] {{\tt0}};
+\draw [black] (10,-10) circle (3);
+\draw [black] (10,-10) circle (2.4);
+
+\draw [black] (12.1, 12.1) -- (17.9,17.9);
+\fill [black] (16.9,17.65) -- (17.9,17.9) -- (17.65,16.9);
+\draw (13.5,15) node [above] {{\tt L}, {\tt l}};
+\draw [black] (20,20) circle (3);
+\draw [black] (20,20) circle (2.4);
+
+\draw [black] (13,10) -- (27,10);
+\fill [black] (27,10) -- (26.25,9.5) -- (26.26,10.5);
+\draw (20,10) node [above] {{\tt U}, {\tt u}};
+\draw [black] (30,10) circle (3);
+\draw [black] (30,10) circle (2.4);
+
+\draw [black] (23,20) -- (37,20);
+\fill [black] (37,20) -- (36.25,19.5) -- (36.26,20.5);
+\draw (30,20) node [above] {{\tt U}, {\tt u}};
+\draw [black] (40,20) circle (3);
+\draw [black] (40,20) circle (2.4);
+
+\draw [black] (33,10) -- (47,10);
+\fill [black] (47,10) -- (46.25,9.5) -- (46.26,10.5);
+\draw (40,10) node [above] {{\tt L}, {\tt l}};
+\draw [black] (50,10) circle (3);
+\draw [black] (50,10) circle (2.4);
+
+\draw [black] (13,-10) -- (27,-10);
+\fill [black] (26.25,-10.5) -- (26.25,-9.5) -- (27,-10);
+\draw (20,-9.5) node [above] {{\tt0}..{\tt7}};
+\draw [black] (30,-10) circle(3);
+\draw [black] (30,-10) circle (2.4);
+\draw (30,-2.5) node [above] {{\tt0}..{\tt7}};
+\draw [black] (27.9,-7.9) arc (225:-45:3);
+\fill [black] (32.1,-7.9) -- (32.4,-6.8) -- (33.2,-7.6);
+
+% \draw [black] (2.1+10, 2.1-10) -- (7.9+10,7.9-10);
+% \fill [black] (6.9+10,7.65-10) -- (7.9+10,7.9-10) -- (7.65+10,6.9-10);
+% \draw (3.5+10,5-10) node [above] {{\tt0}..{\tt7}};
+% \draw [black] (10+10,10-10) circle (3);
+% \draw [black] (10+10,10-10) circle (2.4);
+% \draw (3.5+10,15-10) node [above] {{\tt0}..{\tt7}};
+% \draw [black] (7+10,10-10) arc (270:0:3);
+% \fill [black] (10+10,13-10) -- (10.5+10,13.75-10) -- (9.5+10,13.75-10);
+
+\draw [black] (12.1, -12.1) -- (17.9,-17.9);
+\fill [black] (17.15,-17.9) -- (17.9,-17.9) -- (17.9,-17.15);
+\draw (13.5,-15) node [below] {{\tt X}, {\tt x}};
+\draw [black] (20,-20) circle (3);
+
+\draw [black] (23,-20) -- (37,-20);
+\fill [black] (36.25,-20.5) -- (36.25,-19.5) -- (37,-20);
+\draw (30,-20) node [above] {{\tt A}..{\tt F},{\tt a}..{\tt f},{\tt0}..{\tt9}};
+\draw [black] (40,-20) circle(3);
+\draw [black] (40,-20) circle (2.4);
+\draw (10+30,17.5-30) node [above] {{\tt A}..{\tt F},{\tt a}..{\tt f},{\tt0}..{\tt9}};
+\draw [black] (7.9+30,12.1-30) arc (225:-45:3);
+\fill [black] (12.1+30,12.1-30) -- (12.4+30,13.2-30) -- (13.2+30,12.4-30);
+\end{tikzpicture}
+\end{document}
