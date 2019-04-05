@@ -48,11 +48,11 @@
 	- Функцію $$\delta$$ визначимо таким чином:
 
 		$$
-		\begin{aligned}
-		\delta(q, a) &= \delta_1(q, a), \quad q \in Q_1, a \in \Sigma, \\
-		\delta(q, a) &= \delta_2(q, a), \quad q \in Q_2, a \in \Sigma, \\
-		\delta(q_0, a) &= \delta_1(q_0^1, a) \cup \delta_2(q_0^2, a), \quad a \in \Sigma. 
-		\end{aligned}
+		\delta(q, a) = \begin{cases}
+			\delta_1(q, a), & q \in Q_1, \\
+			\delta_2(q, a), & q \in Q_2, \\
+			\delta_1(q_0^1, a) \cup \delta_2(q_0^2, a), & q = q_0. 
+		\end{cases}
 		$$
 
 	- Множина заключних станів:
@@ -75,11 +75,11 @@
 	- Функцію $$\delta$$ визначимо таким чином:
 
 		$$
-		\begin{aligned}
-		\delta(q, a) &= \delta_1(q, a), \quad q \in Q_1 \setminus F_1, a \in \Sigma, \\
-		\delta(q, a) &= \delta_2(q, a), \quad q \in Q_2, a \in \Sigma, \\
-		\delta(q, a) &= \delta_1(q, a) \cup \delta_2(q_0^2,a), \quad q \in F_1, a \in \Sigma.
-		\end{aligned}
+		\delta(q, a) = \begin{cases}
+		\delta_1(q, a), & q \in Q_1 \setminus F_1, \\
+		\delta_2(q, a), & q \in Q_2, \\
+		\delta_1(q, a) \cup \delta_2(q_0^2,a), & q \in F_1.
+		\end{cases}
 		$$
 
 	- Множина заключних станів:
