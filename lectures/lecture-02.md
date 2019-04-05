@@ -99,7 +99,7 @@ P)$$, де $$V$$ &mdash; множина вершин графа, а $$P$$ &mdash
 визначений.
 
 Скінчений автомат $$M$$ називається _детермінованим_, якщо $$\delta(a_i, a_k)$$
-містить не більше одного стану для любого $$q_i \in Q$$ та $$a_k \i n\Sigma$$.
+містить не більше одного стану для любого $$q_i \in Q$$ та $$a_k \in \Sigma$$.
 
 **Теорема.** _Для довільного недетермінованого скінченого автомата $$M$$ можна
 побудувати еквівалентний йому детермінований скінчений автомат $$M'$$, такий що_
@@ -123,10 +123,10 @@ $$
 	що $$S \cap F \ne \varnothing$$.
 4. $$\delta'(S, a) \models \left\{ q \middle| q \in \delta(q_i, a), q_i \in S \right\}$$.
 
-Доведемо індукцією по $$i$$, що $$(S, w) \models^i (S', \varpesilon)$$, тоді і тільки тоді,
-коли $$S' = \left\{ q \middle| \exists q_i \in S: (q_i, w) \models^i (q, \varepsilon) \}$$.
+Доведемо індукцією по $$i$$, що $$(S, w) \models^i (S', \varepsilon)$$, тоді і тільки тоді,
+коли $$S' = \left\{ q \middle| \exists q_i \in S: (q_i, w) \models^i (q, \varepsilon) \right\}$$.
 
-Зокрема, $$ \left(\{q_0}, w\right) \models^\star (S', \varepsilon)$$, 
+Зокрема, $$ \left(\{q_0\}, w\right) \models^\star (S', \varepsilon)$$, 
 для деякого $$S' \in F'$$, тоді і тільки тоді, коли $$\exists q \in F: (q_0, w) \models^\star (q, \varepsilon)$$.
 
 Таким чином, $$L(M) = L(M')$$.
