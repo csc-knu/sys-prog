@@ -4,7 +4,7 @@
 
 1. [Мови програмування та мовні процесори](lecture-01.md)
 2. [Лексичний аналіз та скінченні автомати](lecture-02.md)
-3. [To appear later on]
+3. [To appear later on](lecture-03.md)
 4. [To appear later on]
 5. [To appear later on]
 6. [To appear later on]
