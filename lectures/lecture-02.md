@@ -136,7 +136,7 @@ $$
 	що $$S \cap F \ne \varnothing$$.
 4. $$\delta'(S, a) \models \left\{ q \mid q \in \delta(q_i, a), q_i \in S \right\}$$.
 
-Доведимо індукцією по $$i$$, що $$(S, w) \models^i (S', \varepsilon)$$, тоді і тільки тоді,
+Доводимо індукцією по $$i$$, що $$(S, w) \models^i (S', \varepsilon)$$, тоді і тільки тоді,
 коли $$S' = \left\{ q \middle| \exists q_i \in S: (q_i, w) \models^i (q, \varepsilon) \right\}$$.
 
 Зокрема, $$ \left(\{q_0\}, w\right) \models^\star (S', \varepsilon)$$, 
