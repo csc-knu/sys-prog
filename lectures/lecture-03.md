@@ -46,7 +46,7 @@ $$Q \setminus Q_m$$ &mdash; множина недосяжних станів. П
 3. $$Q_m = Q_{m+1} = \ldots$$.
 
 Справді, очевидно, що кількість кроків скінчена, тому що послідовність $$Q_i$$
-монотонна ($$Q_0 \subseteq Q_1 \subseteq Q_2 \subseteq \ldots$$) 
+монотонна $$\left(Q_0 \subseteq Q_1 \subseteq Q_2 \subseteq \ldots\right)$$ 
 та обмежена зверху: $$Q_m \subseteq |Q|$$.
 
 Тоді $$Q_m$$ &mdash; множина досяжних станів скінченого автомата, 
@@ -75,7 +75,7 @@ $$Q \setminus Q_m$$ &mdash; множина недосяжних станів. П
 3. $$S_m = S_{m + 1} = \ldots$$.
 
 Очевидно, що кількість кроків скінчена, тому що послідовність $$S_i$$
-монотонна ($$S_0 \subseteq S_1 \subseteq S_2 \subseteq \ldots$$) та обмежена зверху &mdash; $$S_m \subseteq Q$$.
+монотонна $$\left(S_0 \subseteq S_1 \subseteq S_2 \subseteq \ldots\right)$$ та обмежена зверху &mdash; $$S_m \subseteq Q$$.
 
 Тоді $$S_m$$ &mdash; множина нетупикових станів скінченого автомата, 
 а $$Q \setminus S_m$$ &mdash; множина тупикових станів. 
