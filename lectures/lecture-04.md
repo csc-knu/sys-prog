@@ -54,14 +54,16 @@
 		\delta(q_0, a) &= \delta_1(q_0^1, a) \cup \delta_2(q_0^2, a), \quad a \in \Sigma. 
 		\end{aligned}
 		$$
-		
+
 	- Множина заключних станів:
+
 		$$
 		F = \begin{cases}
 		F_1 \cup F_2, & \text{if } \varepsilon \notin L_1 \cup L_2, \\
 		F_1 \cup F_2 \cup \{q_0\}, & \text{otherwise}.
 		\end{cases}
 		$$
+	
 	Побудований таким чином автомат взагалі кажучи недетермінований. Індукцією
 	по $$i$$ показуємо, що $$(q_0, w) \models^i (q,\varepsilon)$$ можливо тоді і тільки тоді,
 	коли $$(q_0^1,w) \models^i (q,\varepsilon), q \in F_1$$ або $$(q_0^2,w) \models^i (q,\varepsilon), q \in F_2$$.
