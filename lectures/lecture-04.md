@@ -34,7 +34,7 @@
 
 **Твердження:** Якщо $$M_1 = \left\langle Q_1, \Sigma, q_0^1, \delta_1, F_1 \right\rangle$$ 
 та $$M_2 = \left\langle Q_2, \Sigma, q_0^2, \delta_2, F_2\right\rangle$$, що
-визначають відповідно мови $$L(M_1)$$ та $$L(M_2)$$, то скінчено-автоматними мовами будуть:
+визначають відповідно мови $$L(M_1)$$ та $$L(M_2)$$, то скінченно-автоматними мовами будуть:
 1. $$L(M_1) \cup L(M_2) = \left\{w \mid q \in L(M_1) \text{ or } q \in L(M_2)\right\}$$;
 2. $$L(M_1) \cdot L(M_2) = \left\{w = xy \mid x \in L(M_1), y \in L(M_2) \right\}$$;
 3. $$L(M_1)^\star = \{\varepsilon\} \cup L(M_1) \cup L(M_1)^2 \cup L(M_1)^3 \cup \ldots$$.
@@ -44,7 +44,9 @@
 1. побудуємо автомат $$M = \left\langle Q, \Sigma, q_0, \delta, F \right\rangle$$ такий, що $$L(M) = L(M_1) \cup L(M_2)$$.
 	- $$Q = Q_1 \cup Q_2 \cup \{q_0\}$$, де $$q_0$$ &mdash; новий стан 
 		$$(q_0 \notin Q_1 \cup Q_2)$$;
+	
 	- Функцію $$\delta$$ визначимо таким чином:
+
 		$$
 		\begin{aligned}
 		\delta(q, a) &= \delta_1(q, a), \quad q \in Q_1, a \in \Sigma, \\
@@ -52,10 +54,11 @@
 		\delta(q_0, a) &= \delta_1(q_0^1, a) \cup \delta_2(q_0^2, a), \quad a \in \Sigma. 
 		\end{aligned}
 		$$
+		
 	- Множина заключних станів:
 		$$
 		F = \begin{cases}
-		F_1 \cup F_2, & \text{if } \varpesilon \notin L_1 \cup L_2, \\
+		F_1 \cup F_2, & \text{if } \varepsilon \notin L_1 \cup L_2, \\
 		F_1 \cup F_2 \cup \{q_0\}, & \text{otherwise}.
 		\end{cases}
 		$$
