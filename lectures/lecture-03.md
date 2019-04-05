@@ -39,11 +39,11 @@
 
 **Алгоритм [пошуку недосяжних станів].** Спочатку спробуємо побудувати множину
 досяжних станів. Якщо $$Q_m$$ &mdash; множина досяжних станів скінченого автомата $$M$$, то
-$$Q \setminus Q_m$ &mdash; множина недосяжних станів. Побудуємо послідовність множин $$Q_0, Q_1, Q_2, \ldots$$ таким чином, що:
+$$Q \setminus Q_m$$ &mdash; множина недосяжних станів. Побудуємо послідовність множин $$Q_0, Q_1, Q_2, \ldots$$ таким чином, що:
 
 0. $$Q_0 = \{q_0\}$$.
-1. $$Q_1 = Q_0 \cup \left\{ q \middle| q \in \delta (q_0, a), \forall a \in \Sigma \right\}$$.
-2. $$Q_i = Q_{i-1} \cup \left\{ q \middle| q \in \delta(q_j, a), q_j \in Q_{i-1}, \forall a \in \Sigma \right\}$$.
+1. $$Q_1 = Q_0 \cup \left\{ q \mid q \in \delta (q_0, a), \forall a \in \Sigma \right\}$$.
+2. $$Q_i = Q_{i-1} \cup \left\{ q \mid q \in \delta(q_j, a), q_j \in Q_{i-1}, \forall a \in \Sigma \right\}$$.
 3. $\ldots$
 4. $$Q_m = Q_{m+1} = \ldots$$.
 
