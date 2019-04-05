@@ -44,7 +44,7 @@ $$Q \setminus Q_m$$ &mdash; множина недосяжних станів. П
 0. $$Q_0 = \{q_0\}$$.
 1. $$Q_1 = Q_0 \cup \left\{ q \mid \exists a \in \Sigma: q \in \delta (q_0, a) \right\}$$.
 2. $$Q_i = Q_{i-1} \cup \left\{ q \mid \exists a \in \Sigma, q_j \in Q_{i - 1}: q \in \delta(q_j, a) \right\}$$.
-3. $$\ldots$$
+3. $$\ldots$$.
 4. $$Q_m = Q_{m+1} = \ldots$$.
 
 Справді, очевидно, що кількість кроків скінчена, тому що послідовність $$Q_i$$
