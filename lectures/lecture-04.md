@@ -41,7 +41,7 @@
 
 **Доведення:** в кожному випадку нам доведеться конструктивно побудувати
 відповідний скінчений автомат:
-1. побудуємо автомат $$M = \left\langle Q, \Sigma, q_0, \delta, F \right\rangle$$ такий, що $$L(M) = L(M_1) \cup L(M_2)$$.
+1. Побудуємо автомат $$M = \left\langle Q, \Sigma, q_0, \delta, F \right\rangle$$ такий, що $$L(M) = L(M_1) \cup L(M_2)$$:
 	- $$Q = Q_1 \cup Q_2 \cup \{q_0\}$$, де $$q_0$$ &mdash; новий стан 
 		$$(q_0 \notin Q_1 \cup Q_2)$$;
 	
@@ -69,7 +69,27 @@
 	Індукцією по $$i$$ показуємо, що $$(q_0, w) \models^i (q,\varepsilon)$$ 
 	тоді і тільки тоді, коли $$(q_0^1,w) \models^i (q,\varepsilon), q \in F_1$$ 
 	або $$(q_0^2,w) \models^i (q,\varepsilon), q \in F_2$$.
-2.
+2. Побудуємо автомат $$M = \left\langle Q, \Sigma, q_0, \delta, F \right\rangle$$ такий, що $$L(M) = L(M_1) \cdot L(M_2)$$:
+	- $$Q = Q_1 \cup Q_2$$;
+	- $$q_0 = q_0^1$$;
+	- Функцію $$\delta$$ визначимо таким чином:
+
+		$$
+		\begin{aligned}
+		\delta(q, a) &= \delta_1(q, a), \quad q \in Q_1 \setminus F_1, a \in \Sigma, \\
+		\delta(q, a) &= \delta_2(q, a), \quad q \in Q_2, a \in \Sigma, \\
+		\delta(q, a) &= \delta_1(q, a) \cup \delta_2(q_0^2,a), \quad q \in F_1, a \in \Sigma.
+		\end{aligned}
+		$$
+
+	- Множина заключних станів:
+
+		$$
+		F = \begin{cases}
+		F_2, & \text{if } \varepsilon \notin L_2, \\
+		F_1 \cup F_2, & \text{otherwise}.
+		\end{cases}
+		$$
 3.
 
 ## Контрольні запитання
