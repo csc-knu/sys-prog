@@ -1,0 +1,26 @@
+\documentclass[tikz,convert={outext=.png}]{standalone}
+\begin{document}
+\begin{tikzpicture}[scale=0.2]
+\draw [black] (-5,0) -- (-3,0);
+\fill [black] (-3,0) -- (-3.75,-.5) -- (-3.75,.5);
+\draw [black] (0,0) circle (3);
+\draw (0,0) node {$q_0$};
+
+\draw [black] (3,0) -- (17,0);
+\fill [black] (16.25,.5) -- (17,0) -- (16.25,-.5);
+\draw (10,0) node [above] {{\tt a},{\tt b}};
+\draw [black] (20,0) circle (3);
+\draw (20,0) node {$q_1$};
+
+\draw [black] (23,0) -- (37,0);
+\fill [black] (37,0) -- (36.25,.5) -- (36.25,-.5);
+\draw (30,0) node [above] {{\tt c}};
+\draw [black] (40,0) circle (3);
+\draw [black] (40,0) circle (2.4);
+\draw (40,0) node {$q_2$};
+\draw (37.9,2.1) arc (225:-45:3);
+\fill [black] (42.1,2.1) -- (42.4,3.2) -- (43.2,2.4);
+\draw (40,6.5) node [above] {{\tt a},{\tt c}};
+
+\end{tikzpicture}
+\end{document}
