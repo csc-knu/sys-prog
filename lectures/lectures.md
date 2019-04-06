@@ -7,7 +7,7 @@
 3. [Мінімізація детермінованих скінчених автоматів](lecture-03.md)
 4. [Скінченно-автоматні мови і праволінійні граматики](lecture-04.md)
 5. [Регулярні множини і регулярні вирази](lecture-05.md)
-6. [To appear later on](lecture-06.md)
+6. [ПОЛІЗ, регулярні вирази і автомати](lecture-06.md)
 7. [To appear later on]
 8. [To appear later on]
 9. [To appear later on]
