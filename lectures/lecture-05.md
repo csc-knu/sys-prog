@@ -151,8 +151,8 @@ $$
 	\left\{
 	\begin{aligned}
 	X_1 &= a X_1 + b X_2 + c, \\
-	X_2 &= b X_1 + c X_2 + a X_3, \\
-	X_3 &= c + a X_2 + b X_3.
+	X_2 &= c X_1 + a X_2 + b X_3, \\
+	X_3 &= b + c X_2 + a X_3.
 	\end{aligned}
 	\right.
 	$$
