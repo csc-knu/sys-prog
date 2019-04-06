@@ -27,5 +27,5 @@
 - Матеріали для лабораторних робіт:
   - Інструкції зі встановлення необхідних програм [To appear later on]
   - [Умови](labs/tasks/tasks.md)
-  - Приклади виконання [To appear later on]
+  - [Приклади виконання](labs/examples/examples.md)
 - Література [To appear later on]
