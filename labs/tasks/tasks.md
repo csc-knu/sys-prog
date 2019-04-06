@@ -6,7 +6,5 @@
 2. [Скінченні автомати та алгоритми з ними](task-02.md)
 3. [Лексичний аналізатор мови програмування](task-03.md)
 4. [To appear later on]
-5. [To appear later on]
-6. [To appear later on]
 
 [Назад на головну](../../README.md)
