@@ -33,6 +33,6 @@
 - [Контрольні запитання](exams/control-questions.md)
 - Матеріали для лабораторних робіт:
   - [Програмне забезпечення](labs/starting-out.md)
-  - [Умови](labs/tasks/tasks.md)
+  - [Власне умови робіт](labs/tasks/tasks.md)
   - [Приклади виконання](labs/examples/examples.md)
 - [Література](books/books.md)
