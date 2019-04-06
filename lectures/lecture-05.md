@@ -13,7 +13,7 @@
 
 ## Скінченні автомати та праволінійні граматики
 
-_Породжуюча граматика_ $$G$$ &mdash; це п'ятірка
+_Породжуюча граматика_ $$G$$ &mdash; це четвірка
 
 $$
 G = \left\langle N, \Sigma, P, S \right\rangle,
@@ -21,11 +21,11 @@ $$
 
 де: 
 - $$N$$ &mdash; скінченна множина &mdash; допоміжний алфавіт (нетермінали);
-- $$\sigma$$ &mdash; скінченна множина &mdash; основний алфавіт (термінали);
+- $$\Sigma$$ &mdash; скінченна множина &mdash; основний алфавіт (термінали);
 - $$P$$ &mdash; скінченна множина правил вигляду
 
 	$$
-	\alpha \mapsto \beta, \quad \alpha \in \left(N \sup \Sigma\right)^\star \times N \times	\left(N \sup \Sigma\right)^\star, \quad \beta \in \left(N \sup \Sigma\right).
+	\alpha \mapsto \beta, \quad \alpha \in \left(N \cup \Sigma\right)^\star \times N \times	\left(N \cup \Sigma\right)^\star, \quad \beta \in \left(N \cup \Sigma\right).
 	$$
 
 - $$S$$ &mdash; виділений нетермінал (аксіома).
@@ -37,26 +37,26 @@ $$
 - Тип 0: граматики загального виду, коли правила не мають обмежень, тобто
 	
 	$$
-	\alpha \mapsto \beta, \quad \alpha \in \left(N \sup \Sigma\right)^\star \times N \times	\left(N \sup \Sigma\right)^\star, \quad \beta \in \left(N \sup \Sigma\right).
+	\alpha \mapsto \beta, \quad \alpha \in \left(N \cup \Sigma\right)^\star \times N \times	\left(N \cup \Sigma\right)^\star, \quad \beta \in \left(N \cup \Sigma\right).
 	$$
 
 - Тип 1: граматики, що не укорочуються, коли обмеження на правила
 	мінімальні, а саме:
 
 	$$
-	\alpha \mapsto \beta, \quad \alpha \in \left(N \sup \Sigma\right)^\star \times N \times	\left(N \sup \Sigma\right)^\star, \quad \beta \in \left(N \sup \Sigma\right), \quad |\alpha| \le |\beta|.
+	\alpha \mapsto \beta, \quad \alpha \in \left(N \cup \Sigma\right)^\star \times N \times	\left(N \cup \Sigma\right)^\star, \quad \beta \in \left(N \cup \Sigma\right), \quad |\alpha| \le |\beta|.
 	$$
 
 - Тип 2: контекстно-вільні граматики, коли правила в схемі $$P$ мають вигляд:
 	
 	$$
-	A_i \mapsto \beta, \quad A_i \in N, \quad \beta \in \left(N \sup \Sigma\right)^\star.
+	A_i \mapsto \beta, \quad A_i \in N, \quad \beta \in \left(N \cup \Sigma\right)^\star.
 	$$
 
 - Тип 3: скінченно-автоматні граматики, коли правила в схемі $$P$$ мають вигляд:
 
 	$$
-	A_i &\mapsto w A_j, \quad A_i &\mapsto w, \quad Ai \mapsto A_j w,
+	A_i \mapsto w A_j, \quad A_i \mapsto w, \quad Ai \mapsto A_j w,
 	$$
 
 	де $$A_i, A_j \in N$$, $$w \in \Sigma^\star$$.
@@ -65,7 +65,7 @@ $$
 граматики_ &mdash; це граматики, які в схемі Р мають правила виду :
 
 $$
-A_i &\mapsto w A_j, \quad A_i &\mapsto w,
+A_i \mapsto w A_j, \quad A_i \mapsto w,
 $$
 
 де $$A_i, A_j \in N$$, $$w \in \Sigma^\star$$.
