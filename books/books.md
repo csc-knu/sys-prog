@@ -8,5 +8,6 @@
 - [Andrew S. Tanenbaum &mdash; Distributed Systems. Principles and Paradigms](Andrew%20S.%20Tanenbaum%20-%20Distributed%20Systems.%20Principles%20and%20Paradigms.pdf)
 - [Andrew S. Tanenbaum &mdash; Distributed Operating Systems](Andrew%20S.%20Tanenbaum%20-%20Distributed%20Operating%20Systems.djvu)
 - [Andrew S. Tanenbaum &mdash; Computer Networks](Andrew%20S.%20Tanenbaum%20-%20Computer%20Networks.pdf)
+- [To appear later on]
 
 [Назад на головну](README.md)

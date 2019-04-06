@@ -9,7 +9,5 @@
 	- [програма-драйвер](lab-2-v2-main.java)
 3. [Лексичний аналізатор мови програмування](lab-3-main.java)
 4. [To appear later on]
-5. [To appear later on]
-6. [To appear later on]
 
 [Назад на головну](../../README.md)
