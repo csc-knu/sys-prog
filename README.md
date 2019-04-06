@@ -9,7 +9,7 @@
 - Поліщук Н., polinata 46 на gmail тчк com
 - Шишацька О.В., shyshatska на knu тчк ua
 
-Підтрима сайту &mdash; Скибицький Н.М., n тчк skybytskyi на gmail тчк com
+Підтримка сайту &mdash; Скибицький Н.М., n тчк skybytskyi на gmail тчк com
 
 ### Розподіл балів
 
