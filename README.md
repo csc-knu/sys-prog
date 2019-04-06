@@ -29,7 +29,6 @@
 
 #### Власне матеріали
 
-- Програма курсу [To appear later on]
 - [Конспект лекцій](lectures/lectures.md)
 - [Контрольні запитання](exams/control-questions.md)
 - Матеріали для лабораторних робіт:
