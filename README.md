@@ -7,7 +7,7 @@
 Практичні заняття проводять:
 - Волохов В.М., vvn на uiccnet тчк com тчк ua
 - Поліщук Н., polinata 46 на gmail тчк com
-- Шишацька О.В., [To appear later on]
+- Шишацька О.В., shyshatska на knu тчк огua
 
 Підтрима сайту &mdash; Скибицький Н.М., n тчк skybytskyi на gmail тчк com
 
