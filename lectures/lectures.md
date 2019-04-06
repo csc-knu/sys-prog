@@ -1,5 +1,7 @@
 ## Лекції
 
+[Назад на головну](../README.md)
+
 [Усі лекції](all-lectures.md)
 
 1. [Мови програмування та мовні процесори](lecture-01.md)
@@ -15,3 +17,5 @@
 11. [To appear later on]
 12. [To appear later on]
 13. [To appear later on]
+
+[Назад на головну](../README.md)
