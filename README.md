@@ -35,4 +35,4 @@
   - [Програмне забезпечення](labs/starting-out.md)
   - [Умови](labs/tasks/tasks.md)
   - [Приклади виконання](labs/examples/examples.md)
-- Література [To appear later on]
+- [Література](books/books.md)
