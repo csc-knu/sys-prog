@@ -10,7 +10,7 @@
 4. [Скінченно-автоматні мови і праволінійні граматики](lecture-04.md)
 5. [Регулярні множини і регулярні вирази](lecture-05.md)
 6. [ПОЛІЗ, регулярні вирази і автомати](lecture-06.md)
-7. [To appear later on]
+7. [Синтаксичний аналіз в мовних процесорах](lecture-07.md)
 8. [To appear later on]
 9. [To appear later on]
 10. [To appear later on]
