@@ -6,6 +6,7 @@
 - [Синтаксичний аналіз](#синтаксичний-аналіз)
 	- [Стратегії виведення](#стратегії-виведення)
 	- [Синтаксичні дерева](#синтаксичні-дерева)
+	- [Власне аналіз](#власне-аналіз)
 - [Контрольні запитання](#контрольні-запитання)
 
 ## Синтаксичний аналіз
@@ -102,27 +103,26 @@ $$
 \begin{align}
 S &\Rightarrow S + T \\
 S &\Rightarrow T \\
-T &\Rightarrow T \cdot F \\
+T &\Rightarrow T \times F \\
 T &\Rightarrow F \\
 F &\Rightarrow (S) \\
 F &\Rightarrow a \\
 \end{align}
 $$
 
-і для ланцюжка $$\omega = a \cdot (a + a)$$ побудуємо лівосторонній аналіз $$\pi$$:
+і для ланцюжка $$\omega = a \times (a + a)$$ побудуємо лівосторонній аналіз $$\pi$$:
 
 Виведення має вигляд:
 
 $$
 \begin{multline*}
-S \Rightarrow T \Rightarrow T \cdot F \Rightarrow F \cdot F \Rightarrow a \cdot F \Rightarrow \\ 
-\Rightarrow a \cdot (S) \Rightarrow a \cdot (S + T) \Rightarrow a \cdot (T + T) \Rightarrow \\
-\Rightarrow a \cdot (F + T) \Rightarrow a \cdot (a + T) \Rightarrow a \cdot (a + F) \Rightarrow a \cdot (a + a).
+S \Rightarrow T \Rightarrow T \times F \Rightarrow F \times F \Rightarrow a \times F \Rightarrow a \times (S) \Rightarrow a \times (S + T) \Rightarrow \\
+\Rightarrow a \times (T + T) \Rightarrow a \times (F + T) \Rightarrow a \times (a + T) \Rightarrow a \times (a + F) \Rightarrow a \times (a + a).
 \end{multline*}
 $$
 
 З наведеного вище виводу ланцюжка $$\omega \in L(G)$$ лівосторонній аналіз $$\pi$$ буде:
-$$\pi = (2, 3, 4, 6, 5, 1, 2, 4, 6, 4, 6)$$, а синтаксичне дерево виводу $$\omega = a \cdot (a + a)$$ наступне:
+$$\pi = (2, 3, 4, 6, 5, 1, 2, 4, 6, 4, 6)$$, а синтаксичне дерево виводу $$\omega = a \times (a + a)$$ наступне:
 
 ![img-12](img/img-12.png)
 
