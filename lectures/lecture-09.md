@@ -141,7 +141,7 @@ $$
 
 3. 
 	$$
-	F_n(A) = F_{n - 1}(A_i) \cup \{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.
+	F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.
 	$$
 
 4. $$F_m(A_i) = F_{m + 1}(A_i) = \ldots$$ для всіх $$A_i \in N$$.
