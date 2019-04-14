@@ -109,10 +109,62 @@ $$LL(1)$$-граматика називаються _розподіленою_, 
 
 - для нетермінала $$A$$ праві частини $$A$$-правила починаються різними терміналами.
 
+Зауважимо, що $$\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
+
+$$
+L_1 \oplus_k L_2 = \left\{ \omega \middle| \omega \omega_1 = x y, |\omega| = k \right\} \cup  \left\{ \omega \middle| \omega = x y, |\omega| < k \right\}, \quad x \in L_1, y \in L_2.
+$$
+
+Звідси маємо наступний тривіальний висновок: якщо $$\omega = \alpha_1 \alpha_2 \ldots \alpha_p$$, де $$\alpha_i \in (N \cup \Sigma)$$, то
+
+$$
+\text{First}_k (\omega) = \text{First}_k (\alpha_1) \oplus_k \text{First}_k (\alpha_2) \oplus_k \ldots \oplus_k \text{First}_k (\alpha_p)
+$$
+
 Для подальшого аналізу означення $$LL(k)$$-граматики розглянемо алгоритм
 обчислення функції $$\text{First}_k (\alpha)$$, $$\alpha \in (N \cup \Sigma)$$.
 
+Очевидно, що якщо $$\alpha_i \in \Sigma$$, то $$\text{First}_k (\alpha_i) = \{\alpha_i\}$$ при $$k > 0$$. Розглянемо алгоритм пошуку $$\text{First}_k (A_i)$$, $$A_i \in N$$.
 
+### Алгоритм
+
+Алгоритм [пошуку $$\text{First}_k(A_i)$$, $$A_i \in N$$].
+
+Визначимо значення функції $$F_i(x)$$ для кожного $$x \in (N \cup \Sigma)$$:
+
+1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
+
+2. $$F_0(A_i) = \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}$$.
+
+3. $$F_n(A) = F_{n - 1}(A_i) \cup \{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$$.
+
+4. $$F_m(A_i) = F_{m + 1}(A_i) = \ldots$$ для всіх $$A_i \in N$$.
+
+Очевидно, що:
+
+- послідовність $$F_0 (A_i) \subseteq F_1(A_i) \subseteq \ldots$$ &mdash; монотонно зростаюча
+
+- $$F_n(A_i) \subseteq \Sigma^{\star k}$$ &mdash; послідовність обмежена зверху.
+
+Тоді покладемо $$\text{First}_k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
+
+Скористаємося означенням $$\text{First}_k(\alpha)$$ сформулюємо необхідні й достатні умови, за яких КС-граматика буде $$LL(k)$$-граматикою:
+для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapst \alpha \mid \beta$$:
+
+$$
+\text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.
+$$
+
+Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з
+урахуванням визначення множини $$\text{First}_k$$:
+для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapst \alpha \mid \beta$$:
+
+$$
+\text{First}_k(\alpha L) \cap \text{First}_k (\beta L) = \varnothing, \quad L = \text{First}_k(\omega_2).
+$$
+
+Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може бути використана
+для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого k .
 
 ## Контрольні запитання
 
