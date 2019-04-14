@@ -69,7 +69,7 @@ $$
 це множина слів $$\omega \in \Sigma^\star,$$ які задовольняють умові:
 
 $$
-L(M) = \left\{ \omega \middle| \exists q_f \in F: (q_0, \omega, j_0) \models^\star (q_f, \varepsilon, \varepsilon \right\}.
+L(M) = \left\{ \omega \middle| \exists q_f \in F: (q_0, \omega, j_0) \models^\star (q_f, \varepsilon, \varepsilon) \right\}.
 $$
 
 Зафіксуємо наступні результати теорії магазинних автоматів:
@@ -114,7 +114,7 @@ $$
 	\sigma(q_0, a_i, a_i) = \{(q_0, \varepsilon)\}, \quad a_i \in \Sigma.
 	$$
 
-Для ланцюжка $$\omega \in \Sigma^\star$$, $$|\omega| = n$$ покажемо, якщо ми за $$m$$ кроків 
+Для слова $$\omega \in \Sigma^\star$$, $$|\omega| = n$$ покажемо, якщо ми за $$m$$ кроків 
 безпосереднього виводу $$S \Rightarrow^m \omega$$, то відповідний автомат за $$(m + n)$$ 
 кроків допустить $$\omega$$. Зробимо перший крок безпосереднього виведення
 $$S \Rightarrow x_1 x_2 \ldots x_k$$ тоді магазинний автомат з початкової конфігурації 
@@ -133,7 +133,7 @@ $$(q_0, \omega, S)$$ перейде в наступну конфігурацію
 	(q_0, \omega, x_1 x_2 \ldots x_k) \models (q_0, \omega, y_1 y_2 \ldots y_l x_2 \ldots x_k).
 	$$
 
-Очевидно, якщо ланцюжок $$\omega$$ виводиться за $$m$$ кроків, то МП-автомат зробить
+Очевидно, якщо слово $$\omega$$ виводиться за $$m$$ кроків, то МП-автомат зробить
 $$m + |\omega|$$ кроків та розпізнає $$\omega$$. Таким чином, $$L(G) = L(M)$$.
 
 ## Контрольні запитання
