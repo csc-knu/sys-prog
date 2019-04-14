@@ -20,7 +20,7 @@
 
 8. [Магазинні автомати](lecture-08.md)
 
-9. [To appear later on]
+9. [Синтаксичний аналіз без повернення назад](lecture-09.md)
 
 10. [To appear later on]
 
