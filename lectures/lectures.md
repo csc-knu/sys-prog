@@ -11,7 +11,7 @@
 5. [Регулярні множини і регулярні вирази](lecture-05.md)
 6. [ПОЛІЗ, регулярні вирази і автомати](lecture-06.md)
 7. [Синтаксичний аналіз в мовних процесорах](lecture-07.md)
-8. [To appear later on]
+8. [Магазинні автомати](lecture-08.md)
 9. [To appear later on]
 10. [To appear later on]
 11. [To appear later on]
