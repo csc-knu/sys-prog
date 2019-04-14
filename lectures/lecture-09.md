@@ -134,9 +134,15 @@ $$
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
-2. $$F_0(A_i) = \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}$$.
+2. 
+	$$
+	F_0(A_i) = \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}.
+	$$
 
-3. $$F_n(A) = F_{n - 1}(A_i) \cup \{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$$.
+3. 
+	$$
+	F_n(A) = F_{n - 1}(A_i) \cup \{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.
+	$$
 
 4. $$F_m(A_i) = F_{m + 1}(A_i) = \ldots$$ для всіх $$A_i \in N$$.
 
@@ -149,7 +155,7 @@ $$
 Тоді покладемо $$\text{First}_k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
 
 Скористаємося означенням $$\text{First}_k(\alpha)$$ сформулюємо необхідні й достатні умови, за яких КС-граматика буде $$LL(k)$$-граматикою:
-для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapst \alpha \mid \beta$$:
+для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
 \text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.
@@ -157,14 +163,14 @@ $$
 
 Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з
 урахуванням визначення множини $$\text{First}_k$$:
-для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapst \alpha \mid \beta$$:
+для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
 \text{First}_k(\alpha L) \cap \text{First}_k (\beta L) = \varnothing, \quad L = \text{First}_k(\omega_2).
 $$
 
 Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може бути використана
-для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого k .
+для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого $$k$$.
 
 ## Контрольні запитання
 
