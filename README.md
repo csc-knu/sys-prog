@@ -5,8 +5,11 @@
 Курс лекцій читається Волоховим В.М., vvn на uiccnet тчк com тчк ua
 
 Практичні заняття проводять:
+
 - Волохов В.М., vvn на uiccnet тчк com тчк ua
+
 - Поліщук Н., polinata 46 на gmail тчк com
+
 - Шишацька О.В., shyshatska на knu тчк ua
 
 Підтримка сайту &mdash; Скибицький Н.М., n тчк skybytskyi на gmail тчк com
