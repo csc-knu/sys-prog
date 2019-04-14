@@ -46,7 +46,7 @@
 КС-граматика $$G = \left\langle N, \Sigma, P, S \right\rangle$$ називається 
 _$$LL(k)$$-граматикою_ для деякого фіксованого $$k$$, якщо для двох лівосторонніх виводів виду:
 
-1. $$S \Rightarrow^\star \omega_1 A \omega_2 \Rightrarrow \omega_1 \alpha \omega_2 \Rightarrow^\star \omega_1 x$$;
+1. $$S \Rightarrow^\star \omega_1 A \omega_2 \Rightarrow \omega_1 \alpha \omega_2 \Rightarrow^\star \omega_1 x$$;
 
 2. $$S \Rightarrow^\star \omega_1 A \omega_2 \Rightarrow \omega_1 \beta \omega_2 \Rightarrow^\star \omega_2 y$$;
 
