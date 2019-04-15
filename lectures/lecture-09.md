@@ -156,6 +156,22 @@ $$
 
 Тоді покладемо $$\text{First}_k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
 
+**Приклад:** знайти множину $$\text{First}_k (A_i)$$  для нетерміналів граматики з наступною 
+схемою правил: $$S \mapsto BA$$, $$A \mapsto +BA \mid \varepsilon$$, $$B \mapsto DC$$, $$C \mapsto \times DC \mid \varepsilon$$, $$D \mapsto (S)$$. Нехай $$k = 2$$, тоді маємо наступну таблицю:
+
+&nbsp; | $$S$$ | $$A$$ | $$B$$ | $$C$$ | $$D$$
+------ | ----- | ----- | ----- | ----- | -----
+$$F_0$$ | $$\varnothing$$ | $$\{\varepsilon\}$$ | $$\varnothing$$ | $$\{\varepsilon\}$$, $$\{a\}$$
+$$F_1$$ | $$\varnothing$$ | $$\{\varepsilon\}$$ | $$\{a\}$$ | $$\{\varepsilon, \times a\}$$ | $$\{a\}$$
+$$F_2$$ | $$\{a\}$$ | $$\{\varepsilon, +a\}$$ | $$\{a, a\times\}$$ | $$\{\varepsilon, \times a\}$$ | $$\{a\}$$
+$$F_3$$ | $$\{a, a+, a\times\}$$ | $$\{\varepsilon,+a\}$$ | $$\{a, a\times\}$$ | $$\{\varepsilon, \times a\}$$ | $$\{a, (a\}$$
+$$F_4$$ | $$\{a, a+, a\times\}$$ | $$\{\varepsilon,+a\}$$ | $$\{a, a\times, (a\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a\}$$
+$$F_5$$ | $$\{a, a+, a\times, (a\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a\}$$
+$$F_6$$ | $$\{a, a+, a\times, (a\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
+$$F_7$$ | $$\{a, a+, a\times, (a\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
+$$F_8$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
+$$F_9$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
+
 Скористаємося означенням $$\text{First}_k(\alpha)$$ сформулюємо необхідні й достатні умови, за яких КС-граматика буде $$LL(k)$$-граматикою:
 для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
