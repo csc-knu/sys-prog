@@ -181,14 +181,68 @@ $$
 
 Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з
 урахуванням визначення множини $$\text{First}_k$$:
-для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
+для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та 
+правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
-\text{First}_k(\alpha L) \cap \text{First}_k (\beta L) = \varnothing, \quad L = \text{First}_k(\omega_2).
+\text{First}_k(\alpha \cdot L) \cap \text{First}_k (\beta \cdot L) = \varnothing, \quad L = \text{First}_k(\omega_2).
 $$
 
-Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може бути використана
-для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого $$k$$.
+Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може 
+бути використана для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого $$k$$.
+
+КС-граматика називається _сильною $$LL(k)$$-граматикою_, якщо для $$A$$-правила вигляду 
+$$A \mapsto \alpha \mid \beta$$ виконується умова:
+
+$$
+\text{First}_k (\alpha \cdot \text{Follow}_k (A)) \cap \text{First}_k (\beta \cdot \text{Follow}_k (A)) = \varnothing,
+$$
+
+де $$\text{Follow}_k(\alpha)$$, $$\alpha \in (N \cup \Sigma)^\star$$ визначається так:
+
+$$
+\text{Follow}_k (\alpha) = \left\{ \omega \middle| S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
+$$
+
+Операції $$\text{First}_k$$ та $$\text{Follow}_k$$ можна узагальнити для словарної множини $$L$$, тоді:
+
+$$
+\text{First}_k (L) = \left\{ \omega \middle| \forall \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}.
+$$
+
+$$
+\text{Follow}_k (L) = \left\{ \omega \middle| \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right}.
+$$
+
+Без доведення зафіксуємо наступні твердження:
+
+- кожна $$LL(1)$$-граматика є сильною $$LL(1)$$-граматикою;
+
+- існують $$LL(k)$$-граматики $$(k > 1)$$, які не є сильними $$LL(k)$$-граматиками.
+
+На прикладі продемонструємо останнє твердження. Нехай граматика $$G$$ визначена
+наступними правилами: $$S \mapsto aAaa \mid bAba$$, $$A \mapsto b \mid \varepsilon$$.
+
+Відповідні множини $$\text{First}_2(S) = \{ab, aa, bb\}$$, $$\text{First}_2(A) = \{b, \varepsilon\}$$, $$\text{Follow}_2(A) = \{aa, ba\}$$, $$\text{Follow}_2(S) = \{\varepsilon\}$$.
+
+Перевіримо умову для сильної $$LL(2)$$-граматики:
+
+1. виконаємо перевірку $$LL(2)$$-умови для правила $$S \mapsto aAaa \mid bAba$$:
+
+	$$
+	\begin{multline*}
+	\text{First}_2(aAaa \cdot \text{Follow}_2(S)) \cap \text{First}_2(bAba \cdot \text{Follow}_2(S)) = \\
+	= (\text{First}_2(aAaa) \oplus_2 \text{Follow}_2(S)) \cap (\text{First}_2(bAba) \oplus_2 \text{Follow}_2(S)) = \\
+	= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
+	\end{multline*}
+	$$
+
+2. виконаємо перевірку $$LL(2)$$-умови для правила $$A \mapsto b \mid \varepsilon$$
+
+	$$
+	\text{First}_2(b \cdot \text{Follow}_2(A)) \cap \text{First}_2(\varepsilon \cdot \text{Follow}_2(A)) = \\
+	= \{ba,bb\}\cap\{aa,ba\}=\{ba\}.
+	$$
 
 ## Контрольні запитання
 
