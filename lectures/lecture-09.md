@@ -140,7 +140,7 @@ $$
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
-2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \mid\omega\mid = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \mid\omega\mid < k \right\}$$.
+2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}$$.
 
 3. $$F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$$.
 
@@ -269,7 +269,7 @@ $$
 3. $$\sigma_n(S, A_i) = \sigma_{n - 1}(S, A_i) \cup \left\{ \omega \middle| A_j \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2 \cdot \sigma_{n - 1}(S, A_j)) \right\}$$.
 	В інших випадках $$\sigma_n(S, A_i)$$ &mdash; невизначено.
 
-Настане крок $$m$$, коли $$\sigma_m(S, A_i) = \sigma__{m + 1}(S, A_i) = \ldots $$, $$\forall A_i \in N$$.
+Настане крок $$m$$, коли $$\sigma_m(S, A_i) = \sigma_{m + 1}(S, A_i) = \ldots $$, $$\forall A_i \in N$$.
 
 Тоді покладемо $$\text{Follow}_l(A_i) = \sigma_m(S, A_i)$$, $$\forall A_i \in N$$.
 
@@ -285,7 +285,7 @@ $$
 
 ### $$\varepsilon$$-нетермінали
 
-Нетермінал $$A_i$$ КС-граматики $$G$$ називається $$\varepsilon$$-нетерміналом, якщо
+Нетермінал $$A_i$$ КС-граматики $$G$$ називається _$$\varepsilon$$-нетерміналом_, якщо
 $$A_i \Rightarrow^\star \varepsilon$$.
 
 **Алгоритм [пошуку $$\varepsilon$$-нетерміналів]:**
