@@ -18,6 +18,8 @@
 
 	- [$$\varepsilon$$-нетермінали](#varepsilon-нетермінали)
 
+	- [Ліва рекурсія](#ліва-рекурсія)
+
 - [Контрольні запитання](#контрольні-запитання)
 
 ## Синтаксичний аналіз без повернення назад
@@ -335,7 +337,82 @@ $$
 
 Таким чином, множина $$\varepsilon$$-нетерміналів для наведеної вище граматики &mdash; $$\{S, A, B, C, D, E\}$$.
 
+### Ліва рекурсія
 
+**Алгоритм [тестування нетермінала $$A_i$$ на ліву рекурсію]:** для кожного нетермінала
+$$А_i$$ побудуємо наступну послідовність множин $$S_0, S_1, \lodts$$:
+
+1. $$S_0 = \{A_i \mid A_i \mapsto \omega_1 A_i \omega_2, \omega_1 \Rightarrow^\star \varepsilon \}$$, починаємо з нетерміналу $$A_i$$.
+
+2. $$S_1 = S_0 \cup \{ A_i \mid A_i \mapsto \omega_1 A_j \omega_2, \omega_1 \Rightarrow^\star \varepsilon, A_j \in S_0\}$$.
+
+3. $$S_n = S_{n-1} \cup \{ A_i \mid A_i \mapsto \omega_1 A_j \omega_2, \omega_1 \Rightarrow^\star \varepsilon, A_j \in S_{n-1}\}$$.
+
+4. $$S_m = S_{m + 1} = \ldots$$.
+
+Тоді якщо $$A_i \in S_m$$, то $$A_i$$ &mdash; ліворекурсивний нетермінал.
+
+**Приклад.** Для граматики $$G$$ зі схемою правил $$P$$ знайдемо множину
+ліворекурсивних нетерміналів:
+
+$$
+\begin{align*}
+S &\mapsto AbS \mid AC, \\
+A &\mapsto BD, \\
+B &\mapsto BC \mid \varepsilon, \\
+C &\mapsto Sa \mid \varepsilon, \\
+D &\mapsto aB \mid BA.
+\end{align*}
+$$
+
+Виконаємо процедуру тестування для кожного нетермінала окремо, 
+наприклад, для нетермінала $$S$$: 
+
+$$
+\begin{align*}
+S_0 &= \{A\}, \\
+S_1 &= \{A, B, D\}, \\
+S_2 &= \{A, B, D, C\}, \\
+S_3 &= \{A, B, D, C, S\}.
+\end{align*}
+$$
+
+Запропонуємо декілька прийомів, що дають можливість при побудові
+$$LL(k)$$-граматик уникнути лівої рекурсії. Розглянемо граматику зі схемою правил
+$$S \mapsto Sa \mid b$$, яка має ліворекурсивний нетермінал $$S$$. Замінимо схему правил новою
+схемою з трьома правилами $$S \mapsto bS_1$$, $$S_1 \mapsto aS_1 \mid \varepsilon$$.
+
+**Приклад:** для граматики $$G$$ з схемою правил $$P$$ для кожного нетермінала знайдемо
+множину $$\text{Follow}_1(A)$$ $$(k=1)$$:
+
+$$
+\begin{align*}
+	S &\mapsto BA, \\
+	A &\mapsto +BA \mid \varepsilon, \\
+	B &\mapsto DC, \\
+	C &\mapsto \times DC \mid \varepsilon, \\
+	D &\mapsto (S) \mid a.
+\end{align*}
+$$
+
+З прикладу, що наведено раніше множини $$\text{First}_1(A)$$, будуть такими:
+
+$$
+\text{First}_1 (S) = \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \quad \text{First}_1 (A) = \{+, \varepsilon\}, \quad \text{First}_1 (C) = \{\times, \varepsilon\}.
+$$
+
+&nbsp; | $$S$$ | $$A$$ | $$B$$ | $$C$$ | $$D$$
+------ | ----- | ----- | ----- | ----- | -----
+$$\delta_0$$ | $$\{\varepsilon\}$$ | &nbsp; | &nbsp; | &nbsp; | &nbsp;
+$$\delta_1$$ | $$\{\varepsilon\}$$ | $$\{\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | &nbsp; | &nbsp;
+$$\delta_2$$ | $$\{\varepsilon\}$$ | $$\{\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | &nbsp;
+$$\delta_3$$ | $$\{\varepsilon\}$$ | $$\{\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{\times,+,\varepsilon\}$$
+$$\delta_4$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{\times,+,\varepsilon\}$$
+$$\delta_5$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon\}$$ | $$\{+,\varepsilon\}$$ | $$\{\times,+,\varepsilon\}$$
+$$\delta_6$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{\times,+,\varepsilon,)\}$$
+$$\delta_7$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{\times,+,\varepsilon,)\}$$
+
+Таким чином, $$\text{Follow}_1 (S) = \{\varepsilon, )\}$$, $$\text{Follow}_1 (A) = \{\varepsilon, )\}$$, $$\text{Follow}_1 (B) = \{+,\varepsilon, )\}$$, $$\text{Follow}_1 (C) = \{+,\varepsilon, )\}$$, $$\text{Follow}_1 (D) = \{\times,+,\varepsilon, )\}$$.
 
 ## Контрольні запитання
 
