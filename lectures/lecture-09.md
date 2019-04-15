@@ -74,7 +74,7 @@ $$\omega_1 A \omega_2 \in (N \cup \Sigma)^\star$$ достатньо $$k$$ пе�
 наступними $$k$$ термінальними символами.
 
 $$
-\text{First}_k(\alpha) = \left\{ \omega \middle| \alpha \Rightarrow^\star \omega x, |\omega| = k \right\} \cup \left\{ \omega \middle| \alpha \Rightarrow^\star \omega, |\omega| < k \right\}.
+\text{First}_k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.
 $$
 
 Сформулюємо основні твердження стосовно класу $$LL(k)$$-граматик:
@@ -89,14 +89,14 @@ $$
 4. Клас $$LL(k)$$-граматик &mdash; це підклас КС-граматик, який не покриває його.
 
 Продемонструємо на **прикладі** справедливість останнього твердження. Розглянемо
-граматику $$G$$ з наступною схемою $$P$$: $$S \mapsto S a | b$$.
+граматику $$G$$ з наступною схемою $$P$$: $$S \mapsto S a \mid b$$.
 
 Мова, яку породжує наведена вище граматика $$L(G) = \{ ba^i, i = 0, 1, \ldots \}$$. Візьмемо
 виведення наступного слова $$S \Rightarrow^{i+1} b a^i$$; за означенням $$LL(k)$$-граматики
-$$A = S$$, $$\omega_2 = a^i$$, $$\alpha = S a$$, $$\beta = b$$, тоді для $$i \ge k$$ маємо
+$$A = S,$$ $$\omega_2 = a^i,$$ $$\alpha = S a,$$ $$\beta = b,$$ тоді для $$i \ge k$$ маємо
 
 $$
-\text{First}_k (S a a^i) = \text{First}_k (b a^i) = \{b a^{k - 1}\}.
+\text{First}_k (S a a^i) = \text{First}_k (b a^i) = \left\{b a^{k - 1}\right\}.
 $$
 
 Таким чином, КС-граматика $$G$$ не може бути $$LL(k)$$-граматикою для жодного $$k$$. Як
@@ -120,7 +120,7 @@ $$LL(1)$$-граматика називаються _розподіленою_, 
 Зауважимо, що $$\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
 
 $$
-L_1 \oplus_k L_2 = \left\{ \omega \middle| \omega \omega_1 = x y, |\omega| = k \right\} \cup  \left\{ \omega \middle| \omega = x y, |\omega| < k \right\}, \quad x \in L_1, y \in L_2.
+L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, y \in L_2.
 $$
 
 Звідси маємо наступний тривіальний висновок: якщо $$\omega = \alpha_1 \alpha_2 \ldots \alpha_p$$, де $$\alpha_i \in (N \cup \Sigma)$$, то
@@ -183,17 +183,16 @@ $$F_8$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\
 $$F_9$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
 
 Скористаємося означенням $$\text{First}_k(\alpha)$$ сформулюємо необхідні й достатні умови, за 
-яких КС-граматика буде $$LL(k)$$-граматикою:
-для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
+яких КС-граматика буде $$LL(k)$$-граматикою: для довільного виводу в граматиці $$G$$ вигляду 
+$$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
 \text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.
 $$
 
-Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з
-урахуванням визначення множини $$\text{First}_k$$:
-для довільного виводу в граматиці $$G$$ виду $$S \Rightarrow^\star \omega_1 A \omega_2$$ та 
-правила $$A \mapsto \alpha \mid \beta$$:
+Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з урахуванням 
+визначення множини $$\text{First}_k$$: для довільного виводу в граматиці $$G$$ вигляду
+$$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
 \text{First}_k(\alpha \cdot L) \cap \text{First}_k (\beta \cdot L) = \varnothing, \quad L = \text{First}_k(\omega_2).
@@ -214,15 +213,15 @@ $$
 де $$\text{Follow}_k(\alpha)$$, $$\alpha \in (N \cup \Sigma)^\star$$ визначається так:
 
 $$
-\text{Follow}_k (\alpha) = \left\{ \omega \middle| S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
+\text{Follow}_k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
 $$
 
 Операції $$\text{First}_k$$ та $$\text{Follow}_k$$ можна узагальнити для словарної множини $$L$$, тоді:
 
 $$
 \begin{align*}
-	\text{First}_k (L) &= \left\{ \omega \middle| \forall \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}. \\
-	\text{Follow}_k (L) &= \left\{ \omega \middle| \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
+	\text{First}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}. \\
+	\text{Follow}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
 \end{align*}
 $$
 
@@ -245,7 +244,7 @@ $$
 	\begin{multline*}
 	\text{First}_2(aAaa \cdot \text{Follow}_2(S)) \cap \text{First}_2(bAba \cdot \text{Follow}_2(S)) = \\
 	= (\text{First}_2(aAaa) \oplus_2 \text{Follow}_2(S)) \cap (\text{First}_2(bAba) \oplus_2 \text{Follow}_2(S)) = \\
-	= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
+	= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{\varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
 	\end{multline*}
 	$$
 
@@ -304,9 +303,9 @@ $$A_i \Rightarrow^\star \varepsilon$$.
 
 1. $$S_0 = \{A_i \mid A_i \mapsto \varepsilon \}$$.
 
-2. $$S_1 = S_0 \cup \{ A_i \mapsto \alpha_1 \alpha_2 \ldots \alpha_p, \alpha_j \in S_0, j = \overline{1..p} \mid \}$$.
+2. $$S_1 = S_0 \cup \{ A_i \mid A_i \mapsto \alpha_1 \alpha_2 \ldots \alpha_p, \alpha_j \in S_0, j = \overline{1..p} \}$$.
 
-3. $$S_n = S_{n-1} \cup \{ A_i \mapsto \alpha_1 \alpha_2 \ldots \alpha_p, \alpha_j \in S_{n-1}, j = \overline{1..p} \mid \}$$.
+3. $$S_n = S_{n-1} \cup \{ A_i \mid A_i \mapsto \alpha_1 \alpha_2 \ldots \alpha_p, \alpha_j \in S_{n-1}, j = \overline{1..p} \}$$.
 
 4. $$S_m = S_{m + 1} = \ldots$$.
 
