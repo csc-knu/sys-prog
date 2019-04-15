@@ -10,9 +10,11 @@
 
 	- [Розподілені $$LL(1)$$-граматики](#розподілені-ll1-граматики)
 
-	- [Алгоритм](#алгоритм)
+	- [Алгоритм пошуку $$\text{First}_k$$](#алгоритм-пошуку-textfirst_k)
 
 	- [Сильні $$LL(k)$$-граматики](#сильні-llk-граматики)
+
+	- [Алгоритм пошуку $$\text{Follow}_k$$](#алгоритм-пошуку-textfollow_k)
 
 - [Контрольні запитання](#контрольні-запитання)
 
@@ -136,9 +138,9 @@ $$
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
-2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \mid\omega\mid = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \mid\omega\mid < k \right\}.$$
+2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \mid\omega\mid = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \mid\omega\mid < k \right\}$$.
 
-3. $$F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.$$
+3. $$F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$$.
 
 4. $$F_m(A_i) = F_{m + 1}(A_i) = \ldots$$ для всіх $$A_i \in N$$.
 
@@ -207,7 +209,7 @@ $$
 $$
 
 $$
-\text{Follow}_k (L) = \left\{ \omega \middle| \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right}.
+\text{Follow}_k (L) = \left\{ \omega \middle| \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
 $$
 
 Без доведення зафіксуємо наступні твердження:
