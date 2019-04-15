@@ -47,13 +47,12 @@
 - $$\omega_1$$ &mdash; термінальна частина слова $$\omega$$, яку вже виведено (проаналізована
 	частина слова);
 
-- результат $$\omega_3$$, який потрібно ще вивести, виводиться з слова $$A \omega_2$$;
+- результат $$\omega_3$$, який потрібно ще вивести, виводиться зі слова $$A \omega_2$$;
 
-- щоб зробити вірний крок виведення (без повернення назад) нам було б
-	достатньо $$k$$ поточних вхідних символів з непроаналізованої частини програми
-	$$\omega_3$$.
+- щоб зробити вірний крок виведення (без повернення назад) нам достатньо $$k$$ поточних 
+	вхідних символів з непроаналізованої частини програми $$\omega_3$$.
 
-Сформульовані нами умови забезпечує клас $$LL(k)$$-граматик.
+Сформульовані умови забезпечує клас $$LL(k)$$-граматик.
 
 ### $$LL(k)$$-граматики
 
@@ -65,17 +64,17 @@ _$$LL(k)$$-граматикою_ для деякого фіксованого $$
 2. $$S \Rightarrow^\star \omega_1 A \omega_2 \Rightarrow \omega_1 \beta \omega_2 \Rightarrow^\star \omega_1 y$$;
 
 то з $$\text{First}_k (x) = \text{First}_k (y)$$ випливає, що $$\alpha = \beta$$, де
-$$A \mapsto \alpha \mid \beta$$.
+$$A \mapsto \alpha \mid \beta$$, де 
+
+$$
+\text{First}_k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.
+$$
 
 Неформально, граматика $$G$$ буде $$LL(k)$$-граматикою, якщо для слова
 $$\omega_1 A \omega_2 \in (N \cup \Sigma)^\star$$ достатньо $$k$$ перших символів (за умови, 
 що вони існують) решти непроаналізованого слова щоб визначити, що з $$A \omega_2$$ існує не 
 більше однієї альтернативи виведення слова, що починається з $$\omega$$ та продовжується
 наступними $$k$$ термінальними символами.
-
-$$
-\text{First}_k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.
-$$
 
 Сформулюємо основні твердження стосовно класу $$LL(k)$$-граматик:
 
@@ -96,7 +95,7 @@ $$
 $$A = S,$$ $$\omega_2 = a^i,$$ $$\alpha = S a,$$ $$\beta = b,$$ тоді для $$i \ge k$$ маємо
 
 $$
-\text{First}_k (S a a^i) = \text{First}_k (b a^i) = \left\{b a^{k - 1}\right\}.
+\text{First}_k \left(S a a^i\right) = \text{First}_k \left(b a^i\right) = \left\{b a^{k - 1}\right\}.
 $$
 
 Таким чином, КС-граматика $$G$$ не може бути $$LL(k)$$-граматикою для жодного $$k$$. Як
@@ -120,7 +119,7 @@ $$LL(1)$$-граматика називаються _розподіленою_, 
 Зауважимо, що $$\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
 
 $$
-L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, y \in L_2.
+L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, \quad y \in L_2.
 $$
 
 Звідси маємо наступний тривіальний висновок: якщо $$\omega = \alpha_1 \alpha_2 \ldots \alpha_p$$, де $$\alpha_i \in (N \cup \Sigma)$$, то
@@ -148,7 +147,7 @@ $$
 
 Очевидно, що:
 
-- послідовність $$F_0 (A_i) \subseteq F_1(A_i) \subseteq \ldots$$ &mdash; монотонно зростаюча
+- послідовність $$F_0 (A_i) \subseteq F_1(A_i) \subseteq \ldots$$ &mdash; монотонно зростаюча;
 
 - $$F_n(A_i) \subseteq \Sigma^{\star k}$$ &mdash; послідовність обмежена зверху.
 
@@ -248,7 +247,7 @@ $$
 	\end{multline*}
 	$$
 
-2. виконаємо перевірку $$LL(2)$$-умови для правила $$A \mapsto b \mid \varepsilon$$
+2. виконаємо перевірку $$LL(2)$$-умови для правила $$A \mapsto b \mid \varepsilon$$:
 
 	$$
 	\text{First}_2(b \cdot \text{Follow}_2(A)) \cap \text{First}_2(\varepsilon \cdot \text{Follow}_2(A)) = \\
@@ -282,7 +281,7 @@ $$
 
 Настане крок $$m$$, коли $$\sigma_m(S, A_i) = \sigma_{m + 1}(S, A_i) = \ldots $$, $$\forall A_i \in N$$.
 
-Тоді покладемо $$\text{Follow}_l(A_i) = \sigma_m(S, A_i)$$, $$\forall A_i \in N$$.
+Тоді покладемо $$\text{Follow}_k(A_i) = \sigma_m(S, A_i)$$, $$\forall A_i \in N$$.
 
 Очевидно, що:
 
@@ -335,6 +334,8 @@ $$
 5. $$S_4 = \{A, B, C, S, D, E\} \cup \{E\}$$.
 
 Таким чином, множина $$\varepsilon$$-нетерміналів для наведеної вище граматики &mdash; $$\{S, A, B, C, D, E\}$$.
+
+
 
 ## Контрольні запитання
 
