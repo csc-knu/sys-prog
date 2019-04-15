@@ -128,25 +128,17 @@ $$
 Для подальшого аналізу означення $$LL(k)$$-граматики розглянемо алгоритм
 обчислення функції $$\text{First}_k (\alpha)$$, $$\alpha \in (N \cup \Sigma)$$.
 
+### Алгоритм пошуку $$\text{First}_k$$
+
 Очевидно, що якщо $$\alpha_i \in \Sigma$$, то $$\text{First}_k (\alpha_i) = \{\alpha_i\}$$ при $$k > 0$$. Розглянемо алгоритм пошуку $$\text{First}_k (A_i)$$, $$A_i \in N$$.
 
-### Алгоритм
-
-Алгоритм [пошуку $$\text{First}_k(A_i)$$, $$A_i \in N$$].
-
-Визначимо значення функції $$F_i(x)$$ для кожного $$x \in (N \cup \Sigma)$$:
+**Алгоритм [пошуку $$\text{First}_k(A_i)$$, $$A_i \in N$$]**: визначимо значення функції $$F_i(x)$$ для кожного $$x \in (N \cup \Sigma)$$:
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
-2. 
-	$$
-	F_0(A_i) = \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \middle| \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}.
-	$$
+2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \mid\omega\mid = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \mid\omega\mid < k \right\}.$$
 
-3. 
-	$$
-	F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega | \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.
-	$$
+3. $$F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.$$
 
 4. $$F_m(A_i) = F_{m + 1}(A_i) = \ldots$$ для всіх $$A_i \in N$$.
 
@@ -257,6 +249,8 @@ $$
 2. $$S \Rightarrow^\star bAba$$: $$\text{First}_2(b \cdot ba) \cap \text{First}_2(\varepsilon \cdot ba) = \{bb\} \cap \{ba\} = \varnothing$$.
 
 Висновок: наведена вище граматика є $$LL(2)$$-граматикою.
+
+### Алгоритм пошуку $$\text{Follow}_k$$
 
 ## Контрольні запитання
 
