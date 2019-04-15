@@ -140,7 +140,7 @@ $$
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
-2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, |\omega| = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, |\omega| < k \right\}$$.
+2. $$F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \vert\omega\vert = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \vert\omega\vert < k \right\}$$.
 
 3. $$F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$$.
 
@@ -154,8 +154,20 @@ $$
 
 Тоді покладемо $$\text{First}_k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
 
-**Приклад:** знайти множину $$\text{First}_k (A_i)$$  для нетерміналів граматики з наступною 
-схемою правил: $$S \mapsto BA$$, $$A \mapsto +BA \mid \varepsilon$$, $$B \mapsto DC$$, $$C \mapsto \times DC \mid \varepsilon$$, $$D \mapsto (S)$$. Нехай $$k = 2$$, тоді маємо наступну таблицю:
+**Приклад:** знайти множину $$\text{First}_k (A_i)$$ для нетерміналів граматики з наступною 
+схемою правил: 
+
+$$
+\begin{align*}
+	S &\mapsto BA, \\
+	A &\mapsto +BA \mid \varepsilon, \\
+	B &\mapsto DC, \\
+	C &\mapsto \times DC \mid \varepsilon, \\
+	D &\mapsto (S).
+\end{align*}
+$$
+
+Нехай $$k = 2$$, тоді маємо наступну таблицю:
 
 &nbsp; | $$S$$ | $$A$$ | $$B$$ | $$C$$ | $$D$$
 ------ | ----- | ----- | ----- | ----- | -----
@@ -300,7 +312,18 @@ $$A_i \Rightarrow^\star \varepsilon$$.
 
 Тоді множина $$S_m$$ &mdash; множина $$\varepsilon$$-нетерміналів.
 
-**Приклад.** Для граматики $$G$$ з схемою правил $$P$$ знайдемо множину $$\varepsilon$$-нетерміналів: $$S \mapsto aBD \mid D \mid AC \mid b$$, $A \mapsto SCB \mid SABC \mid CbD \mid \varepsilon$$, $$B \mapsto CA \mid d$$, $$C \mapsto ADC \mid a \mid \varepsilon$$, $$D \mapsto EaC \mid SC$$, $$E \mapsto BCS \mid a$$:
+**Приклад.** Для граматики $$G$$ з схемою правил $$P$$ знайдемо множину $$\varepsilon$$-нетерміналів: 
+
+$$
+\begin{align*}
+	S &\mapsto aBD \mid D \mid AC \mid b, \\
+	A &\mapsto SCB \mid SABC \mid CbD \mid \varepsilon, \\
+	B &\mapsto CA \mid d, \\
+	C &\mapsto ADC \mid a \mid \varepsilon, \\
+	D &\mapsto EaC \mid SC, \\
+	E &\mapsto BCS \mid a.
+\end{align*}
+$$
 
 1. $$S_0 = \{A, C\}$$.
 
