@@ -1,2 +1,4 @@
 *.md linguist-detectable=true
 *.md linguist-language=markdown
+*.scss linguist-detectable=true
+*.scss linguist-language=css
