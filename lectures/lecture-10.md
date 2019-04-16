@@ -6,11 +6,11 @@
 
 - [Синтаксичний аналіз на основі $$LL(1)$$-граматик](#синтаксичний-аналіз-на-основі-ll1-граматик)
 
-	-[Приклад](#приклад)
+	- [Приклад](#приклад)
 
-	-[Алгоритм](#алгоритм)
+	- [Алгоритм](#алгоритм)
 
-	-[Майже $$LL(1)$$-граматики](#майже-ll1-граматики)
+	- [Майже $$LL(1)$$-граматики](#майже-ll1-граматики)
 
 - [Контрольні запитання](#контрольні-запитання)
 
@@ -71,17 +71,7 @@ $$
 \end{align}
 $$
 
-Нагадаємо що для цієї граматики
-
-$$
-\text{First}_1 (S) = \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \quad \text{First}_1 (A) = \{+, \varepsilon\}, \quad \text{First}_1 (A) = \{\times, \varepsilon\},
-$$
-
-а також
-
-$$
-\text{Follow}_1 (S) = \text{Follow}_1 (A) = \{ \varepsilon, )\}, \quad \text{Follow}_1 (B) = \text{Follow}_1 (C) = \{+, \varepsilon, )\}, \quad \text{Follow}_1 (D) = \{+, \times, \varepsilon, )\}.
-$$
+Нагадаємо що для цієї граматики $$\text{First}_1 (S) = \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\},$$ $$\text{First}_1 (A) = \{+, \varepsilon\},$$ $$\text{First}_1 (A) = \{\times, \varepsilon\},$$ а також $$\text{Follow}_1 (S) = \text{Follow}_1 (A) = \{ \varepsilon, )\},$$ $$\text{Follow}_1 (B) = \text{Follow}_1 (C) = \{+, \varepsilon, )\},$$ $$\text{Follow}_1 (D) = \{+, \times, \varepsilon, )\}.$$
 
 Знайдемо множини $$\text{First}_1(\omega_i \cdot \text{Follow}_1 (A))$$ як 
 $$\text{First}_1(\omega_i) \oplus_1 \text{Follow}_1 (A))$$ використовуючи результати минулої 
@@ -128,12 +118,12 @@ $$LL(1)$$-граматику для реальної мови програмув
 цих правил задовольняється **сильна** $$LL(2)$$-властивість. Тоді таблиця $$M(a,b)$$ визначається в такий спосіб:
 
 - $$M(A,b) = \langle\text{номер правила}\rangle$$ вигляду $$A_i \mapsto \omega_i$$, такого, що 
-	$$b \in \text{First}_1(\omega_i \cdot \text{Follow}_1)(A))$$
+	$$b \in \text{First}_1(\omega_i \cdot \text{Follow}_1(A))$$
 
-- $$M(A,b) = \nalge\text{ім'я допоміжної програми}\rangle$$ за умови, що 
+- $$M(A,b) = \langle\text{ім'я допоміжної програми}\rangle$$ за умови, що 
 
 	$$
-	b \in \text{First}_1(\omega_i \cdot \text{Follow}_1)(A)) \cap b \in \text{First}_1(\omega_j \cdot \text{Follow}_1)(A)), \quad i \ne j
+	b \in \text{First}_1(\omega_i \cdot \text{Follow}_1(A)) \cap b \in \text{First}_1(\omega_j \cdot \text{Follow}_1(A)), \quad i \ne j
 	$$
 
 Програма, яка виконує додатковий аналіз вхідного ланцюжка, повинна:
