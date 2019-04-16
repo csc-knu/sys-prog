@@ -1,4 +1,8 @@
+<!--RELEASE-->
+
 [Назад на головну](../../README.md)
+
+---
 
 ## Приклади виконання лабораторних робіт
 
@@ -6,9 +10,11 @@
 
 2. Скінченні автомати та алгоритми з ними:
 
-	- [клас для DFA](lab-2/lab-2-v2-dfa.java) (скінченного детеремінованого автомата) (`.java`, `15 Kb`);
+	- [клас для DFA](lab-2/lab-2-v2-dfa.java) (скінченного детеремінованого автомата) 
+		(`.java`, `15 Kb`);
 
-	- [клас для NFA](lab-2/lab-2-v2-nfa.java) (скінченного недетеремінованого автомата) (`.java`, `16 Kb`)
+	- [клас для NFA](lab-2/lab-2-v2-nfa.java) (скінченного недетеремінованого автомата) 
+		(`.java`, `16 Kb`)
 
 	- [програма-драйвер](lab-2/lab-2-v2-main.java) (`.java`, `12 Kb`);
 
@@ -20,10 +26,13 @@
 
 	- [допоміжний пакет](lab-4/JavaTeacherLib.7z) (`.7z`, `15 Kb`);
 
-	- [програма-драйвер](lab-4/sysprogrammingmainalgorithm/SysProgrammingMainAlgorithm.java) (`.java`, `13 Kb`);
+	- [програма-драйвер](lab-4/sysprogrammingmainalgorithm/SysProgrammingMainAlgorithm.java) 
+		(`.java`, `13 Kb`);
 
 	- [разом](lab-4.7z) (`.7z`, `21 Kb`);
 
 [Усе разом](examples.7z) (`.7z`, `29 Kb`)
+
+---
 
 [Назад на головну](../../README.md)
