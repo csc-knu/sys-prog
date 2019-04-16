@@ -5,8 +5,6 @@
 
 package JavaTeacherLib;
 
-import JavaTeacherLib.MyLang;
-import JavaTeacherLib.Node;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +24,7 @@ public class CppParser {
     private int errors;
     private int ungetChar;
     private String fileData;
-    private int ungetLexemaCode;
+    private int ungetLexemCode;
     private static final int MAX_IDN = 32;
     private BufferedReader fs;
 
@@ -38,7 +36,7 @@ public class CppParser {
         this.lexemaNumb = 0;
         this.errors = 0;
         this.ungetChar = 0;
-        this.ungetLexemaCode = 0;
+        this.ungetLexemCode = 0;
         this.lexemaPos = 0;
         this.parserUprTable = this.lang.getUprTable();
         this.scanerUprTable = new int[256];
@@ -78,7 +76,7 @@ public class CppParser {
                     }
 
                     if(this.parserUprTable[nontermcol][termCol] == 0) {
-                        System.out.println("Синтаксична помилка: на вершині стека: " + this.lang.getLexemaText(ssItem) + " поточна лексема " + this.lang.getLexemaText(this.lexemaCode) + " " + this.getLexemaText());
+                        System.out.println("Синтаксична помилка: на вершині стека: " + this.lang.getLexemText(ssItem) + " поточна лексема " + this.lang.getLexemText(this.lexemaCode) + " " + this.getLexemText());
                         System.out.println("\nПрограма має синтаксичні помилки");
 
                         try {
@@ -96,7 +94,7 @@ public class CppParser {
                         this.setUngetLexema(ee);
                         switch(this.lang.getNonTerminals()[nontermcol]) {
                             case -2147483320:
-                                if(this.lang.getLexemaText(ee).equals("}")) {
+                                if(this.lang.getLexemText(ee).equals("}")) {
                                     numrole = 152;
                                 } else {
                                     numrole = 151;
@@ -131,7 +129,7 @@ public class CppParser {
                                 }
                                 break;
                             default:
-                                System.out.println("\nПомилка: відсутня обробка:" + this.lang.getNonTerminals()[nontermcol] + this.lang.getLexemaText(this.lang.getNonTerminals()[nontermcol]));
+                                System.out.println("\nПомилка: відсутня обробка:" + this.lang.getNonTerminals()[nontermcol] + this.lang.getLexemText(this.lang.getNonTerminals()[nontermcol]));
                                 return;
                         }
                     }
@@ -142,7 +140,7 @@ public class CppParser {
 
                     ee = 0;
                     Node tmp = null;
-                    Iterator pravilo = this.lang.getLanguarge().iterator();
+                    Iterator pravilo = this.lang.getLanguage().iterator();
 
                     while(pravilo.hasNext()) {
                         Node ii = (Node)pravilo.next();
@@ -153,7 +151,7 @@ public class CppParser {
                         }
                     }
 
-                    int[] var14 = tmp.getRoole();
+                    int[] var14 = tmp.getRule();
                     ss.pop();
 
                     for(int var15 = var14.length - 1; var15 > 0; --var15) {
@@ -163,8 +161,8 @@ public class CppParser {
                     ss.pop();
                     this.lexemaCode = this.CppScaner();
                 } else {
-                    if(!this.lang.getLexemaText(ssItem).equals("else")) {
-                        System.out.println("\nПропущена лексема :" + this.lang.getLexemaText(ssItem));
+                    if(!this.lang.getLexemText(ssItem).equals("else")) {
+                        System.out.println("\nПропущена лексема :" + this.lang.getLexemText(ssItem));
                         System.out.println("\nПрограма має синтаксичні помилки");
 
                         try {
@@ -231,7 +229,7 @@ public class CppParser {
         }
 
         if(this.parserUprTable[nontermcol][termCol] == 0) {
-            System.out.println("Синтаксична помилка: старт для  " + this.lang.getLexemaText(nonterm) + " поточна лексема " + this.lang.getLexemaText(this.lexemaCode) + " " + this.getLexemaText());
+            System.out.println("Синтаксична помилка: старт для  " + this.lang.getLexemText(nonterm) + " поточна лексема " + this.lang.getLexemText(this.lexemaCode) + " " + this.getLexemText());
             System.out.println("\nПрограма має синтаксичні помилки");
 
             try {
@@ -248,7 +246,7 @@ public class CppParser {
                 this.setUngetLexema(iitmp);
                 switch(this.lang.getNonTerminals()[nontermcol]) {
                     case -2147483320:
-                        if(this.lang.getLexemaText(iitmp).equals("}")) {
+                        if(this.lang.getLexemText(iitmp).equals("}")) {
                             numrole = 152;
                         } else {
                             numrole = 151;
@@ -283,7 +281,7 @@ public class CppParser {
                         }
                         break;
                     default:
-                        System.out.println("\nПомилка: відсутня обробка:" + this.lang.getNonTerminals()[nontermcol] + this.lang.getLexemaText(this.lang.getNonTerminals()[nontermcol]));
+                        System.out.println("\nПомилка: відсутня обробка:" + this.lang.getNonTerminals()[nontermcol] + this.lang.getLexemText(this.lang.getNonTerminals()[nontermcol]));
                         return false;
                 }
             }
@@ -294,7 +292,7 @@ public class CppParser {
 
             iitmp = 0;
             Node tmp = null;
-            Iterator pravilo = this.lang.getLanguarge().iterator();
+            Iterator pravilo = this.lang.getLanguage().iterator();
 
             while(pravilo.hasNext()) {
                 Node ii = (Node)pravilo.next();
@@ -305,15 +303,15 @@ public class CppParser {
                 }
             }
 
-            int[] var10 = tmp.getRoole();
+            int[] var10 = tmp.getRule();
 
             for(int var11 = 1; var11 < var10.length; ++var11) {
                 if(var10[var11] > 0) {
                     if(var10[var11] == this.lexemaCode) {
                         this.lexemaCode = this.CppScaner();
                     } else {
-                        if(!this.lang.getLexemaText(var10[var11]).equals("else")) {
-                            System.out.println("\nПропущена лексема :" + this.lang.getLexemaText(var10[var11]));
+                        if(!this.lang.getLexemText(var10[var11]).equals("else")) {
+                            System.out.println("\nПропущена лексема :" + this.lang.getLexemText(var10[var11]));
                             return false;
                         }
 
@@ -336,10 +334,10 @@ public class CppParser {
     }
 
     public void setUngetLexema(int secLexema) {
-        this.ungetLexemaCode = secLexema;
+        this.ungetLexemCode = secLexema;
     }
 
-    public String getLexemaText() {
+    public String getLexemText() {
         byte[] textLexema = new byte[this.lexemaLen];
 
         for(int ii = 0; ii < this.lexemaLen; ++ii) {
@@ -358,9 +356,9 @@ public class CppParser {
         int litConst = 0;
         String errorLoc = "^[]{},?: ; \t\n\u0000";
         int ee;
-        if(this.ungetLexemaCode != 0) {
-            ee = this.ungetLexemaCode;
-            this.ungetLexemaCode = 0;
+        if(this.ungetLexemCode != 0) {
+            ee = this.ungetLexemCode;
+            this.ungetLexemCode = 0;
             return ee;
         } else {
             try {
@@ -373,7 +371,7 @@ public class CppParser {
 
                             switch(lexemaClass) {
                                 case 1:
-                                    ee = this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                    ee = this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                     if(ee != -1) {
                                         return ee;
                                     }
@@ -386,7 +384,7 @@ public class CppParser {
                                 case 4:
                                     return 268435464;
                                 case 5:
-                                    this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                    this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                 default:
                                     return -1;
                             }
@@ -444,7 +442,7 @@ public class CppParser {
                                 switch(var9) {
                                     case 1:
                                         this.lexema[this.lexemaLen++] = (byte)litera;
-                                        return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                        return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                     case 2:
                                         this.lexema[this.lexemaLen++] = (byte)litera;
                                         lexemaClass = 1;
@@ -592,7 +590,7 @@ public class CppParser {
                         case 21:
                             if(var9 != 2 && var9 != 3) {
                                 this.ungetChar = litera;
-                                ee = this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                ee = this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                 if(ee != -1) {
                                     return ee;
                                 }
@@ -794,7 +792,7 @@ public class CppParser {
                                     if(litera != 46) {
                                         this.ungetChar = litera;
                                         --this.lexemaLen;
-                                        return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                        return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                     }
 
                                     q = 46;
@@ -807,7 +805,7 @@ public class CppParser {
                         case 46:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera == 46) {
-                                return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                             }
 
                             this.ungetChar = litera;
@@ -825,7 +823,7 @@ public class CppParser {
                                         --this.lexemaLen;
                                     }
 
-                                    return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                    return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                 }
 
                                 q = 53;
@@ -975,7 +973,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 102:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 45 && litera != 61 && litera != 62) {
@@ -983,7 +981,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 103:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 43 && litera != 61) {
@@ -991,7 +989,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 104:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 124 && litera != 61) {
@@ -999,7 +997,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 105:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 61) {
@@ -1007,7 +1005,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 106:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 62) {
@@ -1016,7 +1014,7 @@ public class CppParser {
                                     --this.lexemaLen;
                                 }
 
-                                return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                             }
 
                             q = 107;
@@ -1028,7 +1026,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 108:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 60) {
@@ -1037,7 +1035,7 @@ public class CppParser {
                                     --this.lexemaLen;
                                 }
 
-                                return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                             }
 
                             q = 109;
@@ -1049,7 +1047,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 110:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 61) {
@@ -1057,7 +1055,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 111:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 38 && litera != 61) {
@@ -1065,7 +1063,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 112:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 61) {
@@ -1073,7 +1071,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 113:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 61) {
@@ -1081,7 +1079,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 114:
                             this.lexema[this.lexemaLen++] = (byte)litera;
                             if(litera != 61) {
@@ -1089,7 +1087,7 @@ public class CppParser {
                                 --this.lexemaLen;
                             }
 
-                            return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                            return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         case 120:
                             if(litera == 92) {
                                 q = 121;

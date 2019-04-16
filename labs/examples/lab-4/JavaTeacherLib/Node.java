@@ -1,55 +1,46 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package JavaTeacherLib;
 
-import JavaTeacherLib.LlkContext;
-
-public class Node {
-    private int[] roole;
+class Node {
+    private int[] rule;
     private int teg;
     private LlkContext firstFollowK;
-    private LlkContext firstKforRoole;
+    private LlkContext firstKForRoole;
 
-    public Node(int[] roole1, int len) {
-        this.roole = new int[len];
+    Node(int[] roole1, int len) {
+        this.rule = new int[len];
 
-        for(int ii = 0; ii < len; ++ii) {
-            this.roole[ii] = roole1[ii];
-        }
+        System.arraycopy(roole1, 0, this.rule, 0, len);
 
         this.teg = 0;
         this.firstFollowK = null;
-        this.firstKforRoole = null;
+        this.firstKForRoole = null;
     }
 
-    public void addFirstFollowK(LlkContext rezult) {
-        this.firstFollowK = rezult;
+    void addFirstFollowK(LlkContext result) {
+        this.firstFollowK = result;
     }
 
-    public LlkContext getFirstFollowK() {
+    LlkContext getFirstFollowK() {
         return this.firstFollowK;
     }
 
-    public void addFirstKforRoole(LlkContext rezult) {
-        this.firstKforRoole = rezult;
+    void addFirstKForRoole(LlkContext result) {
+        this.firstKForRoole = result;
     }
 
-    public LlkContext getFirstKforRoole() {
-        return this.firstKforRoole;
+    LlkContext getFirstKForRoole() {
+        return this.firstKForRoole;
     }
 
-    public int[] getRoole() {
-        return this.roole;
+    int[] getRule() {
+        return this.rule;
     }
 
-    public int getTeg() {
+    int getTeg() {
         return this.teg;
     }
 
-    public void setTeg(int teg1) {
+    void setTeg(int teg1) {
         this.teg = teg1;
     }
 }

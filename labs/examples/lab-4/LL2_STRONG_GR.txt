@@ -1,0 +1,4 @@
+#s# 	#S# a a
+#S#     a #S# a
+!       b #S# b
+!       lambda
