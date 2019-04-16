@@ -98,8 +98,8 @@ $$\text{First}_1(\omega_j) \oplus_1 \text{Follow}_1 (A_i)$$, $$j = \overline{1..
 
 	```c
 	// виклик функції, яка побудована для синтаксичної 
-	// діаграми побудованої для нетермінала Ai.
-	f_Ai();
+	// діаграми побудованої для нетермінала A_i.
+	f_A_i();
 	```
 
 - для фрагмента синтаксичної діаграми вигляду
@@ -113,9 +113,9 @@ $$\text{First}_1(\omega_j) \oplus_1 \text{Follow}_1 (A_i)$$, $$j = \overline{1..
 	extern char lexem_text[];
 	...
 	{
-		if (lexema_code == code_alpha1) get_lexem();
-		else error( );
-		f_A1();
+		if (lexem_code == code_alpha_1) get_lexem();
+		else error();
+		f_A_1();
 		...
 	}
 	```
@@ -133,7 +133,7 @@ $$\text{First}_1(\omega_j) \oplus_1 \text{Follow}_1 (A_i)$$, $$j = \overline{1..
 	extern int lexem_code;
 	extern char lexem_text[];
 	...
-	void Ai(void) {
+	void f_A_i(void) {
 		switch(lexema_code) {
 			case code_a_1_1:
 			case code_a_1_2:
