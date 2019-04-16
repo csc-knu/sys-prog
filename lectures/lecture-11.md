@@ -154,7 +154,7 @@ $$\text{First}_1(\omega_j) \oplus_1 \text{Follow}_1 (A_i)$$, $$j = \overline{1..
 			case code_a_p_2:
 			...
 			case code_a_p_n_p:
-				...  // фрагмент програми для p 
+				...  // фрагмент програми для w_p
 				break;
 			default: 
 				error();

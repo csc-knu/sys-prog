@@ -1,0 +1,37 @@
+\documentclass[tikz,convert={outext=.png}]{standalone}
+\begin{document}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (-20,+5) -- (-10,+5);
+\fill [black] (-10,+5) -- (-11,+4.75) -- (-11,+5.25);
+
+\fill [black] (-10,-15) -- (-9.75,-14) -- (-10.25,-14);
+\draw [black] (-10,+5) -- (-10,-15);
+
+\draw [black] (-10,0) -- (-1,0);
+\fill [black] (-1,0) -- (-2,-.25) -- (-2,+.25);
+\draw [black] (0,0) node {$\omega_1$};
+\fill [black] (+10,0) -- (+9,-.25) -- (+9,+.25);
+\draw [black] (+1,0) -- (+10,0);
+
+\draw [black] (-10,-5) -- (-1,-5);
+\fill [black] (-1,-5) -- (-2,-5.25) -- (-2,-4.75);
+\draw [black] (0,-5) node {$\omega_2$};
+\fill [black] (+10,-5) -- (+9,-5.25) -- (+9,-4.75);
+\draw [black] (+1,-5) -- (+10,-5);
+
+\draw [black] (0,-10) node {$\vdots$};
+
+\draw [black] (-10,-15) -- (-1,-15);
+\fill [black] (-1,-15) -- (-2,-15.25) -- (-2,-14.75);
+\draw [black] (0,-15) node {$\omega_p$};
+\fill [black] (+10,-15) -- (+9,-15.25) -- (+9,-14.75);
+\draw [black] (+1,-15) -- (+10,-15);
+
+\fill [black] (+10,+5) -- (+9.75,+4) -- (+10.25,+4);
+\draw [black] (+10,-15) -- (+10,+5);
+
+\draw [black] (+20,+5) -- (+10,+5);
+\fill [black] (+20,+5) -- (+19,+4.75) -- (+19,+5.25);
+\end{tikzpicture}
+\end{document}
