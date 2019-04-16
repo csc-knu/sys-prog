@@ -10,11 +10,11 @@
 
 	- [Розподілені $$LL(1)$$-граматики](#розподілені-ll1-граматики)
 
-	- [Алгоритм пошуку $$\text{First}\sb k$$](#алгоритм-пошуку-textfirst_k)
+	- [Алгоритм пошуку $$\text{First}_k$$](#алгоритм-пошуку-textfirst_k)
 
 	- [Сильні $$LL(k)$$-граматики](#сильні-llk-граматики)
 
-	- [Алгоритм пошуку $$\text{Follow}\sb k$$](#алгоритм-пошуку-textfollow_k)
+	- [Алгоритм пошуку $$\text{Follow}_k$$](#алгоритм-пошуку-textfollow_k)
 
 	- [$$\varepsilon$$-нетермінали](#varepsilon-нетермінали)
 
@@ -65,11 +65,11 @@ _$$LL(k)$$-граматикою_ для деякого фіксованого $$
 
 2. $$S \Rightarrow^\star \omega_1 A \omega_2 \Rightarrow \omega_1 \beta \omega_2 \Rightarrow^\star \omega_1 y$$;
 
-то з $$\text{First}\sb k (x) = \text{First}\sb k (y)$$ випливає, що $$\alpha = \beta$$, де
+то з $$\text{First}_k (x) = \text{First}_k (y)$$ випливає, що $$\alpha = \beta$$, де
 $$A \mapsto \alpha \mid \beta$$, де 
 
 $$
-\text{First}\sb k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.
+\text{First}_k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.
 $$
 
 Неформально, граматика $$G$$ буде $$LL(k)$$-граматикою, якщо для слова
@@ -97,7 +97,7 @@ $$\omega_1 A \omega_2 \in (N \cup \Sigma)^\star$$ достатньо $$k$$ пе�
 $$A = S,$$ $$\omega_2 = a^i,$$ $$\alpha = S a,$$ $$\beta = b,$$ тоді для $$i \ge k$$ маємо
 
 $$
-\text{First}\sb k \left(S a a^i\right) = \text{First}\sb k \left(b a^i\right) = \left\{b a^{k - 1}\right\}.
+\text{First}_k \left(S a a^i\right) = \text{First}_k \left(b a^i\right) = \left\{b a^{k - 1}\right\}.
 $$
 
 Таким чином, КС-граматика $$G$$ не може бути $$LL(k)$$-граматикою для жодного $$k$$. Як
@@ -118,7 +118,7 @@ $$LL(1)$$-граматика називаються _розподіленою_, 
 
 - для нетермінала $$A$$ праві частини $$A$$-правила починаються різними терміналами.
 
-Зауважимо, що $$\text{First}\sb k (\omega_1 \omega_2) = \text{First}\sb k (\omega_1) \oplus_k \text{First}\sb k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
+Зауважимо, що $$\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
 
 $$
 L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, \quad y \in L_2.
@@ -127,17 +127,17 @@ $$
 Звідси маємо наступний тривіальний висновок: якщо $$\omega = \alpha_1 \alpha_2 \ldots \alpha_p$$, де $$\alpha_i \in (N \cup \Sigma)$$, то
 
 $$
-\text{First}\sb k (\omega) = \text{First}\sb k (\alpha_1) \oplus_k \text{First}\sb k (\alpha_2) \oplus_k \ldots \oplus_k \text{First}\sb k (\alpha_p)
+\text{First}_k (\omega) = \text{First}_k (\alpha_1) \oplus_k \text{First}_k (\alpha_2) \oplus_k \ldots \oplus_k \text{First}_k (\alpha_p)
 $$
 
 Для подальшого аналізу означення $$LL(k)$$-граматики розглянемо алгоритм
-обчислення функції $$\text{First}\sb k (\alpha)$$, $$\alpha \in (N \cup \Sigma)$$.
+обчислення функції $$\text{First}_k (\alpha)$$, $$\alpha \in (N \cup \Sigma)$$.
 
-### Алгоритм пошуку $$\text{First}\sb k$$
+### Алгоритм пошуку $$\text{First}_k$$
 
-Очевидно, що якщо $$\alpha_i \in \Sigma$$, то $$\text{First}\sb k (\alpha_i) = \{\alpha_i\}$$ при $$k > 0$$. Розглянемо алгоритм пошуку $$\text{First}\sb k (A_i)$$, $$A_i \in N$$.
+Очевидно, що якщо $$\alpha_i \in \Sigma$$, то $$\text{First}_k (\alpha_i) = \{\alpha_i\}$$ при $$k > 0$$. Розглянемо алгоритм пошуку $$\text{First}_k (A_i)$$, $$A_i \in N$$.
 
-**Алгоритм [пошуку $$\text{First}\sb k(A_i)$$, $$A_i \in N$$]**: визначимо значення функції $$F_i(x)$$ для кожного $$x \in (N \cup \Sigma)$$:
+**Алгоритм [пошуку $$\text{First}_k(A_i)$$, $$A_i \in N$$]**: визначимо значення функції $$F_i(x)$$ для кожного $$x \in (N \cup \Sigma)$$:
 
 1. $$F_i (a) = \{a\}$$ для всіх $$a \in \Sigma$$, $$i \ge 0$$.
 
@@ -153,9 +153,9 @@ $$
 
 - $$F_n(A_i) \subseteq \Sigma^{\star k}$$ &mdash; послідовність обмежена зверху.
 
-Тоді покладемо $$\text{First}\sb k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
+Тоді покладемо $$\text{First}_k(A_i) = F_m(A_i)$$ для кожного $$A_i \in N$$.
 
-**Приклад:** знайти множину $$\text{First}\sb k (A_i)$$ для нетерміналів граматики з наступною 
+**Приклад:** знайти множину $$\text{First}_k (A_i)$$ для нетерміналів граматики з наступною 
 схемою правил: 
 
 $$
@@ -183,20 +183,20 @@ $$F_7$$ | $$\{a, a+, a\times, (a\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\time
 $$F_8$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
 $$F_9$$ | $$\{a, a+, a\times, (a, ((\}$$ | $$\{\varepsilon,+a,+(\}$$ | $$\{a, a\times, (a, ((\}$$ | $$\{\varepsilon, \times a, \times(\}$$ | $$\{a, (a, ((\}$$
 
-Скористаємося означенням $$\text{First}\sb k(\alpha)$$ сформулюємо необхідні й достатні умови, за 
+Скористаємося означенням $$\text{First}_k(\alpha)$$ сформулюємо необхідні й достатні умови, за 
 яких КС-граматика буде $$LL(k)$$-граматикою: для довільного виводу в граматиці $$G$$ вигляду 
 $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
-\text{First}\sb k(\alpha \omega_2) \cap \text{First}\sb k (\beta \omega_2) = \varnothing.
+\text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.
 $$
 
 Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з урахуванням 
-визначення множини $$\text{First}\sb k$$: для довільного виводу в граматиці $$G$$ вигляду
+визначення множини $$\text{First}_k$$: для довільного виводу в граматиці $$G$$ вигляду
 $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
-\text{First}\sb k(\alpha \cdot L) \cap \text{First}\sb k (\beta \cdot L) = \varnothing, \quad L = \text{First}\sb k(\omega_2).
+\text{First}_k(\alpha \cdot L) \cap \text{First}_k (\beta \cdot L) = \varnothing, \quad L = \text{First}_k(\omega_2).
 $$
 
 Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може 
@@ -208,21 +208,21 @@ $$
 $$A \mapsto \alpha \mid \beta$$ виконується умова:
 
 $$
-\text{First}\sb k (\alpha \cdot \text{Follow}\sb k (A)) \cap \text{First}\sb k (\beta \cdot \text{Follow}\sb k (A)) = \varnothing,
+\text{First}_k (\alpha \cdot \text{Follow}_k (A)) \cap \text{First}_k (\beta \cdot \text{Follow}_k (A)) = \varnothing,
 $$
 
-де $$\text{Follow}\sb k(\alpha)$$, $$\alpha \in (N \cup \Sigma)^\star$$ визначається так:
+де $$\text{Follow}_k(\alpha)$$, $$\alpha \in (N \cup \Sigma)^\star$$ визначається так:
 
 $$
-\text{Follow}\sb k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}\sb k(\omega_2) \right\}.
+\text{Follow}_k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
 $$
 
-Операції $$\text{First}\sb k$$ та $$\text{Follow}\sb k$$ можна узагальнити для словарної множини $$L$$, тоді:
+Операції $$\text{First}_k$$ та $$\text{Follow}_k$$ можна узагальнити для словарної множини $$L$$, тоді:
 
 $$
 \begin{align*}
-	\text{First}\sb k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: \omega \in \text{First}\sb k (\alpha_i) \right\}. \\
-	\text{Follow}\sb k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}\sb k (\omega_2) \right\}.
+	\text{First}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}. \\
+	\text{Follow}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
 \end{align*}
 $$
 
@@ -235,7 +235,7 @@ $$
 На **прикладі** продемонструємо останнє твердження. Нехай граматика $$G$$ визначена
 наступними правилами: $$S \mapsto aAaa \mid bAba$$, $$A \mapsto b \mid \varepsilon$$.
 
-Відповідні множини $$\text{First}\sb 2(S) = \{ab, aa, bb\}$$, $$\text{First}\sb 2(A) = \{b, \varepsilon\}$$, $$\text{Follow}\sb 2(A) = \{aa, ba\}$$, $$\text{Follow}\sb 2(S) = \{\varepsilon\}$$.
+Відповідні множини $$\text{First}_2(S) = \{ab, aa, bb\}$$, $$\text{First}_2(A) = \{b, \varepsilon\}$$, $$\text{Follow}_2(A) = \{aa, ba\}$$, $$\text{Follow}_2(S) = \{\varepsilon\}$$.
 
 Перевіримо умову для сильної $$LL(2)$$-граматики:
 
@@ -243,8 +243,8 @@ $$
 
 	$$
 	\begin{multline*}
-	\text{First}\sb 2(aAaa \cdot \text{Follow}\sb 2(S)) \cap \text{First}\sb 2(bAba \cdot \text{Follow}\sb 2(S)) = \\
-	= (\text{First}\sb 2(aAaa) \oplus_2 \text{Follow}\sb 2(S)) \cap (\text{First}\sb 2(bAba) \oplus_2 \text{Follow}\sb 2(S)) = \\
+	\text{First}_2(aAaa \cdot \text{Follow}_2(S)) \cap \text{First}_2(bAba \cdot \text{Follow}_2(S)) = \\
+	= (\text{First}_2(aAaa) \oplus_2 \text{Follow}_2(S)) \cap (\text{First}_2(bAba) \oplus_2 \text{Follow}_2(S)) = \\
 	= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{\varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
 	\end{multline*}
 	$$
@@ -252,7 +252,7 @@ $$
 2. виконаємо перевірку $$LL(2)$$-умови для правила $$A \mapsto b \mid \varepsilon$$:
 
 	$$
-	\text{First}\sb 2(b \cdot \text{Follow}\sb 2(A)) \cap \text{First}\sb 2(\varepsilon \cdot \text{Follow}\sb 2(A)) = \\
+	\text{First}_2(b \cdot \text{Follow}_2(A)) \cap \text{First}_2(\varepsilon \cdot \text{Follow}_2(A)) = \\
 	= \{ba,bb\}\cap\{aa,ba\}=\{ba\}.
 	$$
 
@@ -260,30 +260,30 @@ $$
 цю ж граматику на властивість $$LL(2)$$-граматики. Тут ми маємо два різні варіанти
 виводу з $$S$$:
 
-1. $$S \Rightarrow^\star aAaa$$: $$\text{First}\sb 2(b \cdot aa) \cap \text{First}\sb 2(\varepsilon \cdot aa) = \{ba\} \cap \{aa\} = \varnothing$$.
+1. $$S \Rightarrow^\star aAaa$$: $$\text{First}_2(b \cdot aa) \cap \text{First}_2(\varepsilon \cdot aa) = \{ba\} \cap \{aa\} = \varnothing$$.
 
-2. $$S \Rightarrow^\star bAba$$: $$\text{First}\sb 2(b \cdot ba) \cap \text{First}\sb 2(\varepsilon \cdot ba) = \{bb\} \cap \{ba\} = \varnothing$$.
+2. $$S \Rightarrow^\star bAba$$: $$\text{First}_2(b \cdot ba) \cap \text{First}_2(\varepsilon \cdot ba) = \{bb\} \cap \{ba\} = \varnothing$$.
 
 Висновок: наведена вище граматика є $$LL(2)$$-граматикою.
 
-### Алгоритм пошуку $$\text{Follow}\sb k$$
+### Алгоритм пошуку $$\text{Follow}_k$$
 
-**Алгоритм [обчислення $$\text{Follow}\sb k (A_i)$$, $$A_i \in N$$]:** будемо розглядати всілякі 
+**Алгоритм [обчислення $$\text{Follow}_k (A_i)$$, $$A_i \in N$$]:** будемо розглядати всілякі 
 дерева, які можна побудувати, починаючи з аксіоми $$S$$:
 
 1. $$\sigma_0(S, S) = \{\varepsilon\}$$. Очевидно, за 0 кроків ми виведемо $$S$$, після якої 
 	знаходиться $$\varepsilon$$. У інших випадках $$\sigma_0(S, A_i)$$ &mdash; невизначено, 
 	$$A_i \in (N \setminus \{S\})$$.
 
-2. $$\sigma_1(S, A_i) = \sigma_0(S, A_i) \cup \left\{ \omega \middle| S \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}\sb k(\omega_2) \right\}$$. 
+2. $$\sigma_1(S, A_i) = \sigma_0(S, A_i) \cup \left\{ \omega \middle| S \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2) \right\}$$. 
 	В інших випадках $$\sigma_1(S, A_i)$$ &mdash; невизначено.
 
-3. $$\sigma_n(S, A_i) = \sigma_{n - 1}(S, A_i) \cup \left\{ \omega \middle| A_j \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}\sb k(\omega_2 \cdot \sigma_{n - 1}(S, A_j)) \right\}$$.
+3. $$\sigma_n(S, A_i) = \sigma_{n - 1}(S, A_i) \cup \left\{ \omega \middle| A_j \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2 \cdot \sigma_{n - 1}(S, A_j)) \right\}$$.
 	В інших випадках $$\sigma_n(S, A_i)$$ &mdash; невизначено.
 
 Настане крок $$m$$, коли $$\sigma_m(S, A_i) = \sigma_{m + 1}(S, A_i) = \ldots $$, $$\forall A_i \in N$$.
 
-Тоді покладемо $$\text{Follow}\sb k(A_i) = \sigma_m(S, A_i)$$, $$\forall A_i \in N$$.
+Тоді покладемо $$\text{Follow}_k(A_i) = \sigma_m(S, A_i)$$, $$\forall A_i \in N$$.
 
 Очевидно, що:
 
@@ -383,7 +383,7 @@ $$S \mapsto Sa \mid b$$, яка має ліворекурсивний нетер
 схемою з трьома правилами $$S \mapsto bS_1$$, $$S_1 \mapsto aS_1 \mid \varepsilon$$.
 
 **Приклад:** для граматики $$G$$ з схемою правил $$P$$ для кожного нетермінала знайдемо
-множину $$\text{Follow}\sb 1(A)$$ $$(k=1)$$:
+множину $$\text{Follow}_1(A)$$ $$(k=1)$$:
 
 $$
 \begin{align*}
@@ -395,10 +395,10 @@ $$
 \end{align*}
 $$
 
-З прикладу, що наведено раніше множини $$\text{First}\sb 1(A)$$, будуть такими:
+З прикладу, що наведено раніше множини $$\text{First}_1(A)$$, будуть такими:
 
 $$
-\text{First}\sb 1 (S) = \text{First}\sb 1 (B) = \text{First}\sb 1 (D) = \{(, a\}, \quad \text{First}\sb 1 (A) = \{+, \varepsilon\}, \quad \text{First}\sb 1 (C) = \{\times, \varepsilon\}.
+\text{First}_1 (S) = \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \quad \text{First}_1 (A) = \{+, \varepsilon\}, \quad \text{First}_1 (C) = \{\times, \varepsilon\}.
 $$
 
 &nbsp; | $$S$$ | $$A$$ | $$B$$ | $$C$$ | $$D$$
@@ -412,7 +412,7 @@ $$\delta_5$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon
 $$\delta_6$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{\times,+,\varepsilon,)\}$$
 $$\delta_7$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{+,\varepsilon,)\}$$ | $$\{\times,+,\varepsilon,)\}$$
 
-Таким чином, $$\text{Follow}\sb1 (S) = \{\varepsilon, )\}$$, $$\text{Follow}\sb1 (A) = \{\varepsilon, )\}$$, $$\text{Follow}\sb1 (B) = \{+,\varepsilon, )\}$$, $$\text{Follow}\sb1 (C) = \{+,\varepsilon, )\}$$, $$\text{Follow}\sb1 (D) = \{\times,+,\varepsilon, )\}$$.
+Таким чином, $$\text{Follow}_1 (S) = \{\varepsilon, )\}$$, $$\text{Follow}_1 (A) = \{\varepsilon, )\}$$, $$\text{Follow}_1 (B) = \{+,\varepsilon, )\}$$, $$\text{Follow}_1 (C) = \{+,\varepsilon, )\}$$, $$\text{Follow}_1 (D) = \{\times,+,\varepsilon, )\}$$.
 
 ## Контрольні запитання
 
@@ -426,9 +426,9 @@ $$\delta_7$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon
 
 2. Яку бінарну операцію над мовами позначає символ $$\oplus_k$$?
 
-3. Яку мову (множину слів) позначає запис $$\text{First}\sb k$$?
+3. Яку мову (множину слів) позначає запис $$\text{First}_k$$?
 
-3. Опишіть алгоритм пошуку $$\text{First}\sb k$$ і доведіть його збіжність.
+3. Опишіть алгоритм пошуку $$\text{First}_k$$ і доведіть його збіжність.
 	<!---->
 
 
@@ -437,9 +437,9 @@ $$\delta_7$$ | $$\{\varepsilon,)\}$$ | $$\{\varepsilon,)\}$$ | $$\{+,\varepsilon
 
 4. Чи кожна $$LL(k)$$-граматика є сильною $$LL(k)$$-граматикою?
 
-5. Яку мову (множину слів) позначає запис $$\text{Follow}\sb k$$?
+5. Яку мову (множину слів) позначає запис $$\text{Follow}_k$$?
 
-5. Опишіть алгоритм пошуку $$\text{Follow}\sb k$$ і доведіть його збіжність.
+5. Опишіть алгоритм пошуку $$\text{Follow}_k$$ і доведіть його збіжність.
 	<!---->
 
 6. Який нетермінал $$A_i \in N$$ називається $$\varepsilon$$-нетерміналом?
