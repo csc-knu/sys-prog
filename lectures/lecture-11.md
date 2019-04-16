@@ -124,7 +124,7 @@ $$\text{First}_1(\omega_j) \oplus_1 \text{Follow}_1 (A_i)$$, $$j = \overline{1..
 
 	![img-23](img/img-23.png)
 
-	для кожного $$\omega_i$$, $$i = \overline{1..p}$$ знайдемо множину $$\text{First}_1(\omega_i) \oplus_1 \text{Follow}_1(A) = L_i = \{a_i^1, a_i^2, \ldots, a_i^{n_i}\}$$.
+	для кожного $$\omega_i$$, $$i = \overline{1..p}$$ знайдемо множину $$\text{First}_1(\omega_i) \oplus_1 \text{Follow}_1(A) = L_i = \left\{a_i^1, a_i^2, \ldots, a_i^{n_i}\right\}$$.
 
 	Оскільки за умовою $$L_i \cap L_j = \varnothing$$, $$i \ne j$$, то відповідний фрагмент 
 	програми на мові С матиме вигляд:
@@ -177,7 +177,8 @@ $$A_i \mapsto \alpha_1 \alpha_2 \ldots \alpha_p A_i \mid \varepsilon$$. Тоді
 ![img-24](img/img-24.png)
 
 Для вище наведеної синтаксичної діаграми відповідні множини будуть:
-$$\text{First}_1(\alpha_1 \alpha_2 \ldots \alpha_p A_i) \oplus_1 \text{Follow}_1(A_i) = L_1 = \{a_1^1, a_1^2, \ldots, a_1^{n_1}\}$$. Відповідний фрагмент програми мовою С матиме вигляд:
+$$\text{First}_1(\alpha_1 \alpha_2 \ldots \alpha_p A_i) \oplus_1 \text{Follow}_1(A_i) = L_1 = \left\{a_1^1, a_1^2, \ldots, a_1^{n_1}\right\}$$. 
+Відповідний фрагмент програми мовою С матиме вигляд:
 
 ```c
 extern int lexem_code;
