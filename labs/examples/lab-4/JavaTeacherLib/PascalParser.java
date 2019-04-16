@@ -5,8 +5,6 @@
 
 package JavaTeacherLib;
 
-import JavaTeacherLib.MyLang;
-import JavaTeacherLib.Node;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,7 +24,7 @@ public class PascalParser {
     private int errors;
     private int ungetChar;
     private String fileData;
-    private int ungetLexemaCode;
+    private int ungetLexemCode;
     private static final int MAX_IDN = 32;
     private BufferedReader fs;
     private int maxLenRecord;
@@ -39,7 +37,7 @@ public class PascalParser {
         this.lexemaNumb = 0;
         this.errors = 0;
         this.ungetChar = 0;
-        this.ungetLexemaCode = 0;
+        this.ungetLexemCode = 0;
         this.lexemaPos = 0;
         this.parserUprTable = this.lang.getUprTable();
         this.scanerUprTable = new int[256];
@@ -75,8 +73,8 @@ public class PascalParser {
                         ss.pop();
                         this.lexemaCode = this.pascalScaner();
                     } else {
-                        if(!this.lang.getLexemaText(ssItem).equals("else")) {
-                            System.out.println("\nПропущена лексема :" + this.lang.getLexemaText(ssItem));
+                        if(!this.lang.getLexemText(ssItem).equals("else")) {
+                            System.out.println("\nПропущена лексема :" + this.lang.getLexemText(ssItem));
 
                             do {
                                 this.lexemaCode = this.pascalScaner();
@@ -105,7 +103,7 @@ public class PascalParser {
                     }
 
                     if(this.parserUprTable[nontermcol][termCol] == 0) {
-                        System.out.println("Синтаксична помилка: на вершині стека: " + this.lang.getLexemaText(ssItem) + " поточна лексема " + this.lang.getLexemaText(this.lexemaCode) + " " + this.getLexemaText());
+                        System.out.println("Синтаксична помилка: на вершині стека: " + this.lang.getLexemText(ssItem) + " поточна лексема " + this.lang.getLexemText(this.lexemaCode) + " " + this.getLexemText());
 
                         do {
                             this.lexemaCode = this.pascalScaner();
@@ -125,7 +123,7 @@ public class PascalParser {
                     int var14 = this.parserUprTable[nontermcol][termCol];
                     int ee = 0;
                     Node tmp = null;
-                    Iterator pravilo = this.lang.getLanguarge().iterator();
+                    Iterator pravilo = this.lang.getLanguage().iterator();
 
                     while(pravilo.hasNext()) {
                         Node ii = (Node)pravilo.next();
@@ -136,7 +134,7 @@ public class PascalParser {
                         }
                     }
 
-                    int[] var15 = tmp.getRoole();
+                    int[] var15 = tmp.getRule();
                     ss.pop();
 
                     for(int var16 = var15.length - 1; var16 > 0; --var16) {
@@ -196,7 +194,7 @@ public class PascalParser {
         }
 
         if(this.parserUprTable[nontermcol][termCol] == 0) {
-            System.out.println("Синтаксична помилка: старт для  " + this.lang.getLexemaText(nonterm) + " поточна лексема " + this.lang.getLexemaText(this.lexemaCode) + " " + this.getLexemaText());
+            System.out.println("Синтаксична помилка: старт для  " + this.lang.getLexemText(nonterm) + " поточна лексема " + this.lang.getLexemText(this.lexemaCode) + " " + this.getLexemText());
             System.out.println("\nПрограма має синтаксичні помилки");
 
             try {
@@ -210,7 +208,7 @@ public class PascalParser {
             int var10 = this.parserUprTable[nontermcol][termCol];
             int iitmp = 0;
             Node tmp = null;
-            Iterator pravilo = this.lang.getLanguarge().iterator();
+            Iterator pravilo = this.lang.getLanguage().iterator();
 
             while(pravilo.hasNext()) {
                 Node ii = (Node)pravilo.next();
@@ -221,15 +219,15 @@ public class PascalParser {
                 }
             }
 
-            int[] var11 = tmp.getRoole();
+            int[] var11 = tmp.getRule();
 
             for(int var12 = 1; var12 < var11.length; ++var12) {
                 if(var11[var12] > 0) {
                     if(var11[var12] == this.lexemaCode) {
                         this.lexemaCode = this.pascalScaner();
                     } else {
-                        if(!this.lang.getLexemaText(var11[var12]).equals("else")) {
-                            System.out.println("\nПропущена лексема :" + this.lang.getLexemaText(var11[var12]));
+                        if(!this.lang.getLexemText(var11[var12]).equals("else")) {
+                            System.out.println("\nПропущена лексема :" + this.lang.getLexemText(var11[var12]));
                             return false;
                         }
 
@@ -252,10 +250,10 @@ public class PascalParser {
     }
 
     private void setUngetLexema(int secLexema) {
-        this.ungetLexemaCode = secLexema;
+        this.ungetLexemCode = secLexema;
     }
 
-    public String getLexemaText() {
+    public String getLexemText() {
         byte[] textLexema = new byte[this.lexemaLen];
 
         for(int ii = 0; ii < this.lexemaLen; ++ii) {
@@ -313,7 +311,7 @@ public class PascalParser {
                                 switch(var9) {
                                     case 1:
                                         this.lexema[this.lexemaLen++] = (byte)litera;
-                                        return this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                        return this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                     case 2:
                                         this.lexema[this.lexemaLen++] = (byte)litera;
                                         lexemaClass = 1;
@@ -474,7 +472,7 @@ public class PascalParser {
                             if(var9 != 2 && var9 != 3) {
                                 this.ungetChar = litera;
                                 --this.lexemaLen;
-                                ee = this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                                ee = this.lang.getLexemCode(this.lexema, this.lexemaLen);
                                 if(ee == -1) {
                                     return 268435470;
                                 }
@@ -566,7 +564,7 @@ public class PascalParser {
             } else {
                 switch(lexemaClass) {
                     case 1:
-                        ee = this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                        ee = this.lang.getLexemCode(this.lexema, this.lexemaLen);
                         if(ee != -1) {
                             return ee;
                         }
@@ -579,7 +577,7 @@ public class PascalParser {
                     case 4:
                         return 268435464;
                     case 5:
-                        this.lang.getLexemaCode(this.lexema, this.lexemaLen, 0);
+                        this.lang.getLexemCode(this.lexema, this.lexemaLen);
                     default:
                         return -1;
                 }

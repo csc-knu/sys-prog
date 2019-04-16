@@ -1,24 +1,24 @@
 package JavaTeacherLib;
 
-public class TableNode {
-    String lexemaText;
-    int lexemacode;
-    static int numarator = 0;
+class TableNode {
+    private String lexemText;
+    private int lexemCode;
+    private static int counter = 0;
 
-    public TableNode(String lexema, int lexemaType) {
-        this.lexemaText = lexema;
-        this.lexemacode = lexemaType | numarator++;
+    TableNode(String lexem, int lexemType) {
+        this.lexemText = lexem;
+        this.lexemCode = lexemType | counter++;
     }
 
-    public String getLexemaText() {
-        return this.lexemaText;
+    String getLexemText() {
+        return this.lexemText;
     }
 
-    public int getLexemaCode() {
-        return this.lexemacode;
+    int getLexemCode() {
+        return this.lexemCode;
     }
 
-    public boolean equals(TableNode node1) {
-        return node1 == null?false:(this == node1?true:this.lexemaText.equals(node1.lexemaText));
+    boolean equals(TableNode node1) {
+        return node1 != null && (this == node1 || this.lexemText.equals(node1.lexemText));
     }
 }
