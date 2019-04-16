@@ -3,6 +3,6 @@
 
 @import "{{ site.theme }}";
 
-html {
-	width: 80%;
+.inner {
+	max-width: 720px;
 }
