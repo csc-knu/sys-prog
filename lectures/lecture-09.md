@@ -6,13 +6,13 @@
 
 - [Синтаксичний аналіз без повернення назад](#синтаксичний-аналіз-без-повернення-назад)
 
-	- [$$LL(k)$$-граматики](#llk-граматики)
+- [$$LL(k)$$-граматики](#llk-граматики)
 
-- [$$\text{First}_k$$](#textfirst_k)
+	- [$$\text{First}_k$$](#textfirst_k)
 
 	- [Алгоритм пошуку $$\text{First}_k$$](#алгоритм-пошуку-textfirst_k)
 
-	- [Сильні $$LL(k)$$-граматики](#сильні-llk-граматики)
+- [Сильні $$LL(k)$$-граматики](#сильні-llk-граматики)
 
 	- [Алгоритм пошуку $$\text{Follow}_k$$](#алгоритм-пошуку-textfollow_k)
 
@@ -56,7 +56,7 @@
 
 Сформульовані умови забезпечує клас $$LL(k)$$-граматик.
 
-### $$LL(k)$$-граматики
+## $$LL(k)$$-граматики
 
 КС-граматика $$G = \left\langle N, \Sigma, P, S \right\rangle$$ називається 
 _$$LL(k)$$-граматикою_ для деякого фіксованого $$k$$, якщо для двох лівосторонніх виведень 
@@ -124,7 +124,7 @@ $$LL(1)$$-граматика називаються _розподіленою_, 
 
 - для нетермінала $$A$$ праві частини $$A$$-правила починаються різними терміналами.
 
-## $$\text{First}_k$$
+### $$\text{First}_k$$
 
 Зауважимо, що $$\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$$, де $$\oplus_k$$ &mdash; бінарна операція над словарними множинами (мовами) визначена наступним чином:
 
@@ -200,7 +200,7 @@ $$
 $$
 
 Вище сформульована умова для $$LL(k)$$-граматик може бути перефразована з урахуванням 
-визначення множини $$\text{First}_k$$: для довільного виводу в граматиці $$G$$ вигляду
+визначення множини $$\text{First}_k$$: для довільного виведення в граматиці $$G$$ вигляду
 $$S \Rightarrow^\star \omega_1 A \omega_2$$ та правила $$A \mapsto \alpha \mid \beta$$:
 
 $$
@@ -210,9 +210,9 @@ $$
 Оскільки $$L \subseteq \Sigma^{\star k}$$, то остання умова є конструктивною умовою і може 
 бути використана для перевірки, чи КС-граматика є $$LL(k)$$-граматикою для фіксованого $$k$$.
 
-### Сильні $$LL(k)$$-граматики
+## Сильні $$LL(k)$$-граматики
 
-КС-граматика називається _сильною $$LL(k)$$-граматикою_, якщо для $$A$$-правила вигляду 
+КС-граматика називається _сильною $$LL(k)$$-граматикою_, якщо для кожного правила вигляду 
 $$A \mapsto \alpha \mid \beta$$ виконується умова:
 
 $$
@@ -225,12 +225,17 @@ $$
 \text{Follow}_k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
 $$
 
+Неформально, відмінність сильних $$LL(k)$$-граматик від звичайних $$LL(k)$$-граматик полягає у 
+тому, що наступне правило безпосереднього виведення, яке буде застосовано до $$A$$ можна 
+визначити абстраговано від уже виведеної частини слова $$\omega_1$$, розглядаючи тільки 
+наступні $$k$$ символів які потрібно отримати після $$A$$.
+
 Операції $$\text{First}_k$$ та $$\text{Follow}_k$$ можна узагальнити для словарної множини $$L$$, тоді:
 
 $$
 \begin{align*}
-	\text{First}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}. \\
-	\text{Follow}_k (L) &= \left\{ \omega \mid \forall \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
+	\text{First}_k (L) &= \left\{ \omega \mid \exists \alpha_i \in L: \omega \in \text{First}_k (\alpha_i) \right\}. \\
+	\text{Follow}_k (L) &= \left\{ \omega \mid \exists \alpha_i \in L: S \Rightarrow^\star \omega_1 \alpha_i \omega_2, \omega \in \text{First}_k (\omega_2) \right\}.
 \end{align*}
 $$
 
@@ -283,10 +288,10 @@ $$
 	знаходиться $$\varepsilon$$. У інших випадках $$\sigma_0(S, A_i)$$ &mdash; невизначено, 
 	$$A_i \in (N \setminus \{S\})$$.
 
-2. $$\sigma_1(S, A_i) = \sigma_0(S, A_i) \cup \left\{ \omega \middle| S \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2) \right\}$$. 
+2. $$\sigma_1(S, A_i) = \sigma_0(S, A_i) \cup \left\{ \omega \mid S \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2) \right\}$$. 
 	В інших випадках $$\sigma_1(S, A_i)$$ &mdash; невизначено.
 
-3. $$\sigma_n(S, A_i) = \sigma_{n - 1}(S, A_i) \cup \left\{ \omega \middle| A_j \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2 \cdot \sigma_{n - 1}(S, A_j)) \right\}$$.
+3. $$\sigma_n(S, A_i) = \sigma_{n - 1}(S, A_i) \cup \left\{ \omega \mid A_j \mapsto \omega_1 A_i \omega_2, \omega \in \text{First}_k(\omega_2 \cdot \sigma_{n - 1}(S, A_j)) \right\}$$.
 	В інших випадках $$\sigma_n(S, A_i)$$ &mdash; невизначено.
 
 Настане крок $$m$$, коли $$\sigma_m(S, A_i) = \sigma_{m + 1}(S, A_i) = \ldots $$, $$\forall A_i \in N$$.
@@ -299,6 +304,9 @@ $$
 	зростаюча;
 
 - $$\sigma_n(S, A_i) \subseteq \Sigma^{\star k}$$ &mdash; послідовність обмежена зверху.
+
+Разом ці умови гарантують збіжність послідовності $$\{\sigma_n(S, A_i)\}$$, а отже і алгоритму
+пошуку $$\text{Follow}_k(A_i)$$.
 
 ### $$\varepsilon$$-нетермінали
 
