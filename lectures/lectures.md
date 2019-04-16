@@ -1,3 +1,5 @@
+{% include mathjax %}
+
 [Назад на головну](../README.md)
 
 ## Лекції
