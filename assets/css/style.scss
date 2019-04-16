@@ -2,3 +2,7 @@
  ---
 
 @import "{{ site.theme }}";
+
+html {
+	width: 80%;
+}
