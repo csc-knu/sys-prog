@@ -11,7 +11,9 @@
 3. [Лексичний аналізатор мови програмування](lab-3-main.java) (`.java`, `19 Kb`)
 4. Синтаксичні аналізатори та алгоритми з ними:
 	- [допоміжний пакет](lab-4/JavaTeacherLib.7z) (`.7z`, `15 Kb`);
-	- [програма-драйвер](lab-4/sysprogrammingmainalgorithm/SysProgrammingMainAlgorithm.java);
+	- [програма-драйвер](lab-4/sysprogrammingmainalgorithm/SysProgrammingMainAlgorithm.java) (`.java`, `13 Kb`);
 	- [разом](lab-4.7z) (`.7z`, `21 Kb`);
+
+[Усе разом](examples.7z) (`.7z`, `29 Kb`)
 
 [Назад на головну](../../README.md)
