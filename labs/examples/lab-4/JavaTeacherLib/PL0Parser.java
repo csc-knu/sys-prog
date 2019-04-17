@@ -52,7 +52,7 @@ public class PL0Parser {
 
     public void parserStack() {
         Stack ss = new Stack();
-        ss.push(Integer.valueOf(this.lang.getAxioma()));
+        ss.push(Integer.valueOf(this.lang.getAxiom()));
         this.lexemaCode = this.pl0Scaner();
 
         while(true) {
@@ -81,7 +81,7 @@ public class PL0Parser {
                     ss.pop();
                 }
                 else {
-                    int nontermcol = this.lang.indexNonterminal(ssItem);
+                    int nontermcol = this.lang.indexNonTerminal(ssItem);
                     int termCol;
                     if(this.lexemaCode == -1) termCol = this.lang.getTerminals().length;
                     else termCol = this.lang.indexTerminal(this.lexemaCode);
@@ -141,7 +141,7 @@ public class PL0Parser {
         int[] term = this.lang.getTerminals();
         int[] nonterm = this.lang.getNonTerminals();
         this.lexemaCode = this.pl0Scaner();
-        if(this.localrecursive(this.lang.getAxioma())) System.out.println("\nПрограма синтаксично вірна");
+        if(this.localrecursive(this.lang.getAxiom())) System.out.println("\nПрограма синтаксично вірна");
         else while (true) {
             if (this.lexemaCode == -1) {
                 System.out.println("\nПрограма має синтаксичні помилки");
@@ -154,12 +154,11 @@ public class PL0Parser {
         try {
             this.fs.close();
         } catch (Exception var7) {
-            ;
         }
     }
 
     private boolean localrecursive(int nonterm) {
-        int nontermcol = this.lang.indexNonterminal(nonterm);
+        int nontermcol = this.lang.indexNonTerminal(nonterm);
         int termCol;
         if(this.lexemaCode == -1) termCol = this.lang.getTerminals().length;
         else termCol = this.lang.indexTerminal(this.lexemaCode);

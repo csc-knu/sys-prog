@@ -119,22 +119,22 @@ public class SysProgrammingMainAlgorithm {
                     break;
                 case 4:  // надрукувати список терміналів та нетерміналів
                     testLang.printTerminals();
-                    testLang.printNonterminals();
+                    testLang.printNonTerminals();
                     result = true;
                     break;
                 case 5:  // вивести непродуктивні правила
                     result = testLang.createNonProdRools();
                     break;
                 case 6:  // недосяжні нетермінали
-                    result = testLang.createNonDosNeterminals();
+                    result = testLang.createNonDosNonTerminals();
                     break;
                 case 7:  // побудова списку епсілон-нетерміналів
-                    int [] epsilon = testLang.createEpsilonNonterminals();
-                    testLang.setEpsilonNonterminals(epsilon);
+                    int [] epsilon = testLang.createEpsilonNonTerminals();
+                    testLang.setEpsilonNonTerminals(epsilon);
                     result = true;
                     break;
                 case 8:  // друк списку епсілон-нетерміналів
-                    testLang.printEpsilonNonterminals();
+                    testLang.printEpsilonNonTerminals();
                     break;
                 case 9:  // пошук ліворекурсивних нетерміналів
                     result = testLang.leftRecursNonTerminal();
@@ -154,7 +154,7 @@ public class SysProgrammingMainAlgorithm {
                     result = true;
                     break;
                 case 14:  // друк множини FirstK(A), A -- нетермінал
-                    testLang.printFirstkContext();
+                    testLang.printFirstKContext();
                     break;
                 case 15:  // побудувати множини FollowK(A), A -- нетермінал
                     LlkContext [] followContext = testLang.followK();
@@ -162,7 +162,7 @@ public class SysProgrammingMainAlgorithm {
                     result = true;
                     break;
                 case 16:  // друк множини FollowK(A), A -- нетермінал
-                    testLang.printFollowkContext();
+                    testLang.printFollowKContext();
                     break;
                 case 17:  // побудувати множини FirstK(w) + FollowK(A) для правила А -> w
                     testLang.firstFollowK();
@@ -184,20 +184,20 @@ public class SysProgrammingMainAlgorithm {
                 case 22:  // PASCAL
                     break;
                 case 23:  // побудувати множини FirstK(w) для правила A -> w
-                    testLang.firstKforRoole();
+                    testLang.firstKForRule();
                     result = true;
                     break;
                 case 24:  // друк множини FirstK(w) для правила A -> w
-                    testLang.printFirstContextForRoole();
+                    testLang.printFirstContextForRule();
                     result = true;
                     break;
                 case 25:  // побудувати множини LocalK(A), A -- нетермінал
-                    LinkedList <LlkContext> [] Localk = testLang.createLocalK();
-                    testLang.setLocalKContext(Localk);
+                    LinkedList <LlkContext> [] LocalK = testLang.createLocalK();
+                    testLang.setLocalKContext(LocalK);
                     result = true;
                     break;
                 case 26:  // вивести на термінал множини LocalK(A), A -- нетермінал
-                    testLang.printLocalk();
+                    testLang.printLocalK();
                     result = true;
                     break;
                 case 27:  // перевірка LL(k)-властивості, k > 1
@@ -212,7 +212,5 @@ public class SysProgrammingMainAlgorithm {
                 if (menu[codeAction - 1].substring(0, 1).equals("*"))
                     menu[codeAction - 1] = menu[codeAction - 1].replace('*', '+') ;
         } while (true);  // глобальний цикл  обробки
-
     }  // кінець main
 }
-
