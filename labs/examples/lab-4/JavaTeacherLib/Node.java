@@ -2,18 +2,16 @@ package JavaTeacherLib;
 
 class Node {
     private int[] rule;
-    private int teg;
+    private int tag;
     private LlkContext firstFollowK;
-    private LlkContext firstKForRoole;
+    private LlkContext firstKForRule;
 
-    Node(int[] roole1, int len) {
+    Node(int[] otherRule, int len) {
         this.rule = new int[len];
-
-        System.arraycopy(roole1, 0, this.rule, 0, len);
-
-        this.teg = 0;
+        System.arraycopy(otherRule, 0, this.rule, 0, len);
+        this.tag = 0;
         this.firstFollowK = null;
-        this.firstKForRoole = null;
+        this.firstKForRule = null;
     }
 
     void addFirstFollowK(LlkContext result) {
@@ -25,22 +23,22 @@ class Node {
     }
 
     void addFirstKForRoole(LlkContext result) {
-        this.firstKForRoole = result;
+        this.firstKForRule = result;
     }
 
     LlkContext getFirstKForRoole() {
-        return this.firstKForRoole;
+        return this.firstKForRule;
     }
 
     int[] getRule() {
         return this.rule;
     }
 
-    int getTeg() {
-        return this.teg;
+    int getTag() {
+        return this.tag;
     }
 
-    void setTeg(int teg1) {
-        this.teg = teg1;
+    void setTag(int otherTag) {
+        this.tag = otherTag;
     }
 }

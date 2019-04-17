@@ -10,19 +10,19 @@ public class LlkContext {
     }
 
     boolean wordInContext(int[] word) {
-        Iterator i$ = this.llkContext.iterator();
+        Iterator iterator = this.llkContext.iterator();
 
         int len;
         do {
-            int[] word1;
+            int[] otherWord;
             do {
-                if (!i$.hasNext()) return false;
+                if (!iterator.hasNext()) return false;
 
-                word1 = (int[])i$.next();
-            } while (word.length != word1.length);
+                otherWord = (int[])iterator.next();
+            } while (word.length != otherWord.length);
 
             len = 0;
-            while (len < word.length && word[len] == word1[len]) ++len;
+            while (len < word.length && word[len] == otherWord[len]) ++len;
         } while (len != word.length);
 
         return true;
@@ -33,7 +33,7 @@ public class LlkContext {
     }
 
     int minLengthWord() {
-        int minlen = 99;
+        int minlen = 1 << 7;
         for (int[] word : this.llkContext) if (minlen > word.length) minlen = word.length;
         return minlen;
     }

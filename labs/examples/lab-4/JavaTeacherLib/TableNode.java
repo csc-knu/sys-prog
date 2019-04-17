@@ -18,7 +18,7 @@ class TableNode {
         return this.lexemCode;
     }
 
-    boolean equals(TableNode node1) {
-        return node1 != null && (this == node1 || this.lexemText.equals(node1.lexemText));
+    boolean equals(TableNode otherNode) {
+        return otherNode != null && (this == otherNode || this.lexemText.equals(otherNode.lexemText));
     }
 }

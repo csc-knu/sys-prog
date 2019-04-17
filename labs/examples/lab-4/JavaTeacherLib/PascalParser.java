@@ -62,7 +62,7 @@ public class PascalParser {
 
     public void parserStack() {
         Stack ss = new Stack();
-        ss.push(Integer.valueOf(this.lang.getAxioma()));
+        ss.push(Integer.valueOf(this.lang.getAxiom()));
         this.lexemaCode = this.pascalScaner();
 
         while(true) {
@@ -94,7 +94,7 @@ public class PascalParser {
                         ss.pop();
                     }
                 } else {
-                    int nontermcol = this.lang.indexNonterminal(ssItem);
+                    int nontermcol = this.lang.indexNonTerminal(ssItem);
                     int termCol;
                     if(this.lexemaCode == -1) {
                         termCol = this.lang.getTerminals().length;
@@ -164,7 +164,7 @@ public class PascalParser {
         int[] term = this.lang.getTerminals();
         int[] nonterm = this.lang.getNonTerminals();
         this.lexemaCode = this.pascalScaner();
-        if(this.localrecursive(this.lang.getAxioma())) {
+        if(this.localrecursive(this.lang.getAxiom())) {
             System.out.println("\nПрограма синтаксично вірна");
         } else {
             while(true) {
@@ -180,12 +180,11 @@ public class PascalParser {
         try {
             this.fs.close();
         } catch (Exception var7) {
-            ;
         }
     }
 
     private boolean localrecursive(int nonterm) {
-        int nontermcol = this.lang.indexNonterminal(nonterm);
+        int nontermcol = this.lang.indexNonTerminal(nonterm);
         int termCol;
         if(this.lexemaCode == -1) {
             termCol = this.lang.getTerminals().length;

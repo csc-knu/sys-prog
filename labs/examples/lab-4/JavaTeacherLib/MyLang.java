@@ -14,7 +14,7 @@ public class MyLang {
     private boolean create;
     private int LLK;
     private LinkedList<Node> language;
-    private LinkedList<TableNode> lexemasTable;
+    private LinkedList<TableNode> lexemsTable;
     private int[] terminals;
     private int[] nonTerminals;
     private int[] epsilonTerminals;
@@ -28,16 +28,12 @@ public class MyLang {
         this.LLK = llk1;
         this.create = false;
         this.language = new LinkedList<>();
-        this.lexemasTable = new LinkedList<>();
+        this.lexemsTable = new LinkedList<>();
         this.readGrammar(fileLang);
-        if(this.create) {
-            Iterator i$ = this.language.iterator();
-            if(i$.hasNext()) {
-                Node tmp = (Node)i$.next();
-                int[] ii = tmp.getRule();
-                this.axiom = ii[0];
-            }
-
+        if (this.create) {
+            Iterator iterator = this.language.iterator();
+            if (iterator.hasNext()) this.axiom = ((Node)iterator.next()).getRule()[0];
+            
             this.terminals = this.createTerminals();
             this.nonTerminals = this.createNonterminals();
             this.termLanguage = this.createTerminalLang();
@@ -59,14 +55,14 @@ public class MyLang {
     public void leftRecursionTrace() {
         LinkedList lang = this.getLanguage();
         this.getTerminals();
-        int[] epsilon = this.getEpsilonNonterminals();
+        int[] epsilon = this.getEpsilonNonTerminals();
 
         for (Object o : lang) {
             Node i$ = (Node) o;
             int[] tmp = i$.getRule();
-            if (tmp.length == 1) i$.setTeg(1);
-            else if (i$.getRule()[1] > 0) i$.setTeg(1);
-            else i$.setTeg(0);
+            if (tmp.length == 1) i$.setTag(1);
+            else if (i$.getRule()[1] > 0) i$.setTag(1);
+            else i$.setTag(0);
         }
 
         boolean isRecursion = false;
@@ -81,7 +77,7 @@ public class MyLang {
                 }
 
                 var14 = (Node)var13.next();
-            } while (var14.getTeg() == 1);
+            } while (var14.getTag() == 1);
 
             int[] role = var14.getRule();
 
@@ -106,7 +102,7 @@ public class MyLang {
     public void rightRecursionTrace() {
         LinkedList lang = this.getLanguage();
         this.getTerminals();
-        int[] epsilon = this.getEpsilonNonterminals();
+        int[] epsilon = this.getEpsilonNonTerminals();
         Iterator i$ = lang.iterator();
 
         Node tmp2;
@@ -114,9 +110,9 @@ public class MyLang {
         while(i$.hasNext()) {
             tmp2 = (Node)i$.next();
             role = tmp2.getRule();
-            if(role.length == 1) tmp2.setTeg(1);
-            else if(role[role.length - 1] > 0) tmp2.setTeg(1);
-            else tmp2.setTeg(0);
+            if(role.length == 1) tmp2.setTag(1);
+            else if(role[role.length - 1] > 0) tmp2.setTag(1);
+            else tmp2.setTag(0);
         }
 
         boolean isRecursion = false;
@@ -130,7 +126,7 @@ public class MyLang {
                 }
 
                 tmp2 = (Node)i$.next();
-            } while (tmp2.getTeg() == 1);
+            } while (tmp2.getTag() == 1);
 
             role = tmp2.getRule();
 
@@ -263,7 +259,7 @@ public class MyLang {
         return localK;
     }
 
-    public void printLocalk() {
+    public void printLocalK() {
         LinkedList[] localK = this.getLocalKContext();
         this.getTerminals();
         int[] nonterm = this.getNonTerminals();
@@ -283,7 +279,7 @@ public class MyLang {
                     System.out.println();
                 }
 
-                System.out.println("} ");
+                System.out.println("}");
             }
         }
 
@@ -314,11 +310,11 @@ public class MyLang {
             while(true) {
                 int[] role1;
                 do {
-                    if(!i$1.hasNext()) continue label219;
+                    if (!i$1.hasNext()) continue label219;
 
                     Node tmp1 = (Node)i$1.next();
                     ++count1;
-                    if(tmp == tmp1) continue label219;
+                    if (tmp == tmp1) continue label219;
 
                     role1 = tmp1.getRule();
                 } while(role[0] != role1[0]);
@@ -328,11 +324,11 @@ public class MyLang {
 
                 Iterator i$2 = localK[ii].iterator();
 
-                while (true) while (true) {
+                while (true) {
                     if (!i$2.hasNext()) continue label217;
 
-                    LlkContext loctmp = (LlkContext) i$2.next();
-                    int counMult = 0;
+                    LlkContext locTmp = (LlkContext) i$2.next();
+                    int countMult = 0;
 
                     int j1;
                     int j2;
@@ -341,17 +337,17 @@ public class MyLang {
                             j2 = 0;
                             while (j2 < term.length && term[j2] != role[j1]) ++j2;
 
-                            tmpLlk[counMult++] = firstTerm[j2];
+                            tmpLlk[countMult++] = firstTerm[j2];
                         } else {
                             j2 = 0;
                             while (j2 < nonterm.length && nonterm[j2] != role[j1]) ++j2;
 
-                            tmpLlk[counMult++] = firstNonterm[j2];
+                            tmpLlk[countMult++] = firstNonterm[j2];
                         }
 
-                    tmpLlk[counMult++] = loctmp;
+                    tmpLlk[countMult++] = locTmp;
 
-                    for (j1 = 0; j1 < counMult; ++j1) {
+                    for (j1 = 0; j1 < countMult; ++j1) {
                         mult[j1] = 0;
                         maxmult[j1] = tmpLlk[j1].calcWords();
                     }
@@ -359,7 +355,7 @@ public class MyLang {
                     int realCalc = 0;
 
                     int minLength;
-                    for (j1 = 0; j1 < counMult; ++j1)
+                    for (j1 = 0; j1 < countMult; ++j1)
                         if (j1 == 0) realCalc = tmpLlk[j1].minLengthWord();
                         else {
                             minLength = tmpLlk[j1].minLengthWord();
@@ -377,31 +373,31 @@ public class MyLang {
                         result.addWord(llkWord);
                     } while (this.newCalcIndex(mult, maxmult, realCalc));
 
-                    counMult = 0;
+                    countMult = 0;
 
                     for (j1 = 1; j1 < role1.length; ++j1)
                         if (role1[j1] > 0) {
                             j2 = 0;
                             while (j2 < term.length && term[j2] != role1[j1]) ++j2;
 
-                            tmpLlk[counMult++] = firstTerm[j2];
+                            tmpLlk[countMult++] = firstTerm[j2];
                         } else {
                             j2 = 0;
                             while (j2 < nonterm.length && nonterm[j2] != role1[j1]) ++j2;
 
-                            tmpLlk[counMult++] = firstNonterm[j2];
+                            tmpLlk[countMult++] = firstNonterm[j2];
                         }
 
-                    tmpLlk[counMult++] = loctmp;
+                    tmpLlk[countMult++] = locTmp;
 
-                    for (j1 = 0; j1 < counMult; ++j1) {
+                    for (j1 = 0; j1 < countMult; ++j1) {
                         mult[j1] = 0;
                         maxmult[j1] = tmpLlk[j1].calcWords();
                     }
 
                     realCalc = 0;
 
-                    for (j1 = 0; j1 < counMult; ++j1)
+                    for (j1 = 0; j1 < countMult; ++j1)
                         if (j1 == 0) realCalc = tmpLlk[j1].minLengthWord();
                         else {
                             minLength = tmpLlk[j1].minLengthWord();
@@ -455,7 +451,7 @@ public class MyLang {
         return true;
     }
 
-    int indexNonterminal(int ssItem) {
+    int indexNonTerminal(int ssItem) {
         for (int ii = 0; ii < this.nonTerminals.length; ++ii) if (ssItem == this.nonTerminals[ii]) return ii;
         return 0;
     }
@@ -465,8 +461,8 @@ public class MyLang {
         return 0;
     }
 
-    int getLexemCode(byte[] lexema, int lexemaLen) {
-        Iterator i$ = this.lexemasTable.iterator();
+    int getLexemCode(byte[] lexem, int lexemLen) {
+        Iterator i$ = this.lexemsTable.iterator();
 
         String ss;
         int ii;
@@ -477,10 +473,10 @@ public class MyLang {
 
                 tmp = (TableNode)i$.next();
                 ss = tmp.getLexemText();
-            } while (ss.length() != lexemaLen);
+            } while (ss.length() != lexemLen);
 
             ii = 0;
-            while (ii < ss.length() && ss.charAt(ii) == (char)lexema[ii]) ++ii;
+            while (ii < ss.length() && ss.charAt(ii) == (char)lexem[ii]) ++ii;
         } while (ii != ss.length());
 
         return tmp.getLexemCode();
@@ -491,9 +487,10 @@ public class MyLang {
         if (this.terminals != null) for (int ii = 0; ii < this.terminals.length; ++ii) System.out.println("" + (ii + 1) + "  " + this.terminals[ii] + "\t " + this.getLexemText(this.terminals[ii]));
     }
 
-    public void printNonterminals() {
+    public void printNonTerminals() {
         System.out.println("СПИСОК НЕТЕРМІНАЛІВ:");
-        if (this.nonTerminals != null) for (int ii = 0; ii < this.nonTerminals.length; ++ii) System.out.println("" + (ii + 1) + "  " + this.nonTerminals[ii] + "\t " + this.getLexemText(this.nonTerminals[ii]));
+        if (this.nonTerminals != null) for (int ii = 0; ii < this.nonTerminals.length; ++ii)
+            System.out.println((ii + 1) + "  " + this.nonTerminals[ii] + "\t " + this.getLexemText(this.nonTerminals[ii]));
     }
 
     int[][] getUprTable() {
@@ -533,19 +530,19 @@ public class MyLang {
     public boolean createNonProdRools() {
         if(this.getNonTerminals().length == 0) return true;
         else {
-            int[] prodtmp = new int[this.getNonTerminals().length];
+            int[] prodTmp = new int[this.getNonTerminals().length];
             int count = 0;
             Iterator i$ = this.language.iterator();
 
             Node tmp;
             while(i$.hasNext()) {
                 tmp = (Node)i$.next();
-                tmp.setTeg(0);
+                tmp.setTag(0);
             }
 
             int ii;
             boolean upr;
-            int[] rool1;
+            int[] rule1;
             label117:
             do {
                 upr = false;
@@ -558,29 +555,29 @@ public class MyLang {
                             if (!i$.hasNext()) continue label117;
 
                             tmp = (Node)i$.next();
-                            rool1 = tmp.getRule();
-                        } while (tmp.getTeg() == 1);
+                            rule1 = tmp.getRule();
+                        } while (tmp.getTag() == 1);
 
-                        for (ii = 1; ii < rool1.length; ++ii)
-                            if (rool1[ii] <= 0) {
+                        for (ii = 1; ii < rule1.length; ++ii)
+                            if (rule1[ii] <= 0) {
                                 ii1 = 0;
-                                while (ii1 < count && prodtmp[ii1] != rool1[ii]) ++ii1;
+                                while (ii1 < count && prodTmp[ii1] != rule1[ii]) ++ii1;
 
                                 if (ii1 == count) break;
                             }
-                    } while (ii != rool1.length);
+                    } while (ii != rule1.length);
 
                     ii1 = 0;
-                    while (ii1 < count && prodtmp[ii1] != rool1[0]) ++ii1;
+                    while (ii1 < count && prodTmp[ii1] != rule1[0]) ++ii1;
 
-                    if(ii1 == count) prodtmp[count++] = rool1[0];
+                    if (ii1 == count) prodTmp[count++] = rule1[0];
 
-                    tmp.setTeg(1);
+                    tmp.setTag(1);
                     upr = true;
                 }
-            } while(upr);
+            } while (upr);
 
-            if(count == prodtmp.length) {
+            if (count == prodTmp.length) {
                 System.out.print("В граматиці непродуктивні правила відсутні\n");
                 return true;
             } else {
@@ -589,18 +586,18 @@ public class MyLang {
 
                 while(true) {
                     do {
-                        if(!i$.hasNext()) return false;
+                        if (!i$.hasNext()) return false;
 
                         tmp = (Node)i$.next();
-                    } while(tmp.getTeg() == 1);
+                    } while (tmp.getTag() == 1);
 
-                    rool1 = tmp.getRule();
+                    rule1 = tmp.getRule();
 
-                    for(ii = 0; ii < rool1.length; ++ii) {
-                        if(ii == 1) System.out.print(" ::= ");
+                    for (ii = 0; ii < rule1.length; ++ii) {
+                        if (ii == 1) System.out.print(" ::= ");
 
-                        System.out.print(this.getLexemText(rool1[ii]) + " ");
-                        if(rool1.length == 1) System.out.print(" ::= ");
+                        System.out.print(this.getLexemText(rule1[ii]) + " ");
+                        if (rule1.length == 1) System.out.print(" ::= ");
                     }
 
                     System.out.println();
@@ -609,16 +606,16 @@ public class MyLang {
         }
     }
 
-    public boolean createNonDosNeterminals() {
+    public boolean createNonDosNonTerminals() {
         int[] nonTerminals = this.getNonTerminals();
-        int[] dosnerminals = new int[nonTerminals.length];
+        int[] dosNonTerminals = new int[nonTerminals.length];
         int count = 0;
 
         Iterator i$ = this.language.iterator();
         Node tmp;
         if(i$.hasNext()) {
             tmp = (Node)i$.next();
-            dosnerminals[0] = tmp.getRule()[0];
+            dosNonTerminals[0] = tmp.getRule()[0];
             count = 1;
         }
 
@@ -631,24 +628,24 @@ public class MyLang {
             i$ = this.language.iterator();
 
             while(true) {
-                int[] rool1;
+                int[] rule1;
                 do {
                     if (!i$.hasNext()) continue label109;
 
                     tmp = (Node)i$.next();
-                    rool1 = tmp.getRule();
+                    rule1 = tmp.getRule();
 
                     ii = 0;
-                    while (ii < count && dosnerminals[ii] != rool1[0]) ++ii;
+                    while (ii < count && dosNonTerminals[ii] != rule1[0]) ++ii;
                 } while (ii == count);
 
-                for (ii = 1; ii < rool1.length; ++ii)
-                    if (rool1[ii] < 0) {
+                for (ii = 1; ii < rule1.length; ++ii)
+                    if (rule1[ii] < 0) {
                         ii1 = 0;
-                        while (ii1 < count && dosnerminals[ii1] != rool1[ii]) ++ii1;
+                        while (ii1 < count && dosNonTerminals[ii1] != rule1[ii]) ++ii1;
 
                         if (ii1 == count) {
-                            dosnerminals[count] = rool1[ii];
+                            dosNonTerminals[count] = rule1[ii];
                             upr = true;
                             ++count;
                         }
@@ -657,21 +654,22 @@ public class MyLang {
         } while(upr);
 
         int var12 = nonTerminals.length - count;
-        if(var12 == 0) {
+        if (var12 == 0) {
             System.out.println("В граматиці недосяжних нетерміналів немає");
             return true;
         } else {
-            int[] nonDosNeterminals = new int[var12];
+            int[] nonDosNonTerminals = new int[var12];
             var12 = 0;
 
             for (ii = 0; ii < nonTerminals.length; ++ii) {
                 ii1 = 0;
-                while (ii1 < count && nonTerminals[ii] != dosnerminals[ii1]) ++ii1;
+                while (ii1 < count && nonTerminals[ii] != dosNonTerminals[ii1]) ++ii1;
 
-                if (ii1 == count) nonDosNeterminals[var12++] = nonTerminals[ii];
+                if (ii1 == count) nonDosNonTerminals[var12++] = nonTerminals[ii];
             }
 
-            for (ii = 0; ii < nonDosNeterminals.length; ++ii) System.out.println("Недосяжний нетермінал: " + this.getLexemText(nonDosNeterminals[ii]) + "\n ");
+            for (ii = 0; ii < nonDosNonTerminals.length; ++ii)
+                System.out.println("Недосяжний нетермінал: " + this.getLexemText(nonDosNonTerminals[ii]) + "\n ");
 
             return false;
         }
@@ -679,12 +677,12 @@ public class MyLang {
 
     public boolean leftRecursNonTerminal() {
         int[] controlSet = new int[this.getNonTerminals().length];
-        int[] nontrm = this.getNonTerminals();
-        int[] eps = this.getEpsilonNonterminals();
+        int[] nonTrm = this.getNonTerminals();
+        int[] eps = this.getEpsilonNonTerminals();
         boolean upr;
         boolean upr1 = false;
 
-        for (int i : nontrm) {
+        for (int i : nonTrm) {
             int count = 0;
             int count1 = 1;
             upr = false;
@@ -695,30 +693,30 @@ public class MyLang {
 
                 label94:
                 while (true) {
-                    int[] rool1;
+                    int[] rule1;
                     do {
                         if (!i$.hasNext()) break label94;
 
                         Node tmp = (Node) i$.next();
-                        rool1 = tmp.getRule();
-                    } while (rool1[0] != controlSet[count]);
+                        rule1 = tmp.getRule();
+                    } while (rule1[0] != controlSet[count]);
 
                     int ii1;
-                    for (ii1 = 1; ii1 < rool1.length && rool1[ii1] <= 0 && rool1[ii1] != controlSet[0]; ++ii1) {
+                    for (ii1 = 1; ii1 < rule1.length && rule1[ii1] <= 0 && rule1[ii1] != controlSet[0]; ++ii1) {
                         int ii2 = 0;
-                        while (ii2 < count1 && rool1[ii1] != controlSet[ii2]) ++ii2;
+                        while (ii2 < count1 && rule1[ii1] != controlSet[ii2]) ++ii2;
 
-                        if (ii2 == count1) controlSet[count1++] = rool1[ii1];
+                        if (ii2 == count1) controlSet[count1++] = rule1[ii1];
 
                         if (eps == null) break;
 
                         ii2 = 0;
-                        while (ii2 < eps.length && rool1[ii1] != eps[ii2]) ++ii2;
+                        while (ii2 < eps.length && rule1[ii1] != eps[ii2]) ++ii2;
 
                         if (ii2 == eps.length) break;
                     }
 
-                    if (ii1 != rool1.length && rool1[ii1] == controlSet[0]) {
+                    if (ii1 != rule1.length && rule1[ii1] == controlSet[0]) {
                         System.out.print("Нетермінал: " + this.getLexemText(controlSet[0]) + " ліворекурсивний \n");
                         upr = true;
                         upr1 = true;
@@ -732,7 +730,7 @@ public class MyLang {
             } while (count < count1);
         }
 
-        if(!upr1) {
+        if (!upr1) {
             System.out.print("В граматиці відсутні ліворекурсивні нетермінали \n");
             return false;
         } else return true;
@@ -740,12 +738,12 @@ public class MyLang {
 
     public boolean rightRecursNonTerminal() {
         int[] controlSet = new int[this.getNonTerminals().length];
-        int[] nontrm = this.getNonTerminals();
-        int[] eps = this.getEpsilonNonterminals();
+        int[] nonTerminals = this.getNonTerminals();
+        int[] eps = this.getEpsilonNonTerminals();
         boolean upr;
         boolean upr1 = false;
 
-        for (int i : nontrm) {
+        for (int i : nonTerminals) {
             int count = 0;
             int count1 = 1;
             upr = false;
@@ -756,30 +754,30 @@ public class MyLang {
 
                 label94:
                 while (true) {
-                    int[] rool1;
+                    int[] rule1;
                     do {
                         if (!i$.hasNext()) break label94;
 
                         Node tmp = (Node) i$.next();
-                        rool1 = tmp.getRule();
-                    } while (rool1[0] != controlSet[count]);
+                        rule1 = tmp.getRule();
+                    } while (rule1[0] != controlSet[count]);
 
                     int ii1;
-                    for (ii1 = rool1.length - 1; ii1 > 0 && rool1[ii1] <= 0 && rool1[ii1] != controlSet[0]; --ii1) {
+                    for (ii1 = rule1.length - 1; ii1 > 0 && rule1[ii1] <= 0 && rule1[ii1] != controlSet[0]; --ii1) {
                         int ii2 = 0;
-                        while (ii2 < count1 && rool1[ii1] != controlSet[ii2]) ++ii2;
+                        while (ii2 < count1 && rule1[ii1] != controlSet[ii2]) ++ii2;
 
-                        if (ii2 == count1) controlSet[count1++] = rool1[ii1];
+                        if (ii2 == count1) controlSet[count1++] = rule1[ii1];
 
                         if (eps == null) break;
 
                         ii2 = 0;
-                        while (ii2 < eps.length && rool1[ii1] != eps[ii2]) ++ii2;
+                        while (ii2 < eps.length && rule1[ii1] != eps[ii2]) ++ii2;
 
                         if (ii2 == eps.length) break;
                     }
 
-                    if (ii1 != 0 && rool1[ii1] == controlSet[0]) {
+                    if (ii1 != 0 && rule1[ii1] == controlSet[0]) {
                         System.out.print("Нетермінал: " + this.getLexemText(controlSet[0]) + " праворекурсивний \n");
                         upr = true;
                         upr1 = true;
@@ -793,7 +791,7 @@ public class MyLang {
             } while (count < count1);
         }
 
-        if(!upr1) {
+        if (!upr1) {
             System.out.print("В граматиці відсутні праворекурсивні нетермінали \n");
             return false;
         } else return true;
@@ -805,14 +803,13 @@ public class MyLang {
         int[] term = this.getTerminals();
         int[] nonterm = this.getNonTerminals();
         LlkContext[] llkTrmContext = this.getLlkTrmContext();
-        LlkContext[] rezult = new LlkContext[nonterm.length];
+        LlkContext[] result = new LlkContext[nonterm.length];
         LlkContext[] tmpLlk = new LlkContext[40];
         int[] mult = new int[40];
         int[] maxmult = new int[40];
         int iter = 0;
 
-        int ii;
-        for(ii = 0; ii < rezult.length; ++ii) rezult[ii] = new LlkContext();
+        for (int ii = 0; ii < result.length; ++ii) result[ii] = new LlkContext();
 
         label125:
         do {
@@ -827,33 +824,33 @@ public class MyLang {
                 if (!i$.hasNext()) continue label125;
 
                 Node tmp = (Node) i$.next();
-                int[] tmprole = tmp.getRule();
+                int[] tmpRule = tmp.getRule();
 
-                ii = 0;
-                while (ii < nonterm.length && tmprole[0] != nonterm[ii]) ++ii;
+                int ii = 0;
+                while (ii < nonterm.length && tmpRule[0] != nonterm[ii]) ++ii;
 
-                if (tmprole.length == 1) {
-                    if (rezult[ii].addWord(new int[0])) upr = true;
+                if (tmpRule.length == 1) {
+                    if (result[ii].addWord(new int[0])) upr = true;
                 } else {
                     int ii0;
                     int ii1;
-                    for (ii0 = 1; ii0 < tmprole.length; ++ii0)
-                        if (tmprole[ii0] > 0) {
+                    for (ii0 = 1; ii0 < tmpRule.length; ++ii0)
+                        if (tmpRule[ii0] > 0) {
                             ii1 = 0;
-                            while (ii1 < term.length && term[ii1] != tmprole[ii0]) ++ii1;
+                            while (ii1 < term.length && term[ii1] != tmpRule[ii0]) ++ii1;
 
                             tmpLlk[ii0 - 1] = llkTrmContext[ii1];
                         } else {
                             ii1 = 0;
-                            while (ii1 < nonterm.length && nonterm[ii1] != tmprole[ii0]) ++ii1;
+                            while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[ii0]) ++ii1;
 
-                            if (rezult[ii1].calcWords() == 0) break;
+                            if (result[ii1].calcWords() == 0) break;
 
-                            tmpLlk[ii0 - 1] = rezult[ii1];
+                            tmpLlk[ii0 - 1] = result[ii1];
                         }
 
-                    if (ii0 == tmprole.length) {
-                        int multCount = tmprole.length - 1;
+                    if (ii0 == tmpRule.length) {
+                        int multCount = tmpRule.length - 1;
 
                         for (ii1 = 0; ii1 < multCount; ++ii1) {
                             mult[ii1] = 0;
@@ -875,16 +872,16 @@ public class MyLang {
 
                         do {
                             llkWord = this.newWord(this.getLlkConst(), tmpLlk, mult, realCalc);
-                            if (rezult[ii].addWord(llkWord)) upr = true;
+                            if (result[ii].addWord(llkWord)) upr = true;
 
                         } while (this.newCalcIndex(mult, maxmult, realCalc));
                     }
                 }
             }
-        } while(upr);
+        } while (upr);
 
         System.out.println("Кінець пошуку множин FIRSTk");
-        return rezult;
+        return result;
     }
 
     public LlkContext[] followK() {
@@ -899,12 +896,11 @@ public class MyLang {
         int[] maxmult = new int[40];
         int iter = 0;
 
-        int ii;
-        for(ii = 0; ii < result.length; ++ii) result[ii] = new LlkContext();
+        for(int ii = 0; ii < result.length; ++ii) result[ii] = new LlkContext();
 
-        int axiom = this.getAxioma();
+        int axiom = this.getAxiom();
 
-        ii = 0;
+        int ii = 0;
         while (ii < nonterm.length && nonterm[ii] != axiom) ++ii;
 
         result[ii].addWord(new int[0]);
@@ -920,35 +916,35 @@ public class MyLang {
             Iterator i$ = lan.iterator();
 
             while (true) {
-                int[] tmprole;
+                int[] tmpRule;
                 do {
                     if (!i$.hasNext()) continue label149;
 
                     Node tmp = (Node)i$.next();
-                    tmprole = tmp.getRule();
+                    tmpRule = tmp.getRule();
 
                     ii = 0;
-                    while (ii < nonterm.length && tmprole[0] != nonterm[ii]) ++ii;
+                    while (ii < nonterm.length && tmpRule[0] != nonterm[ii]) ++ii;
 
                     if(ii == nonterm.length) return null;
                 } while (result[ii].calcWords() == 0);
 
                 int leftItem = ii;
 
-                for(int jj = 1; jj < tmprole.length; ++jj)
-                    if (tmprole[jj] <= 0) {
+                for(int jj = 1; jj < tmpRule.length; ++jj)
+                    if (tmpRule[jj] <= 0) {
                         int multCount = 0;
 
                         int ii1;
-                        for (int ii0 = jj + 1; ii0 < tmprole.length; ++ii0)
-                            if (tmprole[ii0] > 0) {
+                        for (int ii0 = jj + 1; ii0 < tmpRule.length; ++ii0)
+                            if (tmpRule[ii0] > 0) {
                                 ii1 = 0;
-                                while (ii1 < term.length && term[ii1] != tmprole[ii0]) ++ii1;
+                                while (ii1 < term.length && term[ii1] != tmpRule[ii0]) ++ii1;
 
                                 tmpLlk[multCount++] = llkTrmContext[ii1];
                             } else {
                                 ii1 = 0;
-                                while (ii1 < nonterm.length && nonterm[ii1] != tmprole[ii0]) ++ii1;
+                                while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[ii0]) ++ii1;
 
                                 tmpLlk[multCount++] = firstK[ii1];
                             }
@@ -974,7 +970,7 @@ public class MyLang {
                         realCalc = ii1;
 
                         ii1 = 0;
-                        while (ii1 < nonterm.length && nonterm[ii1] != tmprole[jj]) ++ii1;
+                        while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[jj]) ++ii1;
 
                         do {
                             int[] llkWord = this.newWord(this.getLlkConst(), tmpLlk, mult, realCalc);
@@ -983,7 +979,7 @@ public class MyLang {
                         } while (this.newCalcIndex(mult, maxmult, realCalc));
                     }
             }
-        } while(upr);
+        } while (upr);
 
         System.out.println("Кінець пошуку множин FollowK");
         return result;
@@ -998,19 +994,19 @@ public class MyLang {
         int[] maxmult = new int[40];
 
         for (Node tmp : this.getLanguage()) {
-            int[] tmprole = tmp.getRule();
+            int[] tmpRule = tmp.getRule();
             int multCount = 0;
 
             int ii1;
-            for (int ii = 1; ii < tmprole.length; ++ii) {
-                if (tmprole[ii] > 0) {
+            for (int ii = 1; ii < tmpRule.length; ++ii) {
+                if (tmpRule[ii] > 0) {
                     ii1 = 0;
-                    while (ii1 < term.length && term[ii1] != tmprole[ii]) ++ii1;
+                    while (ii1 < term.length && term[ii1] != tmpRule[ii]) ++ii1;
 
                     tmpLlk[multCount] = llkTrmContext[ii1];
                 } else {
                     ii1 = 0;
-                    while (ii1 < nonterm.length && nonterm[ii1] != tmprole[ii]) ++ii1;
+                    while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[ii]) ++ii1;
 
                     tmpLlk[multCount] = this.firstK[ii1];
                 }
@@ -1019,7 +1015,7 @@ public class MyLang {
             }
 
             ii1 = 0;
-            while (ii1 < nonterm.length && nonterm[ii1] != tmprole[0]) ++ii1;
+            while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[0]) ++ii1;
 
             tmpLlk[multCount++] = this.followK[ii1];
 
@@ -1040,20 +1036,20 @@ public class MyLang {
                 }
 
             realCalc = ii1;
-            LlkContext rezult = new LlkContext();
+            LlkContext result = new LlkContext();
 
             do {
                 int[] llkWord = this.newWord(this.getLlkConst(), tmpLlk, mult, realCalc);
-                rezult.addWord(llkWord);
+                result.addWord(llkWord);
             } while (this.newCalcIndex(mult, maxmult, realCalc));
 
-            tmp.addFirstFollowK(rezult);
+            tmp.addFirstFollowK(result);
         }
 
         System.out.println("Множини FirstK(w)+ FollowK(A): А->w побудовані ");
     }
 
-    public void firstKforRoole() {
+    public void firstKForRule() {
         int[] term = this.getTerminals();
         int[] nonterm = this.getNonTerminals();
         LlkContext[] llkTrmContext = this.getLlkTrmContext();
@@ -1062,25 +1058,25 @@ public class MyLang {
         int[] maxmult = new int[40];
 
         for (Node tmp : this.getLanguage()) {
-            int[] tmprole = tmp.getRule();
-            LlkContext rezult;
-            if (tmprole.length == 1) {
-                rezult = new LlkContext();
-                rezult.addWord(new int[0]);
-                tmp.addFirstKForRoole(rezult);
+            int[] tmpRule = tmp.getRule();
+            LlkContext result;
+            if (tmpRule.length == 1) {
+                result = new LlkContext();
+                result.addWord(new int[0]);
+                tmp.addFirstKForRoole(result);
             } else {
                 int var18 = 0;
 
                 int ii1;
-                for (int ii = 1; ii < tmprole.length; ++var18) {
-                    if (tmprole[ii] > 0) {
+                for (int ii = 1; ii < tmpRule.length; ++var18) {
+                    if (tmpRule[ii] > 0) {
                         ii1 = 0;
-                        while (ii1 < term.length && term[ii1] != tmprole[ii]) ++ii1;
+                        while (ii1 < term.length && term[ii1] != tmpRule[ii]) ++ii1;
 
                         tmpLlk[var18] = llkTrmContext[ii1];
                     } else {
                         ii1 = 0;
-                        while (ii1 < nonterm.length && nonterm[ii1] != tmprole[ii]) ++ii1;
+                        while (ii1 < nonterm.length && nonterm[ii1] != tmpRule[ii]) ++ii1;
 
                         tmpLlk[var18] = this.firstK[ii1];
                     }
@@ -1105,39 +1101,39 @@ public class MyLang {
                     }
 
                 realCalc = ii1;
-                rezult = new LlkContext();
+                result = new LlkContext();
 
                 do {
                     int[] llkWord = this.newWord(this.getLlkConst(), tmpLlk, mult, realCalc);
-                    rezult.addWord(llkWord);
+                    result.addWord(llkWord);
                 } while (this.newCalcIndex(mult, maxmult, realCalc));
 
-                tmp.addFirstKForRoole(rezult);
+                tmp.addFirstKForRoole(result);
             }
         }
 
         System.out.println("Множини FirstK(w): А->w побудовані ");
     }
 
-    public void printFirstContextForRoole() {
+    public void printFirstContextForRule() {
         this.getNonTerminals();
         int number = 0;
         Iterator i$ = this.getLanguage().iterator();
 
         while (true) {
-            LlkContext rezultForRoole;
+            LlkContext resultForRule;
             do {
                 if (!i$.hasNext()) return;
 
                 Node tmp = (Node)i$.next();
                 ++number;
-                rezultForRoole = tmp.getFirstKForRoole();
-            } while (rezultForRoole == null);
+                resultForRule = tmp.getFirstKForRoole();
+            } while (resultForRule == null);
 
             System.out.println("FirstK(W), W - права частина правила " + number);
 
-            for (int ii = 0; ii < rezultForRoole.calcWords(); ++ii) {
-                int[] word = rezultForRoole.getWord(ii);
+            for (int ii = 0; ii < resultForRule.calcWords(); ++ii) {
+                int[] word = resultForRule.getWord(ii);
                 if (word.length == 0) System.out.print("Е-слово");
                 else for (int i : word) System.out.print(this.getLexemText(i) + " ");
 
@@ -1146,7 +1142,7 @@ public class MyLang {
         }
     }
 
-    public void printFirstkContext() {
+    public void printFirstKContext() {
         int[] nonterm = this.getNonTerminals();
         LlkContext[] firstContext = this.getFirstK();
         if (firstContext != null) for (int j = 0; j < nonterm.length; ++j) {
@@ -1163,7 +1159,7 @@ public class MyLang {
         }
     }
 
-    public void printFollowkContext() {
+    public void printFollowKContext() {
         int[] nonterm = this.getNonTerminals();
         LlkContext[] followContext = this.getFollowK();
 
@@ -1173,7 +1169,7 @@ public class MyLang {
 
             for (int ii = 0; ii < tmp.calcWords(); ++ii) {
                 int[] word = tmp.getWord(ii);
-                if(word.length == 0) System.out.print("Е-слово");
+                if (word.length == 0) System.out.print("Е-слово");
                 else for (int i : word) System.out.print(this.getLexemText(i) + " ");
 
                 System.out.println();
@@ -1263,14 +1259,14 @@ public class MyLang {
                             System.out.println(
                                     "пара " + this.getLexemText(firstProductionRuleLexemCodes[0]) + "-правил " +
                                     "(" + secondProductionRuleNumber + ", " + firstProductionRuleNumber + ") " +
-                                    "не задовольняють сильну LL(" + this.getLlkConst() + ")-умову");
+                                    "не задовольняє сильну LL(" + this.getLlkConst() + ")-умову");
                             return false;
                         }
                 }
             }
         }
 
-        System.out.println("Граматика задовольняює сильну LL(" + this.getLlkConst() + ")-умову");
+        System.out.println("Граматика задовольняє сильну LL(" + this.getLlkConst() + ")-умову");
         return true;
     }
 
@@ -1286,26 +1282,26 @@ public class MyLang {
             int ii;
             for (int ii1 = 0; ii1 < nonterm.length; ++ii1) for (ii = 0; ii < term.length + 1; ++ii) upr[ii1][ii] = 0;
 
-            int rowline = 0;
+            int rowLine = 0;
 
             for (Node tmp : this.getLanguage()) {
-                ++rowline;
+                ++rowLine;
                 int[] role = tmp.getRule();
-                int rowindex = this.indexNonterminal(role[0]);
+                int rowIndex = this.indexNonTerminal(role[0]);
                 LlkContext cont = tmp.getFirstFollowK();
 
                 for (ii = 0; ii < cont.calcWords(); ++ii) {
                     int[] word = cont.getWord(ii);
-                    int colindex;
-                    if (word.length == 0) colindex = this.getTerminals().length;
-                    else colindex = this.indexTerminal(word[0]);
+                    int colIndex;
+                    if (word.length == 0) colIndex = this.getTerminals().length;
+                    else colIndex = this.indexTerminal(word[0]);
 
-                    if (upr[rowindex][colindex] != 0) {
-                        System.out.println("При побудові таблиці управління для нетермінала " + this.getLexemText(nonterm[rowindex]) + " порушшено LL(1)-властивість");
+                    if (upr[rowIndex][colIndex] != 0) {
+                        System.out.println("При побудові таблиці управління для нетермінала " + this.getLexemText(nonterm[rowIndex]) + " порушшено LL(1)-властивість");
                         return null;
                     }
 
-                    upr[rowindex][colindex] = rowline;
+                    upr[rowIndex][colIndex] = rowLine;
                 }
             }
 
@@ -1331,7 +1327,7 @@ public class MyLang {
             for (Node tmp : this.getLanguage()) {
                 ++rowline;
                 int[] role = tmp.getRule();
-                int rowindex = this.indexNonterminal(role[0]);
+                int rowindex = this.indexNonTerminal(role[0]);
                 LlkContext cont = tmp.getFirstFollowK();
 
                 for (ii = 0; ii < cont.calcWords(); ++ii) {
@@ -1387,15 +1383,15 @@ public class MyLang {
         return this.LLK;
     }
 
-    private int getLexemCode(String lexema, int lexemaClass) {
-        Iterator i$ = this.lexemasTable.iterator();
+    private int getLexemCode(String lexem, int lexemClass) {
+        Iterator i$ = this.lexemsTable.iterator();
 
         TableNode tmp;
         do {
             if (!i$.hasNext()) return 0;
 
             tmp = (TableNode)i$.next();
-        } while (!tmp.getLexemText().equals(lexema) || (tmp.getLexemCode() & -16777216) != lexemaClass);
+        } while (!tmp.getLexemText().equals(lexem) || (tmp.getLexemCode() & -16777216) != lexemClass);
 
         return tmp.getLexemCode();
     }
@@ -1417,7 +1413,7 @@ public class MyLang {
     }
 
     String getLexemText(int code) {
-        Iterator i$ = this.lexemasTable.iterator();
+        Iterator i$ = this.lexemsTable.iterator();
 
         TableNode tmp;
         do {
@@ -1437,7 +1433,7 @@ public class MyLang {
         return this.nonTerminals;
     }
 
-    private int[] getEpsilonNonterminals() {
+    private int[] getEpsilonNonTerminals() {
         return this.epsilonTerminals;
     }
 
@@ -1445,24 +1441,25 @@ public class MyLang {
         return this.language;
     }
 
-    public void printEpsilonNonterminals() {
+    public void printEpsilonNonTerminals() {
         System.out.println("СПИСОК E-терміналів:");
-        if (this.epsilonTerminals != null) for (int epsilonTerminal : this.epsilonTerminals) System.out.println("" + epsilonTerminal + "\t" + this.getLexemText(epsilonTerminal));
+        if (this.epsilonTerminals != null) for (int epsilonTerminal : this.epsilonTerminals)
+            System.out.println("" + epsilonTerminal + "\t" + this.getLexemText(epsilonTerminal));
     }
 
-    public void setEpsilonNonterminals(int[] eps) {
+    public void setEpsilonNonTerminals(int[] eps) {
         this.epsilonTerminals = eps;
     }
 
-    public int[] createEpsilonNonterminals() {
+    public int[] createEpsilonNonTerminals() {
         int[] terminal = new int[this.nonTerminals.length];
         int count = 0;
         Iterator result = this.language.iterator();
 
         Node tmp;
-        while(result.hasNext()) {
+        while (result.hasNext()) {
             tmp = (Node)result.next();
-            tmp.setTeg(0);
+            tmp.setTag(0);
         }
 
         boolean upr;
@@ -1527,7 +1524,7 @@ public class MyLang {
 
     private int[] createTerminals() {
         int count = 0;
-        Iterator i$ = this.lexemasTable.iterator();
+        Iterator i$ = this.lexemsTable.iterator();
 
         TableNode tmp;
         while(i$.hasNext()) {
@@ -1537,7 +1534,7 @@ public class MyLang {
 
         int[] terminal = new int[count];
         count = 0;
-        i$ = this.lexemasTable.iterator();
+        i$ = this.lexemsTable.iterator();
 
         while(i$.hasNext()) {
             tmp = (TableNode)i$.next();
@@ -1552,7 +1549,7 @@ public class MyLang {
 
     private int[] createNonterminals() {
         int count = 0;
-        Iterator i$ = this.lexemasTable.iterator();
+        Iterator i$ = this.lexemsTable.iterator();
 
         TableNode tmp;
         while(i$.hasNext()) {
@@ -1560,43 +1557,43 @@ public class MyLang {
             if(tmp.getLexemCode() < 0) ++count;
         }
 
-        int[] nonterminal = new int[count];
+        int[] nonTerminal = new int[count];
         count = 0;
-        i$ = this.lexemasTable.iterator();
+        i$ = this.lexemsTable.iterator();
 
         while(i$.hasNext()) {
             tmp = (TableNode)i$.next();
             if(tmp.getLexemCode() < 0) {
-                nonterminal[count] = tmp.getLexemCode();
+                nonTerminal[count] = tmp.getLexemCode();
                 ++count;
             }
         }
 
-        return nonterminal;
+        return nonTerminal;
     }
 
-    private void setAxioma(int axiom0) {
+    private void setAxiom(int axiom0) {
         this.axiom = axiom0;
     }
 
-    int getAxioma() {
+    int getAxiom() {
         return this.axiom;
     }
 
-    private void readGrammar(String fname) {
-        char[] lexema = new char[180];
-        int[] roole = new int[80];
+    private void readGrammar(String filename) {
+        char[] lexem = new char[180];
+        int[] rule = new int[80];
 
         BufferedReader s;
         try {
-            s = new BufferedReader(new FileReader(fname.trim()));
+            s = new BufferedReader(new FileReader(filename.trim()));
         } catch (FileNotFoundException var24) {
-            System.out.print("Файл:" + fname.trim() + " не відкрито\n");
+            System.out.print("Файл:" + filename.trim() + " не відкрито\n");
             this.create = false;
             return;
         }
 
-        for(int pravilo = 0; pravilo < lexema.length; ++pravilo) lexema[pravilo] = 0;
+        for (int i = 0; i < lexem.length; ++i) lexem[i] = 0;
 
         int[] var27 = new int[80];
 
@@ -1605,113 +1602,113 @@ public class MyLang {
 
         int pos = 0;
         byte q = 0;
-        int posRoole = 0;
+        int posRule = 0;
         line = 0;
         String readline = null;
-        int readpos = 0;
+        int readPos = 0;
         int readlen = 0;
 
         try {
-            int newLexemaCode;
+            int newLexemCode;
             TableNode nodeTmp;
             Node nod;
-            while(s.ready()) {
-                if(readline == null || readpos >= readlen) {
+            while (s.ready()) {
+                if (readline == null || readPos >= readlen) {
                     readline = s.readLine();
-                    if(line == 0 && readline.charAt(0) == '\ufeff') readline = readline.substring(1);
+                    if (line == 0 && readline.charAt(0) == '\ufeff') readline = readline.substring(1);
 
                     readlen = readline.length();
                     ++line;
                 }
 
-                for(readpos = 0; readpos < readlen; ++readpos) {
-                    char litera = readline.charAt(readpos);
+                for (readPos = 0; readPos < readlen; ++readPos) {
+                    char letter = readline.charAt(readPos);
                     String e;
                     boolean strTmp;
-                    Iterator ii;
-                    TableNode i$;
-                    switch(q) {
+                    Iterator iterator;
+                    TableNode iterator1;
+                    switch (q) {
                         case 0:
-                            if (litera == 32 || litera == 9 || litera == 13 || litera == 10 || litera == 8) break;
+                            if (letter == 32 || letter == 9 || letter == 13 || letter == 10 || letter == 8) break;
 
-                            if (readpos == 0 && posRoole > 0 && (litera == 33 || litera == 35)) {
-                                nod = new Node(roole, posRoole);
+                            if (readPos == 0 && posRule > 0 && (letter == 33 || letter == 35)) {
+                                nod = new Node(rule, posRule);
                                 this.language.add(nod);
-                                if (litera == 33) {
-                                    posRoole = 1;
+                                if (letter == 33) {
+                                    posRule = 1;
                                     break;
                                 }
 
-                                posRoole = 0;
+                                posRule = 0;
                             }
 
                             byte var26 = 0;
                             pos = var26 + 1;
-                            lexema[var26] = litera;
-                            if (litera == 35) q = 1;
-                            else if(litera == 92) {
+                            lexem[var26] = letter;
+                            if (letter == 35) q = 1;
+                            else if (letter == 92) {
                                 --pos;
                                 q = 3;
                             } else q = 2;
                             break;
                         case 1:
-                            lexema[pos++] = litera;
-                            if(litera != 35 && readpos != 0) break;
+                            lexem[pos++] = letter;
+                            if(letter != 35 && readPos != 0) break;
 
-                            e = new String(lexema, 0, pos);
+                            e = new String(lexem, 0, pos);
                             nodeTmp = new TableNode(e, -2147483648);
                             strTmp = true;
-                            ii = this.lexemasTable.iterator();
+                            iterator = this.lexemsTable.iterator();
 
-                            while(ii.hasNext()) {
-                                i$ = (TableNode)ii.next();
-                                if(nodeTmp.equals(i$)) {
+                            while (iterator.hasNext()) {
+                                iterator1 = (TableNode)iterator.next();
+                                if (nodeTmp.equals(iterator1)) {
                                     strTmp = false;
                                     break;
                                 }
                             }
 
-                            if(strTmp) this.lexemasTable.add(nodeTmp);
+                            if (strTmp) this.lexemsTable.add(nodeTmp);
 
-                            newLexemaCode = this.getLexemCode(e, -2147483648);
-                            roole[posRoole++] = newLexemaCode;
+                            newLexemCode = this.getLexemCode(e, -2147483648);
+                            rule[posRule++] = newLexemCode;
                             pos = 0;
                             q = 0;
                             break;
                         case 2:
-                            if(litera == 92) {
+                            if(letter == 92) {
                                 --pos;
                                 q = 3;
                             } else {
-                                if(litera != 32 && readpos != 0 && litera != 35 && litera != 13 && litera != 9) {
-                                    lexema[pos++] = litera;
+                                if(letter != 32 && readPos != 0 && letter != 35 && letter != 13 && letter != 9) {
+                                    lexem[pos++] = letter;
                                     continue;
                                 }
 
-                                e = new String(lexema, 0, pos);
+                                e = new String(lexem, 0, pos);
                                 nodeTmp = new TableNode(e, 268435456);
                                 strTmp = true;
-                                ii = this.lexemasTable.iterator();
+                                iterator = this.lexemsTable.iterator();
 
-                                while(ii.hasNext()) {
-                                    i$ = (TableNode)ii.next();
-                                    if(nodeTmp.equals(i$)) {
+                                while(iterator.hasNext()) {
+                                    iterator1 = (TableNode)iterator.next();
+                                    if(nodeTmp.equals(iterator1)) {
                                         strTmp = false;
                                         break;
                                     }
                                 }
 
-                                if(strTmp) this.lexemasTable.add(nodeTmp);
+                                if(strTmp) this.lexemsTable.add(nodeTmp);
 
-                                newLexemaCode = this.getLexemCode(e, 268435456);
-                                roole[posRoole++] = newLexemaCode;
+                                newLexemCode = this.getLexemCode(e, 268435456);
+                                rule[posRule++] = newLexemCode;
                                 pos = 0;
                                 q = 0;
-                                --readpos;
+                                --readPos;
                             }
                             break;
                         case 3:
-                            lexema[pos++] = litera;
+                            lexem[pos++] = letter;
                             q = 2;
                     }
                 }
@@ -1722,24 +1719,24 @@ public class MyLang {
                 if (q == 1) var29 = -2147483648;
                 else var29 = 268435456;
 
-                String var31 = new String(lexema, 0, pos);
+                String var31 = new String(lexem, 0, pos);
                 nodeTmp = new TableNode(var31, var29);
                 boolean var30 = true;
 
-                for (TableNode tmp : this.lexemasTable)
+                for (TableNode tmp : this.lexemsTable)
                     if (nodeTmp.equals(tmp)) {
                         var30 = false;
                         break;
                     }
 
-                if (var30) this.lexemasTable.add(nodeTmp);
+                if (var30) this.lexemsTable.add(nodeTmp);
 
-                newLexemaCode = this.getLexemCode(var31, var29);
-                roole[posRoole++] = newLexemaCode;
+                newLexemCode = this.getLexemCode(var31, var29);
+                rule[posRule++] = newLexemCode;
             }
 
-            if (posRoole > 0) {
-                nod = new Node(roole, posRoole);
+            if (posRule > 0) {
+                nod = new Node(rule, posRule);
                 this.language.add(nod);
             }
 
@@ -1773,7 +1770,7 @@ public class MyLang {
         }
 
         private boolean searchLeftRecursion(MyLang lang) {
-            int[] epsilon = lang.getEpsilonNonterminals();
+            int[] epsilon = lang.getEpsilonNonTerminals();
             MyLang.TmpList tmpLst = this;
             while (tmpLst.treeFather != null) tmpLst = tmpLst.treeFather;
 
@@ -1793,7 +1790,7 @@ public class MyLang {
                             if (!i$.hasNext()) return false;
 
                             tmp = (Node) i$.next();
-                        } while (tmp.getTeg() == 1); while (this.roleInTree(tmp));
+                        } while (tmp.getTag() == 1); while (this.roleInTree(tmp));
 
                         role = tmp.getRule();
                     } while (role[0] != this.treeNode.getRule()[this.treePos]);
@@ -1835,7 +1832,7 @@ public class MyLang {
         }
 
         private boolean searchRightRecursion(MyLang lang) {
-            int[] epsilon = lang.getEpsilonNonterminals();
+            int[] epsilon = lang.getEpsilonNonTerminals();
 
             MyLang.TmpList tmpLst = this;
             while (tmpLst.treeFather != null) tmpLst = tmpLst.treeFather;
@@ -1843,25 +1840,25 @@ public class MyLang {
             Node root = tmpLst.treeNode;
             if (root.getRule()[0] == this.treeNode.getRule()[this.treePos]) {
                 System.out.println("\nПраворекурсивний вивод:");
-                this.printRigthRecurion(lang);
+                this.printRightRecursion(lang);
                 return true;
             } else {
                 Iterator i$ = lang.getLanguage().iterator();
 
-                while(true) {
+                while (true) {
                     Node tmp;
-                    int[] role;
-                    do do do {
-                        do do {
+                    int[] rule;
+                    do {
+                        do {
                             if (!i$.hasNext()) return false;
 
                             tmp = (Node) i$.next();
-                        } while (tmp.getTeg() == 1); while (this.roleInTree(tmp));
+                        } while (tmp.getTag() == 1 && this.roleInTree(tmp));
 
-                        role = tmp.getRule();
-                    } while (role.length <= 1); while (role[role.length - 1] > 0); while(role[0] != this.treeNode.getRule()[this.treePos]);
+                        rule = tmp.getRule();
+                    } while (rule.length <= 1 && rule[rule.length - 1] > 0 && rule[0] != this.treeNode.getRule()[this.treePos]);
 
-                    for (int ii = role.length - 1; ii > 0 && role[ii] <= 0; --ii) {
+                    for (int ii = rule.length - 1; ii > 0 && rule[ii] <= 0; --ii) {
                         MyLang.TmpList tree1 = MyLang.this.new TmpList(this, tmp, ii);
                         if (tree1.searchRightRecursion(lang)) {
                             tree1.destroy();
@@ -1871,7 +1868,7 @@ public class MyLang {
                         tree1.destroy();
 
                         int ii1 = 0;
-                        while (ii1 < epsilon.length && epsilon[ii1] != role[ii]) ++ii1;
+                        while (ii1 < epsilon.length && epsilon[ii1] != rule[ii]) ++ii1;
 
                         if (ii1 == epsilon.length) break;
                     }
@@ -1879,22 +1876,22 @@ public class MyLang {
             }
         }
 
-        private void printRigthRecurion(MyLang lang) {
-            if(this.treeFather != null) {
+        private void printRightRecursion(MyLang lang) {
+            if (this.treeFather != null) {
                 MyLang.TmpList tmp = this.treeFather;
-                tmp.printRigthRecurion(lang);
+                tmp.printRightRecursion(lang);
             }
 
-            int[] tmpRole = this.treeNode.getRule();
+            int[] tmpRule = this.treeNode.getRule();
 
-            int ii;
-            for(ii = 0; ii < tmpRole.length; ++ii)
-                if (ii == 0) System.out.print(lang.getLexemText(tmpRole[ii]) + " -> ");
-                else System.out.print(lang.getLexemText(tmpRole[ii]) + " ");
+            for (int i = 0; i < tmpRule.length; ++i)
+                if (i == 0) System.out.print(lang.getLexemText(tmpRule[i]) + " -> ");
+                else System.out.print(lang.getLexemText(tmpRule[i]) + " ");
 
             System.out.println();
 
-            for (ii = tmpRole.length - 1; ii > this.treePos; --ii) System.out.println(lang.getLexemText(tmpRole[ii]) + " =>* epsilon");
+            for (int i = tmpRule.length - 1; i > this.treePos; --i)
+                System.out.println(lang.getLexemText(tmpRule[i]) + " =>* epsilon");
         }
     }
 }
