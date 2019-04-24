@@ -1,0 +1,6 @@
+a1 === a2 | tests states permutation                | PASS
+a1 =/= a3 | tests removing one important transition | PASS
+a1 === a4 | tests one extra dead state              | PASS
+a1 =/= a5 | tests one extra (not dead) state        | PASS
+a1 === a6 | tests one extra unreachable state       | PASS
+a7 === a8 | classic test case                       | PASS
