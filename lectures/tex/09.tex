@@ -31,7 +31,7 @@
 \end{enumerate}
 з $\text{First}_k (x) = \text{First}_k (y)$ випливає, що $\alpha = \beta$, де $A \mapsto \alpha \mid \beta$, а \[\text{First}_k(\alpha) = \left\{ \omega \mid \alpha \Rightarrow^\star \omega x,\vert\omega\vert = k \right\} \cup \left\{ \omega \mid \alpha \Rightarrow^\star \omega, \vert\omega\vert < k \right\}.\]
 
-Неформально, граматика $G$ буде $LL(k)$-граматикою, якщо для слова $\omega_1 A \omega_2 \in (N \cup \Sigma)^\star$ достатньо $k$ перших символів (за умови, що вони існують) решти непроаналізованого слова щоб визначити, що з $A \omega_2$ існує не більше однієї альтернативи виведення слова, що починається з $\omega$ та продовжується наступними $k$ термінальними символами. \medskip
+Неформально, граматика $G$ буде $LL(k)$-граматикою, якщо для слова \[\omega_1 A \omega_2 \in (N \cup \Sigma)^\star\] достатньо $k$ перших символів (за умови, що вони існують) решти непроаналізованого слова щоб визначити, що з $A \omega_2$ існує не більше однієї альтернативи виведення слова, що починається з $\omega$ та продовжується наступними $k$ термінальними символами. \medskip
 
 Сформулюємо основні твердження стосовно класу $LL(k)$-граматик:
 \begin{enumerate}
@@ -78,7 +78,10 @@ $LL(1)$-граматика називаються \textit{розподілено
 \begin{enumerate}
 	\item $F_i (a) = \{a\}$ для всіх $a \in \Sigma$, $i \ge 0$.
 	\item $F_0(A_i) = \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega x, \vert\omega\vert = k \right\} \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: A_i \mapsto \omega, \vert\omega\vert < k \right\}$.
-	\item $F_n(A) = F_{n - 1}(A_i) \cup \left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}$.
+	\item \begin{multline*}
+		F_n(A) = F_{n - 1}(A_i) \cup \\
+		\cup\left\{ \omega \mid \omega \in \Sigma^{\star k}: \omega \in F_{n - 1} (\alpha_1) \oplus_k \ldots \oplus F_{n - 1} (\alpha_p), A_i \mapsto \alpha_1 \ldots \alpha_p \right\}.
+	\end{multline*}
 	\item $F_m(A_i) = F_{m + 1}(A_i) = \ldots$ для всіх $A_i \in N$.
 \end{enumerate}
 
@@ -233,7 +236,7 @@ $LL(1)$-граматика називаються \textit{розподілено
 
 До того, як перевірити граматику на $LL(k)$-властивість необхідно перевірити її на наявність ліворекурсивних нетерміналів та спробувати уникнути лівої рекурсії. \medskip
 
-\textbf{Алгоритм [тестування нетермінала $A_i$ на ліву рекурсію]:} для кожного нетермінала $А_i$ побудуємо наступну послідовність множин $S_0, S_1, \ldots$:
+\textbf{Алгоритм [тестування нетермінала $A_i$ на ліву рекурсію]:} для кожного нетермінала $A_i$ побудуємо наступну послідовність множин $S_0, S_1, \ldots$:
 \begin{enumerate}
 	\item $S_0 = \{A_i \mid A_i \mapsto \omega_1 A_i \omega_2, \omega_1 \Rightarrow^\star \varepsilon \}$, починаємо з нетерміналу $A_i$.
 	\item $S_1 = S_0 \cup \{ A_i \mid A_i \mapsto \omega_1 A_j \omega_2, \omega_1 \Rightarrow^\star \varepsilon, A_j \in S_0\}$.
@@ -272,7 +275,11 @@ S_3 &= \{A, B, D, C, S\}.
 \end{align*}
 
 З прикладу, що наведено раніше множини $\text{First}_1(A)$, будуть такими:
-\[\text{First}_1 (S) = \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \quad \text{First}_1 (A) = \{+, \varepsilon\}, \quad \text{First}_1 (C) = \{\times, \varepsilon\}.\]
+\begin{align*}
+\text{First}_1 (S) &= \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \\
+\text{First}_1 (A) &= \{+, \varepsilon\}, \\
+\text{First}_1 (C) &= \{\times, \varepsilon\}.
+\end{align*}
 
 \begin{table}[H]
 	\centering
