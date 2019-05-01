@@ -40,16 +40,16 @@
 
 ### Власне матеріали
 
-- [Електронні лекції](lectures/lectures.md)
+- [Електронні лекції](lectures/README.md)
 
-- [Контрольні питання](exams/control-questions.md)
+- [Контрольні питання](exams/README.md)
 
 - Матеріали для лабораторних робіт:
 
   - [Програмне забезпечення](labs/starting-out.md)
 
-  - [Власне умови робіт](labs/tasks/tasks.md)
+  - [Власне умови робіт](labs/tasks/README.md)
 
-  - [Приклади виконання](labs/examples/examples.md)
+  - [Приклади виконання](labs/examples/README.md)
 
-- [Література](books/books.md)
+- [Література](books/README.md)
