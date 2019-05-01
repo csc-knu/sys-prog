@@ -1,14 +1,18 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper, 12pt]{book}
+% \documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T2A,T1]{fontenc}
 \usepackage[english, ukrainian]{babel}
 \usepackage{amsmath, amssymb}
 \usepackage{float, graphicx, tikz}
 \usepackage{verbatim}
+% \usepackage[showframe]{geometry}
 
 \begin{document}
 
-\tableofcontents \newpage
+\tableofcontents % \newpage
+
+\chapter{Лексичний аналіз}
 
 \input{01} \newpage
 
@@ -20,7 +24,9 @@
 
 \input{05} \newpage
 
-\input{06} \newpage
+\input{06} % \newpage
+
+\chapter{Синтаксичний аналіз}
 
 \input{07} \newpage
 
@@ -32,6 +38,6 @@
 
 \input{11} \newpage
 
-% \input{12} \newpage
+\input{12} \newpage
 
 \end{document}
