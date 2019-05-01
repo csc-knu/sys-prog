@@ -1,0 +1,10 @@
+# ignore generated log files
+*.log
+# ignore generated auxilary files
+*.aux
+# ignore generated table of contents files
+*.toc
+# ignore generated out files
+*.out
+# ignore generated sync TeX g-zip files
+*.synctex.gz
