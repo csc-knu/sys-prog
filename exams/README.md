@@ -1,4 +1,4 @@
-<!--DEBUG-->
+<!--RELEASE-->
 
 {% include mathjax %}
 
