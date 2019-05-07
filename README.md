@@ -4,17 +4,17 @@
 
 ## Викладацький склад
 
-Курс лекцій читається Волоховим В.М., vvn на uiccnet тчк com тчк ua
+Курс лекцій читається Волоховим В.М., vvn<span style="font-family:monospace;">@</span>uiccnet.com.ua
 
 Практичні заняття проводять:
 
-- Волохов В.М., vvn на uiccnet тчк com тчк ua
+- Волохов В.М., vvn<span style="font-family:monospace;">@</span>uiccnet.com.ua
 
-- Поліщук Н., polinata 46 на gmail тчк com
+- Поліщук Н., polinata46<span style="font-family:monospace;">@</span>gmail.com
 
-- Шишацька О.В., shyshatska на knu тчк ua
+- Шишацька О.В., shyshatska<span style="font-family:monospace;">@</span>knu.ua
 
-Підтримка сайту &mdash; Скибицький Н.М., n тчк skybytskyi на gmail тчк com
+Підтримка сайту &mdash; Скибицький Н.М., n.skybytskyi<span style="font-family:monospace;">@</span>gmail.com
 
 ## Розподіл балів
 
