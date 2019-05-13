@@ -2,17 +2,17 @@
 
 ## Викладацький склад
 
-Курс лекцій читається Волоховим В.М.
+Курс лекцій читає Волоховим Віктор Миколайович
 
 Практичні заняття проводять:
 
-- Волохов В.М., vvn<span style="font-family:monospace;">@</span>uiccnet.com.ua, [розклад](https://mytimetable.live/teacher/Volohov-VM)
+- Волохов Віктор Миколайович, vvn<span style="font-family:monospace;">@</span>uiccnet.com.ua, [розклад](https://mytimetable.live/teacher/Volohov-VM/)
 
-- Поліщук Н., polinata46<span style="font-family:monospace;">@</span>gmail.com, [розклад](https://mytimetable.live/teacher/Polischyk-N)
+- Поліщук Наталія, polinata46<span style="font-family:monospace;">@</span>gmail.com, [розклад](https://mytimetable.live/teacher/Polischyk-N/)
 
-- Шишацька О.В., shyshatska<span style="font-family:monospace;">@</span>knu.ua, [розклад](https://mytimetable.live/teacher/Shishatska-OV/)
+- Шишацька Олена Володимирівна, shyshatska<span style="font-family:monospace;">@</span>knu.ua, [розклад](https://mytimetable.live/teacher/Shishatska-OV/)
 
-Підтримка сайту &mdash; Скибицький Н.М., n.skybytskyi<span style="font-family:monospace;">@</span>gmail.com
+Підтримка сайту і навчальних матеріалів &mdash; Скибицький Нікіта Максимович, n.skybytskyi<span style="font-family:monospace;">@</span>gmail.com
 
 ## Розподіл балів
 
