@@ -20,8 +20,11 @@
     <div class="container">
       <section id="main_content">
         {{ content }}
-        
-         <footer class="site-footer">
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
         {% if site.github.is_project_page %}
           <p>
             <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>
@@ -30,8 +33,7 @@
         <p>
           &copy; 2019 Київський національний університет імені Тараса Шевченка, Віктор Волохов, Скибицький Нікіта
         </p>
-      </footer>
-      </section>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>
