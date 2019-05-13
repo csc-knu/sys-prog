@@ -1,5 +1,3 @@
-<!--RELEASE-->
-
 {% include mathjax %}
 
 ## Лекції
@@ -29,7 +27,5 @@
 11. Програмування синтаксичних аналізаторів: [web](md/11.md), [pdf](tex/11-v.pdf), [LaTeX source](tex/11.tex)
 
 12. Побудова $$LL(k)$$-синтаксичного аналізатора: [web](md/12.md), [pdf](tex/12-v.pdf), [LaTeX source](tex/12.tex)
-
----
 
 [Назад на головну](../README.md)

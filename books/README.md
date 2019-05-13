@@ -1,5 +1,3 @@
-<!--RELEASE-->
-
 ## Література
 
 - [Andrew S. Tanenbaum &mdash; Modern Operating Systems](Andrew%20S.%20Tanenbaum%20-%20Modern%20Operating%20Systems.pdf)
@@ -15,7 +13,5 @@
 - [Andrew S. Tanenbaum &mdash; Computer Networks](Andrew%20S.%20Tanenbaum%20-%20Computer%20Networks.pdf)
 
 To be continued ...
-
----
 
 [Назад на головну](../README.md)
