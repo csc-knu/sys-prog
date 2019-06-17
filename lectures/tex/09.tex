@@ -63,10 +63,14 @@ $LL(1)$-граматика називаються \textit{розподілено
 \subsubsection{$\text{First}_k$}
 
 Зауважимо, що $\text{First}_k (\omega_1 \omega_2) = \text{First}_k (\omega_1) \oplus_k \text{First}_k (\omega_2)$, де $\oplus_k$ --- бінарна операція над словарними множинами (мовами) визначена наступним чином:
-\[L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, \quad y \in L_2.\]
+\begin{equation}
+	L_1 \oplus_k L_2 = \left\{ \omega \mid \omega \omega_1 = x y, \vert\omega\vert = k \right\} \cup  \left\{ \omega \mid \omega = x y, \vert\omega\vert < k \right\}, \quad x \in L_1, \quad y \in L_2.
+\end{equation}
 
 Звідси маємо наступний тривіальний висновок: якщо $\omega = \alpha_1 \alpha_2 \ldots \alpha_p$, де $\alpha_i \in (N \cup \Sigma)$, то
-\[\text{First}_k (\omega) = \text{First}_k (\alpha_1) \oplus_k \text{First}_k (\alpha_2) \oplus_k \ldots \oplus_k \text{First}_k (\alpha_p)\]
+\begin{equation}
+	\text{First}_k (\omega) = \text{First}_k (\alpha_1) \oplus_k \text{First}_k (\alpha_2) \oplus_k \ldots \oplus_k \text{First}_k (\alpha_p).
+\end{equation}
 
 Для подальшого аналізу визначення $LL(k)$-граматики розглянемо алгоритм обчислення функції $\text{First}_k (\alpha)$, $\alpha \in (N \cup \Sigma)$.
 
@@ -123,16 +127,27 @@ $LL(1)$-граматика називаються \textit{розподілено
 \end{table}
 
 Скористаємося визначенням $\text{First}_k(\alpha)$ сформулюємо необхідні й достатні умови, за яких КС-граматика буде $LL(k)$-граматикою: для довільного виводу в граматиці $G$ вигляду $S \Rightarrow^\star \omega_1 A \omega_2$ та правила $A \mapsto \alpha \mid \beta$:
-\[\text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.\]
+\begin{equation}
+	\text{First}_k(\alpha \omega_2) \cap \text{First}_k (\beta \omega_2) = \varnothing.
+\end{equation}
 
 Вище сформульована умова для $LL(k)$-граматик може бути перефразована з урахуванням визначення множини $\text{First}_k$: для довільного виведення в граматиці $G$ вигляду $S \Rightarrow^\star \omega_1 A \omega_2$ та правила $A \mapsto \alpha \mid \beta$:
-\[\text{First}_k(\alpha \cdot L) \cap \text{First}_k (\beta \cdot L) = \varnothing, \quad L = \text{First}_k(\omega_2).\]
+\begin{equation}
+	\text{First}_k(\alpha \cdot L) \cap \text{First}_k (\beta \cdot L) = \varnothing, \quad L = \text{First}_k(\omega_2).
+\end{equation}
 
 Оскільки $L \subseteq \Sigma^{\star k}$, то остання умова є конструктивною умовою і може бути використана для перевірки, чи КС-граматика є $LL(k)$-граматикою для фіксованого $k$.
 
 \subsection{Сильні $LL(k)$-граматики}
 
-КС-граматика називається \textit{сильною $LL(k)$-граматикою}, якщо для кожного правила вигляду $A \mapsto \alpha \mid \beta$ виконується умова: \[\text{First}_k (\alpha \cdot \text{Follow}_k (A)) \cap \text{First}_k (\beta \cdot \text{Follow}_k (A)) = \varnothing,\] де $\text{Follow}_k(\alpha)$, $\alpha \in (N \cup \Sigma)^\star$ визначається так: \[\text{Follow}_k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.\]
+КС-граматика називається \textit{сильною $LL(k)$-граматикою}, якщо для кожного правила вигляду $A \mapsto \alpha \mid \beta$ виконується умова:
+\begin{equation}
+	\text{First}_k (\alpha \cdot \text{Follow}_k (A)) \cap \text{First}_k (\beta \cdot \text{Follow}_k (A)) = \varnothing,
+\end{equation}
+де $\text{Follow}_k(\alpha)$, $\alpha \in (N \cup \Sigma)^\star$ визначається так:
+\begin{equation}
+	\text{Follow}_k (\alpha) = \left\{ \omega \mid S \Rightarrow^\star \omega_1 \alpha \omega_2, \omega \in \text{First}_k(\omega_2) \right\}.
+\end{equation}
 
 Неформально, відмінність сильних $LL(k)$-граматик від звичайних $LL(k)$-граматик полягає у тому, що наступне правило безпосереднього виведення, яке буде застосовано до $A$ можна визначити абстраговано від уже виведеної частини слова $\omega_1$, розглядаючи тільки наступні $k$ символів які потрібно отримати після $A$. \medskip
 
@@ -158,14 +173,14 @@ $LL(1)$-граматика називаються \textit{розподілено
 \begin{enumerate}
 	\item  виконаємо перевірку $LL(2)$-умови для правила $S \mapsto aAaa \mid bAba$:
 	\begin{multline*}
-	\text{First}_2(aAaa \cdot \text{Follow}_2(S)) \cap \text{First}_2(bAba \cdot \text{Follow}_2(S)) = \\
-	= (\text{First}_2(aAaa) \oplus_2 \text{Follow}_2(S)) \cap (\text{First}_2(bAba) \oplus_2 \text{Follow}_2(S)) = \\
-	= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{\varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
+		\text{First}_2(aAaa \cdot \text{Follow}_2(S)) \cap \text{First}_2(bAba \cdot \text{Follow}_2(S)) = \\
+		= (\text{First}_2(aAaa) \oplus_2 \text{Follow}_2(S)) \cap (\text{First}_2(bAba) \oplus_2 \text{Follow}_2(S)) = \\
+		= (\{ab, aa\} \oplus_2 \{\varepsilon\}) \cap (\{bb\} \oplus_2 \{\varepsilon\}) = \{ab,aa\}\cap \{bb\} = \varnothing.
 	\end{multline*}
 	\item виконаємо перевірку $LL(2)$-умови для правила $A \mapsto b \mid \varepsilon$:
 	\begin{multline*}
-	\text{First}_2(b \cdot \text{Follow}_2(A)) \cap \text{First}_2(\varepsilon \cdot \text{Follow}_2(A)) = \\
-	= \{ba,bb\}\cap\{aa,ba\}=\{ba\}.
+		\text{First}_2(b \cdot \text{Follow}_2(A)) \cap \text{First}_2(\varepsilon \cdot \text{Follow}_2(A)) = \\
+		= \{ba,bb\}\cap\{aa,ba\}=\{ba\}.
 	\end{multline*}
 \end{enumerate}
 
@@ -248,19 +263,19 @@ $LL(1)$-граматика називаються \textit{розподілено
 
 \textbf{Приклад.} Для граматики $G$ зі схемою правил $P$ знайдемо множину ліворекурсивних нетерміналів:
 \begin{align*}
-S &\mapsto AbS \mid AC, \\
-A &\mapsto BD, \\
-B &\mapsto BC \mid \varepsilon, \\
-C &\mapsto Sa \mid \varepsilon, \\
-D &\mapsto aB \mid BA.
+	S &\mapsto AbS \mid AC, \\
+	A &\mapsto BD, \\
+	B &\mapsto BC \mid \varepsilon, \\
+	C &\mapsto Sa \mid \varepsilon, \\
+	D &\mapsto aB \mid BA.
 \end{align*}
 
 Виконаємо процедуру тестування для кожного нетермінала окремо, наприклад, для нетермінала $S$: 
 \begin{align*}
-S_0 &= \{A\}, \\
-S_1 &= \{A, B, D\}, \\
-S_2 &= \{A, B, D, C\}, \\
-S_3 &= \{A, B, D, C, S\}.
+	S_0 &= \{A\}, \\
+	S_1 &= \{A, B, D\}, \\
+	S_2 &= \{A, B, D, C\}, \\
+	S_3 &= \{A, B, D, C, S\}.
 \end{align*}
 
 Запропонуємо декілька прийомів, що дають можливість при побудові $LL(k)$-граматик уникнути лівої рекурсії. Розглянемо граматику зі схемою правил $S \mapsto Sa \mid b$, яка має ліворекурсивний нетермінал $S$. Замінимо схему правил новою схемою з трьома правилами $S \mapsto bS_1$, $S_1 \mapsto aS_1 \mid \varepsilon$. \medskip
@@ -276,9 +291,9 @@ S_3 &= \{A, B, D, C, S\}.
 
 З прикладу, що наведено раніше множини $\text{First}_1(A)$, будуть такими:
 \begin{align*}
-\text{First}_1 (S) &= \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \\
-\text{First}_1 (A) &= \{+, \varepsilon\}, \\
-\text{First}_1 (C) &= \{\times, \varepsilon\}.
+	\text{First}_1 (S) &= \text{First}_1 (B) = \text{First}_1 (D) = \{(, a\}, \\
+	\text{First}_1 (A) &= \{+, \varepsilon\}, \\
+	\text{First}_1 (C) &= \{\times, \varepsilon\}.
 \end{align*}
 
 \begin{table}[H]
