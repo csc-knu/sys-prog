@@ -53,7 +53,10 @@
 
 Зауважимо очевидні факти, що випливають з побудови синтаксичного дерева:
 \begin{itemize}
-	\item крона дерева, зображеного на попередньому малюнку наступна: \[\alpha_1 \alpha_2 \ldots \alpha_{i - 1} \beta_1 \beta_2 \ldots \beta_l \alpha_{i + 1} \ldots \alpha_p;\]
+	\item крона дерева, зображеного на попередньому малюнку наступна:
+	\begin{equation}
+		\alpha_1 \alpha_2 \ldots \alpha_{i - 1} \beta_1 \beta_2 \ldots \beta_l \alpha_{i + 1} \ldots \alpha_p;
+	\end{equation}
 	\item ланцюжок $\alpha_1 \alpha_2 \ldots \alpha_{i - 1} \in \Sigma^\star$ з крони --- термінальний ланцюжок;
 	\item для однозначної граматики $G$ існує лише одне синтаксичне дерево виводу $\omega$ в $G$.
 \end{itemize}
@@ -68,19 +71,19 @@
 
 \textbf{Приклад:} Для граматики $G = \left\langle N, \Sigma, P, S\right\rangle$ зі схемою $P$:
 \begin{align}
-S &\Rightarrow S + T \\
-S &\Rightarrow T \\
-T &\Rightarrow T \times F \\
-T &\Rightarrow F \\
-F &\Rightarrow (S) \\
-F &\Rightarrow a
+	S &\Rightarrow S + T \\
+	S &\Rightarrow T \\
+	T &\Rightarrow T \times F \\
+	T &\Rightarrow F \\
+	F &\Rightarrow (S) \\
+	F &\Rightarrow a
 \end{align}
 і для ланцюжка $\omega = a \times (a + a)$ побудуємо лівосторонній аналіз $\pi$: \medskip
 
 Виведення має вигляд:
 \begin{multline*}
-S \Rightarrow T \Rightarrow T \times F \Rightarrow F \times F \Rightarrow a \times F \Rightarrow a \times (S) \Rightarrow a \times (S + T) \Rightarrow \\
-\Rightarrow a \times (T + T) \Rightarrow a \times (F + T) \Rightarrow a \times (a + T) \Rightarrow a \times (a + F) \Rightarrow a \times (a + a).
+	S \Rightarrow T \Rightarrow T \times F \Rightarrow F \times F \Rightarrow a \times F \Rightarrow a \times (S) \Rightarrow a \times (S + T) \Rightarrow \\
+	\Rightarrow a \times (T + T) \Rightarrow a \times (F + T) \Rightarrow a \times (a + T) \Rightarrow a \times (a + F) \Rightarrow a \times (a + a).
 \end{multline*}
 
 З наведеного вище виводу ланцюжка $\omega \in L(G)$ лівосторонній аналіз $\pi$ буде: $\pi = (2, 3, 4, 6, 5, 1, 2, 4, 6, 4, 6)$, а синтаксичне дерево виводу $\omega = a \times (a + a)$ наступне:

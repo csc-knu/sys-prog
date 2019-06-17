@@ -74,16 +74,16 @@
 \subsubsection{Системи рівнянь}
 
 В алгебрі регулярних виразів також розглядають і системи лінійних рівнянь з регулярними коефіцієнтами:
-\[
-\left\{
-\begin{aligned}
-X_1 &= a_{11} X_1 + a_{12} X_2 + \ldots + a_{1n} X_n + b_1, \\
-X_2 &= a_{21} X_1 + a_{22} X_2 + \ldots + a_{2n} X_n + b_2, \\
-&\ldots \\
-X_n &= a_{n1} X_1 + a_{n2} X_2 + \ldots + a_{nn} X_n + b_n.
-\end{aligned}
-\right.
-\]
+\begin{equation}
+	\left\{
+		\begin{aligned}
+			X_1 &= a_{11} X_1 + a_{12} X_2 + \ldots + a_{1n} X_n + b_1, \\
+			X_2 &= a_{21} X_1 + a_{22} X_2 + \ldots + a_{2n} X_n + b_2, \\
+			&\ldots \\
+			X_n &= a_{n1} X_1 + a_{n2} X_2 + \ldots + a_{nn} X_n + b_n.
+		\end{aligned}
+	\right.
+\end{equation}
 
 Метод розв'язування системи лінійних рівнянь з регулярними коефіцієнтами нагадує метод виключення Гауса.
 \begin{enumerate}
@@ -93,27 +93,41 @@ X_n &= a_{n1} X_1 + a_{n2} X_2 + \ldots + a_{nn} X_n + b_n.
 \end{enumerate}
 
 \textbf{Приклад.} Розв'язати систему $2\times2$:
-\[
-\left\{
-\begin{aligned}
-X_1 &= a_{11} X_1 + a_{12} X_2 + b_1, \\
-X_2 &= a_{21} X_1 + a_{22} X_2 + b_2.
-\end{aligned}
-\right.
-\]
+\begin{equation}
+	\left\{
+		\begin{aligned}
+			X_1 &= a_{11} X_1 + a_{12} X_2 + b_1, \\
+			X_2 &= a_{21} X_1 + a_{22} X_2 + b_2.
+		\end{aligned}
+	\right.
+\end{equation}
 
 \textbf{Розв'язок:}
 \begin{enumerate}
-	\item З першого рівняння \[X_1 = a_{11}^\star (a_{12} X_2 + b_1).\]
+	\item З першого рівняння
+	\begin{equation}
+		X_1 = a_{11}^\star (a_{12} X_2 + b_1).
+	\end{equation}
 
-	\item Підставляємо у друге рівняння, воно набуває вигляду\[X_2 = a_{21} (a_{11}^\star (a_{12} X_2 + b_1)) + a_{22} X_2 + b_2.\]
+	\item Підставляємо у друге рівняння, воно набуває вигляду
+	\begin{equation}
+		X_2 = a_{21} (a_{11}^\star (a_{12} X_2 + b_1)) + a_{22} X_2 + b_2.
+	\end{equation}
 
-	Або, після спрощень:\[X_2 = (a_{21} a_{11}^\star a_{12} + a_{22}) X_2 + (a_{21} a_{11}^\star b_1 + b_2).\]
+	Або, після спрощень:
+	\begin{equation}
+		X_2 = (a_{21} a_{11}^\star a_{12} + a_{22}) X_2 + (a_{21} a_{11}^\star b_1 + b_2).
+	\end{equation}
 
-	Звідки знаходимо:\[X_2 = (a_{21} a_{11}^\star a_{12} + a_{22})^\star (a_{21} a_{11}^\star b_1 + b_2).\]
+	Звідки знаходимо:
+	\begin{equation}
+		X_2 = (a_{21} a_{11}^\star a_{12} + a_{22})^\star (a_{21} a_{11}^\star b_1 + b_2).
+	\end{equation}
 
-	\item Підставляємо у вираз для $X_1$:\[
-	X_1 = a_{11}^\star (a_{12} (a_{21} a_{11}^\star a_{12} + a_{22})^\star (a_{21} a_{11}^\star b_1 + b_2) + b_1).\]
+	\item Підставляємо у вираз для $X_1$:
+	\begin{equation}
+		X_1 = a_{11}^\star (a_{12} (a_{21} a_{11}^\star a_{12} + a_{22})^\star (a_{21} a_{11}^\star b_1 + b_2) + b_1).
+	\end{equation}
 
 	Тут можна розкрити дужки, але зараз у цьому немає потреби.
 \end{enumerate}
@@ -129,13 +143,13 @@ X_2 &= a_{21} X_1 + a_{22} X_2 + b_2.
 	\item Доведіть, що згаданий у попередньому рівняння вираз справді є роз\-в'яз\-ком.
 	\item Сформулюйте алгоритм Гауса розв'язування систем лінійних регулярних рівнянь.
 	\item Розв'яжіть систему $3\times3$:
-	\[
-	\left\{
-	\begin{aligned}
-	X_1 &= a X_1 + b X_2 + c, \\
-	X_2 &= c X_1 + a X_2 + b X_3, \\
-	X_3 &= b + c X_2 + a X_3.
-	\end{aligned}
-	\right.
-	\]
+	\begin{equation}
+		\left\{
+			\begin{aligned}
+				X_1 &= a X_1 + b X_2 + c, \\
+				X_2 &= c X_1 + a X_2 + b X_3, \\
+				X_3 &= b + c X_2 + a X_3.
+			\end{aligned}
+		\right.
+	\end{equation}
 \end{enumerate}

@@ -22,16 +22,22 @@
 \end{itemize}
 
 Якщо $M$ --- скінчений автомат, то пара $(q, w) \in Q \times \Sigma^\star$ називається \textit{конфігурацією} автомата $M$. Оскільки скінчений автомат --- це дискретний пристрій, він працює по тактам. \textit{Такт} скінченого автомата $M$ задається бінарним відношенням $\models$, яке визначається на конфігураціях:
-\[ (q_1, a w) \models (q_2, w) \quad \text{if} \quad q_2 \in \delta(q_1, a), \quad \forall w \in \Sigma^\star. \]
+\begin{equation}
+	(q_1, a w) \models (q_2, w) \quad \text{if} \quad q_2 \in \delta(q_1, a), \quad \forall w \in \Sigma^\star.
+\end{equation}
 
 \subsubsection{Мова яку розпізнає скінченний автомат}
 
 Скінченний автомат $M$ \textit{розпізнає (допускає)} ланцюжок $w$, якщо
-\[ \exists q \in F: \quad (q_0, w) \models^\star (q, \varepsilon), \]
+\begin{equation}
+	\exists q \in F: \quad (q_0, w) \models^\star (q, \varepsilon),
+\end{equation}
 де $\models^\star$ --- рефлексивно-транзитивне замикання бінарного відношення $\models$. \medskip
 
 \textit{Mова}, яку допускає автомат $M$ (розпізнає автомат $M$)
-\[ L(M) = \{w \mid w \in \Sigma^\star, \exists q \in F: (q_0, w) \models^\star (q, \varepsilon)\}. \]
+\begin{equation}
+	L(M) = \{w \mid w \in \Sigma^\star, \exists q \in F: (q_0, w) \models^\star (q, \varepsilon)\}.
+\end{equation}
 
 \subsubsection{Способи визначення функції переходів}
 
@@ -42,7 +48,9 @@
 \end{itemize}
 
 \textit{Табличне визначення} функції $\delta$ --- це таблиця $M(q_i, a_j)$, де $a_j \in \Sigma, q_i \in Q$, тобто
-\[ M(q_i, a_j) = \{ q_k \mid q_k \in \delta(q_i, a_j) \}.\]
+\begin{equation}
+	M(q_i, a_j) = \{ q_k \mid q_k \in \delta(q_i, a_j) \}.
+\end{equation}
 
 \textit{Діаграма переходів} скінченого автомата $M$ --- це невпорядкований граф $G(V, P)$, де $V$ --- множина вершин графа, а $P$ --- множина орієнтованих дуг, причому з вершини $q_i$ у вершину $q_j$ веде дуга позначена $a_k$, коли $q_j \in \delta(q_i, a_k)$. На діаграмі переходів скінченого автомата це позначається так:
 \begin{figure}[H]
