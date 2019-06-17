@@ -1,5 +1,6 @@
-\documentclass[a4paper, 12pt]{book}
-% \documentclass[a4paper, 12pt]{article}
+% \documentclass[twoside, a4paper, 12pt]{book}
+% \usepackage[inner=3cm,outer=2cm,bottom=2cm]{geometry}
+\documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage[T2A,T1]{fontenc}
@@ -9,34 +10,37 @@
 \usepackage[unicode=true,colorlinks=true,linktoc=all,linkcolor=blue]{hyperref}
 
 \begin{document}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\numberwithin{equation}{section}
+% \input{lectures/tex/titlepage.tex}
+\tableofcontents
 
-\tableofcontents \newpage
+% \chapter{Лексичний аналіз}
 
-\chapter{Лексичний аналіз}
+% \input{01} \newpage
 
-\input{01} \newpage
+% \input{02} \newpage
 
-\input{02} \newpage
+% \input{03} \newpage
 
-\input{03} \newpage
+% \input{04} \newpage
 
-\input{04} \newpage
+% \input{05} \newpage
 
-\input{05} \newpage
+% \input{06}
 
-\input{06}
+% \chapter{Синтаксичний аналіз}
 
-\chapter{Синтаксичний аналіз}
+% \input{07} \newpage
 
-\input{07} \newpage
+% \input{08} \newpage
 
-\input{08} \newpage
+% \input{09} \newpage
 
-\input{09} \newpage
+% \input{10} \newpage
 
-\input{10} \newpage
-
-\input{11} \newpage
+% \input{11} \newpage
 
 \input{12}
 
