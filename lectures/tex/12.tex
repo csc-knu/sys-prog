@@ -1,14 +1,14 @@
 \setcounter{section}{11}
 
-\section{Побудова $LL(k)$-синтаксичного аналізатора}
+\section{Побудова \texorpdfstring{$LL(1)$}{LLk}-синтаксичного аналізатора}
 
-\subsection{Побудова $LL(k)$-синтаксичного аналізатора}
+\subsection{Побудова \texorpdfstring{$LL(1)$}{LLk}-синтаксичного аналізатора}
 
 Повернемось до умови, при якій граматика $G$ буде $LL(k)$-граматикою, а саме: для довільного виведення $S \Rightarrow^\star \omega_1 A \omega_2$ та правила $A \mapsto \alpha \mid \beta$ маємо $\text{First}_l(\alpha \cdot L) \cap \text{First}_k(\beta \cdot L) = \varnothing$, де $L = \text{First}_k(\omega_2)$. \medskip
 
 Оскільки $L \subseteq \Sigma^{\star k}$ --- конструктивна множина, спробуємо побудувати всілякі множини $L$, які задовольняють попередньо сформульованій умові.
 
-\subsubsection{$\text{Local}_k(S, A)$}
+\subsubsection{\texorpdfstring{$\text{Local}_k(S, A)$}{LocalkSA}}
 
 Визначимо наступну множину:
 \begin{equation}
@@ -38,15 +38,29 @@
 
 Для побудови синтаксичного аналізатора для $LL(k)$-граматики $(k > 1)$ необхідно побудувати множину таблиць, що забезпечать нам безтупиковий аналіз вхідного ланцюжка $w$ (програми) за час $O(n)$, де $n = \vert w\vert$. \medskip
 
-Побудову множини таблиць для управління $LL(k)$-аналізатором почнемо з таблиці, яка визначає перший крок безпосереднього виводу $w$ в граматиці $G$: $T_0 = T_{S, \{\varepsilon\}}(u) = (T_1\alpha_1T_2\alpha_2\ldots T_p\alpha_p, n)$, де $n$ --- номер правила вигляду $S\mapsto A_1\alpha_1A_2\alpha_2\ldots Ap\alpha_p$, а $A_i \in N$, $\alpha_i \in \Sigma^\star$, і $u = \text{First}_k(A_1\alpha_1A_2\alpha_2\ldots A_p\alpha_p)$, і нарешті $i = \overline{1..p}$. Зрозуміло, що в інших випадках (якщо такого правила немає абощо) $T_0$ не визначена. \medskip
+Побудову множини таблиць для управління $LL(k)$-аналізатором почнемо з таблиці, яка визначає перший крок безпосереднього виводу $w$ в граматиці $G$: $T_0 = T_{S, \{\varepsilon\}}(u) = (T_1\alpha_1T_2\alpha_2\ldots T_p\alpha_p, n)$, де $n$ --- номер правила вигляду
+\begin{equation}
+    S\mapsto A_1\alpha_1A_2\alpha_2\ldots Ap\alpha_p,
+\end{equation}
+а $A_i \in N$, $\alpha_i \in \Sigma^\star$, і $u = \text{First}_k(A_1\alpha_1A_2\alpha_2\ldots A_p\alpha_p)$, і нарешті $i = \overline{1..p}$. Зрозуміло, що в інших випадках (якщо такого правила немає абощо) $T_0$ не визначена. \medskip
 
 Неформально, коли в магазині автомата знаходиться аксіома $S$, то нас цікавить перших $k$ термінальних символів, які можна вивести з $S$ (аксіома --- поняття ``програма'') при умові, що після неї (програми) буде досягнуто EOF. \medskip
 
-Імена інших таблиць $T_1, T_2, \ldots, T_p$ визначаються так: $T_i = T_{A_i, L_i}$, де $L_i = \text{First}_k(\alpha_i A_{i + 1} \alpha_{i + 1} \ldots A_p \alpha_p)$, $i = \overline{1..p}$. \medskip
+Імена інших таблиць $T_1, T_2, \ldots, T_p$ визначаються так: $T_i = T_{A_i, L_i}$, де
+\begin{equation}
+    L_i = \text{First}_k(\alpha_i A_{i + 1} \alpha_{i + 1} \ldots A_p \alpha_p), \quad i = \overline{1..p}.
+\end{equation}
 
-Наступні таблиці визначаються так: $T_i = T_{A_i, L_i}(u) = (T_1\alpha_1T_2\alpha_2\ldots T_p\alpha_p, n)$, де $n$ --- номер правила вигляду $A_i\mapsto A_1\alpha_1A_2\alpha_2\ldots Ap\alpha_p$, а $A_j \in N$, $\alpha_j \in \Sigma^\star$, і $u = \text{First}_k(A_1\alpha_1A_2\alpha_2\ldots A_p\alpha_p) \oplus_k L_i$, і нарешті $j = \overline{1..p}$. Зрозуміло, що в інших випадках (якщо такого правила немає абощо) $T_i$ не визначена. \medskip
+Наступні таблиці визначаються так:
+\begin{equation}
+    T_i = T_{A_i, L_i}(u) = (T_1\alpha_1T_2\alpha_2\ldots T_p\alpha_p, n)
+\end{equation}
+де $n$ --- номер правила вигляду $A_i\mapsto A_1\alpha_1A_2\alpha_2\ldots Ap\alpha_p$, а $A_j \in N$, $\alpha_j \in \Sigma^\star$, і $u = \text{First}_k(A_1\alpha_1A_2\alpha_2\ldots A_p\alpha_p) \oplus_k L_i$, і нарешті $j = \overline{1..p}$. Зрозуміло, що в інших випадках (якщо такого правила немає абощо) $T_i$ не визначена. \medskip
 
-Імена інших таблиць $T_1, T_2, \ldots, T_p$ визначаються так: $T_j = T_{A_j, L_j}$, де $L_j = \text{First}_k(\alpha_j A_{j + 1} \alpha_{j + 1} \ldots A_p \alpha_p) \oplus_k L_i$, $j = \overline{1..p}$.
+Імена інших таблиць $T_1, T_2, \ldots, T_p$ визначаються так: $T_j = T_{A_j, L_j}$, де
+\begin{equation}
+    L_j = \text{First}_k(\alpha_j A_{j + 1} \alpha_{j + 1} \ldots A_p \alpha_p) \oplus_k L_i, \quad j = \overline{1..p}.
+\end{equation}
 
 \subsubsection{Приклад}
 
@@ -59,7 +73,14 @@
 	A &\mapsto b.
 \end{align}
 
-Для вищенаведеної граматики множини $\text{First}_2(A_i)$, $A_i \in N$ будуть такі: $\text{First}_2(S) = \{ab, \varepsilon\}$, $\text{First}_2(A) = \{aa, ab, b\}$, а множини $\text{Local}_2(S, A_i)$, $A_i \in N$ будуть такі: $\text{Local}_2(S, S) = \text{Local}_2(S, A) = \{\{\varepsilon\}, \{aa\}\}$. \medskip
+Для вищенаведеної граматики множини $\text{First}_2(A_i)$, $A_i \in N$ будуть такі:
+\begin{equation}
+    \text{First}_2(S) = \{ab, \varepsilon\}, \quad \text{First}_2(A) = \{aa, ab, b\}
+\end{equation}
+а множини $\text{Local}_2(S, A_i)$, $A_i \in N$ будуть такі:
+\begin{equation}
+    \text{Local}_2(S, S) = \text{Local}_2(S, A) = \{\{\varepsilon\}, \{aa\}\}
+\end{equation}
 
 Побудуємо першу таблицю $T_0 = T_{S, \{\varepsilon\}}$. Для $S$-правила відповідні множини $u$ будуть такі:
 \begin{itemize}
@@ -126,7 +147,7 @@
 
 Нова таблиця $T_4 = T_{S, L} = T_2$, оскільки $L = \text{First}_2(aa) \oplus_2 \{aa\} = \{aa\}$. \medskip
 
-Ми визначили чотири таблиці-рядки (а їх кількість для довільної $LL(k)$-граматики визначається як $\sum_{i = 1}^n n_i$, де $n_i$ --- кількість елементів множини $\text{Local}_k(S, A_i)$, $m = \vert N\vert$. \medskip
+Ми визначили чотири таблиці-рядки (а їх кількість для довільної $LL(k)$-гра\-ма\-ти\-ки визначається як $\sum_{i = 1}^n n_i$, де $n_i$ --- кількість елементів множини $\text{Local}_k(S, A_i)$, $m = \vert N\vert$. \medskip
 
 Об'єднаємо рядки-таблиці в єдину таблицю та виконаємо перейменування рядків:
 

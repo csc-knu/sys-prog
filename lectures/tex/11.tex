@@ -1,6 +1,6 @@
 \setcounter{section}{10}
 
-\section{Програмування синтаксичних аналізаторів}
+\section{Програмування синтаксичних \allowbreak а\-на\-лі\-за\-то\-рів}
 
 \subsection{Синтаксична діаграма}
 
@@ -104,7 +104,10 @@
 		\centering
 		\input{img/23}
 	\end{figure}
-	для кожного $\omega_i$, $i = \overline{1..p}$ знайдемо множину $\text{First}_1(\omega_i) \oplus_1 \text{Follow}_1(A) = L_i = \left\{a_i^1, a_i^2, \ldots, a_i^{n_i}\right\}$. \medskip
+	для кожного $\omega_i$, $i = \overline{1..p}$ знайдемо множину
+	\begin{equation}
+	    \text{First}_1(\omega_i) \oplus_1 \text{Follow}_1(A) = L_i = \left\{a_i^1, a_i^2, \ldots, a_i^{n_i}\right\}.
+	\end{equation}
 
 	Оскільки за умовою $L_i \cap L_j = \varnothing$, $i \ne j$, то відповідний фрагмент програми на мові С матиме вигляд:
 	\begin{verbatim}
@@ -151,7 +154,11 @@
 	\input{img/24}
 \end{figure}
 
-Для вище наведеної синтаксичної діаграми відповідні множини будуть: $\text{First}_1(\alpha_1 \alpha_2 \ldots \alpha_p A_i) \oplus_1 \text{Follow}_1(A_i) = L_1 = \left\{a_1^1, a_1^2, \ldots, a_1^{n_1}\right\}$. Відповідний фрагмент програми мовою С матиме вигляд:
+Для вище наведеної синтаксичної діаграми відповідні множини будуть:
+\begin{equation}
+    \text{First}_1(\alpha_1 \alpha_2 \ldots \alpha_p A_i) \oplus_1 \text{Follow}_1(A_i) = L_1 = \left\{a_1^1, a_1^2, \ldots, a_1^{n_1}\right\}
+\end{equation}
+Відповідний фрагмент програми мовою С матиме вигляд:
 \begin{verbatim}
 extern int lexem_code;
 extern char lexem_text[];
@@ -167,7 +174,7 @@ void A_i(void) {
 }  // кінець підпрограми для нетермінала A_i
 \end{verbatim}
 
-Виконавши аналіз варіантів побудови синтаксичного аналізатора на основі синтаксичних діаграм, покажемо вигляд основної --- main-програми:
+Виконавши аналіз варіантів побудови синтаксичного аналізатора на основі синтаксичних діаграм, покажемо вигляд основної --- main-про\-гра\-ми:
 \begin{verbatim}
 int lexem_code;
 char lexem_text[1<<8];
